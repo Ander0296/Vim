@@ -1,0 +1,35 @@
+# Material de estudio: los capítulos del libro convertidos a .md (y, en
+# F2, el texto del PDF de Practical Vim). Copyright — NUNCA subir: este
+# repo ES PÚBLICO. Ignora la carpeta completa (material/visto/ incluida:
+# se crea a mano en cada PC, ver INSTALACION.md), así que cubre cualquier
+# formato que se deje adentro.
+material/
+
+# Red de seguridad de copyright: el PDF de Practical Vim no puede subirse
+# NUNCA, ni aunque quede fuera de material/ por error.
+*.pdf
+
+# Archivos locales de herramientas
+.codegraph/
+.claude/settings.local.json
+.atl/
+
+# Java: compilados y salida de Maven de java-lab/ (se crea en el cap. 10)
+*.class
+java-lab/target/
+# Metadatos que jdtls (Eclipse) puede dejar en la raíz de un proyecto
+.classpath
+.project
+.settings/
+.factorypath
+
+# Temporales de Vim, por si alguna config los deja al lado del archivo
+# (por defecto nvim los guarda en ~/.local/state/nvim/).
+# OJO: teclas.log y trabajo.txt NO se ignoran: son la evidencia de mi
+# trabajo en cada kata y SÍ van a git.
+*.swp
+*.swo
+
+# Basura del sistema
+.DS_Store
+Thumbs.db
