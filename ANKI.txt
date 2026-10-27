@@ -2,3 +2,10 @@
 #html:false
 #deck:Vim
 #tags:vim
+¿Qué es la edición modal (modal editing)?	Editar con modos: en modo normal las teclas son comandos (moverse, borrar, copiar) y en modo inserción escriben texto. Se entra a inserción con `i` y se vuelve a normal con Esc.
+En Vim y Neovim, ¿de dónde vienen los comandos que se escriben después de los dos puntos?	De ex, un editor de líneas antiguo que sigue vivo como submodo de Vim: `:w` (write, guardar), `:q` (quit, salir) y `:s` (substitute, sustituir) son comandos ex.
+¿Por qué la edición modal de Vim cuida las manos más que los atajos de otros editores?	Porque casi todos sus comandos son teclas sueltas en secuencia (ej. `dw`) y no acordes que obligan a mantener varias teclas apretadas con la misma mano (tipo Ctrl+Shift+algo), que es lo que agrava la lesión por esfuerzo repetitivo y el túnel carpiano.
+¿Qué es Neovim respecto de Vim y cuál es su diferencia decisiva?	Un fork (bifurcación) de Vim creado en 2014 para modernizar su código. Su diferencia decisiva es Lua como lenguaje de plugins y configuración, además de VimScript: casi todo plugin de Vim corre en Neovim, pero muchos plugins en Lua solo corren en Neovim.
+¿Qué es LazyVim y en qué se diferencia de Neovim?	Una distribución de Neovim: Neovim más un conjunto elegido de plugins y una configuración que los hace convivir sin choques de atajos. No es otra versión del editor: la edición es la misma de Vim y Neovim. Capas: Vim → Neovim → LazyVim → la config propia.
+¿Qué diferencia hay entre el emulador de terminal, la shell y Neovim?	Son capas: el emulador de terminal (ej. kitty) es la ventana que dibuja el texto, la shell (ej. fish o bash) interpreta los comandos y Neovim es un programa que corre adentro. Una tecla pasa primero por la terminal, que puede quedársela sin que llegue a Neovim.
+¿Qué es una terminal acelerada por GPU y por qué conviene para Neovim?	Una terminal que dibuja el texto con el chip gráfico (GPU) en vez de la CPU, así que el desplazamiento y el redibujado son más fluidos. Ejemplos: kitty, Alacritty, WezTerm.

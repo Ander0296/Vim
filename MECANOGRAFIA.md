@@ -22,4 +22,11 @@ cambia, se agrega una línea nueva.
 # LÍNEAS POR SESIÓN
 # ============================================================
 
-(vacío — se llena a partir de la Sesión #01)
+s01 — por qué Vim: lo que va después de `:` son comandos de ex:
+`:w :q :wq :q! :help :Lazy :s/vi/vim/ :s/ed/ex/`
+
+s02 — Neovim, Lua y LazyVim: el mismo "hola" en Lua y en VimScript:
+`:lua print("hola") :echo "hola" :Lazy :help lua-guide :s/vim/nvim/ :wq`
+
+s03 — la terminal: en qué terminal corre nvim (repaso de lo anterior):
+`:echo $TERM :echo "kitty" :lua print("gpu") :w :q :wq :q! :s/vi/vim/`
