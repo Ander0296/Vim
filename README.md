@@ -1,4 +1,4 @@
-# Nvim — aprender Neovim + LazyVim con Claude Code (foco en Java)
+# Vim — aprender Neovim + LazyVim con Claude Code (foco en Java)
 
 Sistema de estudio con Claude Code como profesor particular, creado
 desde mi plantilla-profesor: yo le paso el material por tandas, él lo
@@ -33,7 +33,7 @@ profe me dice cuál sigue. Tampoco escribo comandos de git: los hace él.
 ## El mapa en 30 segundos
 
 ```
-Nvim/
+Vim/
 ├── material/        el capítulo que estoy viendo (capNN.md, bajado con
 │   │                curl + pandoc). NO va a git: copyright
 │   └── visto/       capítulos ya explicados — los archiva Claude solo
@@ -82,7 +82,7 @@ Da igual si vengo a estudiar material nuevo, a entregar una práctica o
 a hacer un repaso. **Siempre es lo mismo:**
 
 ```
-[TERMINAL]  cd ~/Proyectos/Nvim
+[TERMINAL]  cd ~/Proyectos/Vim
 [TERMINAL]  si hace falta, bajo el capítulo a material/  (ver "Cómo traer una tanda")
 [TERMINAL]  claude
 [CLAUDE]    /arranque
@@ -94,7 +94,7 @@ líneas qué toca hoy. Termina siempre con un bloque así:
 
 ```
 ▶ SIGUE: explicar las secciones 2.1 a 2.4 (tanda de texto, ~300 líneas)
-  1. /rename nvim-s01     ← el nombre de ESTA sesión
+  1. /rename vim-s01     ← el nombre de ESTA sesión
   2. /tanda
 ```
 
@@ -106,7 +106,7 @@ Si quiero forzar algo distinto a lo que detectó, se lo digo de una:
 `/arranque vengo a entregar la kata 3`.
 
 El `/setup` ya se hizo (2026-10-27): el proyecto arranca directo con
-`/arranque`. La primera sesión se llama `nvim-s01` y empieza por el
+`/arranque`. La primera sesión se llama `vim-s01` y empieza por el
 capítulo 1.
 
 # ============================================================
@@ -148,7 +148,7 @@ TEXTO. Un pantallazo cuesta 3 o 4 veces más que la misma página en
 texto, y encima Claude lo lee con menos precisión.
 
 El libro está online, un capítulo por página. Lo bajo de a UN capítulo,
-ya convertido a texto, con este comando (desde `~/Proyectos/Nvim`;
+ya convertido a texto, con este comando (desde `~/Proyectos/Vim`;
 este ejemplo es el capítulo 2):
 
 ```
@@ -208,7 +208,7 @@ Cada kata es una carpeta en `ejercicios/` (ej:
 **1. `[TERMINAL]` Entro a la carpeta de la kata:**
 
 ```
-cd ~/Proyectos/Nvim/ejercicios/k01-borrar-palabras
+cd ~/Proyectos/Vim/ejercicios/k01-borrar-palabras
 ```
 
 **2. `[TERMINAL]` Miro qué hay que cambiar** (las líneas con `-` son lo
@@ -282,7 +282,7 @@ me lo dice el profe (ver "quién decide qué", más abajo).
 ### PASO 1 — preparo el material `[TERMINAL]`
 
 ```
-cd ~/Proyectos/Nvim
+cd ~/Proyectos/Vim
 ```
 
 Si el capítulo que toca todavía no está en `material/`, lo bajo con el
@@ -308,7 +308,7 @@ vencieron y qué toca hoy. Y termina con un bloque así:
 
 ```
 ▶ SIGUE: explicar las secciones 3.1 a 3.4 (tanda de texto, ~300 líneas)
-  1. /rename nvim-s08
+  1. /rename vim-s08
   2. /tanda
 ```
 
@@ -409,7 +409,7 @@ ahí el que rinde mal es el contexto, no yo.
 # SI SE CERRÓ LA TERMINAL SIN QUERER (mismo día)
 # ============================================================
 
-`[TERMINAL]` `claude --resume nvim-sNN`
+`[TERMINAL]` `claude --resume vim-sNN`
 Solo para retomar el MISMO día. Día nuevo = sesión nueva.
 
 # ============================================================
@@ -453,10 +453,10 @@ Mecanografía (las líneas salen de `MECANOGRAFIA.md`):
   con una línea al azar de mis proyectos de estudio.
 - Al terminar una línea: `q` pasa a otra al azar, `r` repite la misma.
   Cada línea vive en su propio archivo de ttyper
-  (`~/.config/ttyper/texts/nvim-sNN.txt`); Claude solo agrega los
+  (`~/.config/ttyper/texts/vim-sNN.txt`); Claude solo agrega los
   archivos nuevos al cerrar cada tanda. Yo no los toco.
 
-Tarjetas Anki (`ANKI.txt`, mazo "Nvim"):
+Tarjetas Anki (`ANKI.txt`, mazo "Vim"):
 - En Anki: Archivo → Importar → elegir el `ANKI.txt` de este repo. El
   mazo, el separador tab y las etiquetas ya vienen preconfigurados en
   las cabeceras del propio archivo.

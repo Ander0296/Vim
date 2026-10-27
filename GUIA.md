@@ -11,7 +11,7 @@ Prácticas: ver EJERCICIOS.md.
 
 - Último punto estudiado: ninguno todavía — arrancamos en el cap. 1 (Sesión #01)
 - Última tanda: ninguna todavía (las tandas se numeran "Sesión #NN")
-- PRÓXIMA SESIÓN: `/rename nvim-s01`
+- PRÓXIMA SESIÓN: `/rename vim-s01`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)

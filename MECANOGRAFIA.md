@@ -7,8 +7,8 @@ agrega Claude al cerrar cada tanda (1-2 líneas por sesión, cortas:
 
 Cada línea vive además en su propio archivo de ttyper, aplanada a un
 token por línea:
-`~/.config/ttyper/texts/nvim-sNN.txt` (si la sesión tiene dos líneas:
-`nvim-sNNa.txt` y `nvim-sNNb.txt`)
+`~/.config/ttyper/texts/vim-sNN.txt` (si la sesión tiene dos líneas:
+`vim-sNNa.txt` y `vim-sNNb.txt`)
 
 Atajo del sistema para practicar: **CTRL+SUPER+ALT+T**
 

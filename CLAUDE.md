@@ -1,4 +1,4 @@
-## Proyecto: Nvim — aprender Neovim + LazyVim como editor profesional (foco en Java)
+## Proyecto: Vim — aprender Neovim + LazyVim como editor profesional (foco en Java)
 
 ### Qué es y objetivo
 
@@ -331,7 +331,7 @@ propia numeración (`k01`, `k02`... · `j01`... · `lib01`...):
   teclas" OPCIONAL, como en VimGolf (una meta, no un examen); los
   comandos exactos, para correr desde la carpeta de la kata:
   ```
-  cd ~/Proyectos/Nvim/ejercicios/kNN-nombre
+  cd ~/Proyectos/Vim/ejercicios/kNN-nombre
   cp inicio.txt trabajo.txt
   nvim -W teclas.log trabajo.txt
   diff -u trabajo.txt objetivo.txt
@@ -566,7 +566,7 @@ a la vez).
   nada de Esc, Ctrl ni `<leader>`: esas teclas no se pueden escribir
   en ttyper.
 - Volcado APPEND-ONLY: cada línea nueva va a SU PROPIO archivo
-  `~/.config/ttyper/texts/nvim-sNN.txt` (si la sesión tiene dos
+  `~/.config/ttyper/texts/vim-sNN.txt` (si la sesión tiene dos
   líneas: `-sNNa.txt` y `-sNNb.txt`). Claude crea SOLO los archivos de
   las líneas nuevas y NUNCA reescribe los anteriores. (El setup no creó
   ninguno: el primero sale de la Sesión #01.)
@@ -592,7 +592,7 @@ fijan más que un mazo exhaustivo.
   el primer campo) y agrega las nuevas, sin duplicar.
 - Se AGREGA al final: Claude nunca reescribe el archivo completo.
 - Formato: cabeceras #separator:tab, #html:false,
-  #deck:Nvim y #tags:nvim; después una tarjeta por línea: pregunta
+  #deck:Vim y #tags:vim; después una tarjeta por línea: pregunta
   TAB respuesta.
 - Preguntas en español. Los comandos van entre backticks (`ciw`),
   sobre todo en la respuesta; una pregunta nunca EMPIEZA con un
@@ -740,7 +740,7 @@ y en este orden exacto:
 ```
 ▶ SIGUE: <qué es y por qué, en una línea>
   1. Ctrl+D  (solo si hay que cambiar de sesión, y se dice por qué)
-  2. /rename nvim-sNN
+  2. /rename vim-sNN
   3. /<comando>
 ```
 
@@ -860,7 +860,7 @@ Hay dos numeraciones en este proyecto y NO avanzan juntas:
 
 - `Sesión #NN` (en GUIA.md) = una TANDA de material. Manda en la guía,
   en MECANOGRAFIA.md y en los nombres de los archivos de ttyper.
-- `nvim-sNN` = el nombre de la SESIÓN DE CLAUDE (`/rename`,
+- `vim-sNN` = el nombre de la SESIÓN DE CLAUDE (`/rename`,
   `claude --resume`). Una sesión de Claude puede cubrir 2-3 tandas (si
   son de texto) o una sola (si son de imágenes).
 
@@ -966,11 +966,11 @@ Si algo de eso hace falta, se explica y se espera la decisión.
 
 ### Memoria y contexto
 
-- Engram: project = `nvim` (el nombre de esta carpeta, en minúsculas;
-  NO inventar otro). Es el MISMO project que usa `~/.config/nvim`, A
-  PROPÓSITO: aprender Neovim y configurarlo van juntos, y lo que se
-  decide en uno le sirve al otro. Al guardar desde acá, que el título
-  deje claro que es del estudio (sesión, tanda, kata).
+- Engram: project = `vim` (el nombre de esta carpeta y del repo, en
+  minúsculas; Engram lo detecta solo por el remoto de git). NO inventar
+  otro. La config de `~/.config/nvim` guarda sus decisiones en OTRO
+  project (`nvim`, según su propio CLAUDE.md): si hace falta saber por
+  qué la config quedó de cierta forma, se busca ahí, sin mezclar.
 - Inicio de sesión — leer SOLO esto, en este orden:
   1. Engram (dónde quedamos).
   2. El INICIO RÁPIDO de GUIA.md. El límite NO es un número de líneas
