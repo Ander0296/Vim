@@ -1,19 +1,19 @@
 ---
-description: Explica la tanda de material que dejé en material/ (repetible, una vez por tanda)
+description: Explica la tanda que pegué en material/tanda.txt (repetible, una vez por tanda)
 argument-hint: [opcional: qué secciones, ej "cap. 2, secciones 2.1 a 2.4" o "2 pantallazos del cap. 9"]
 ---
 
 Tanda nueva. $ARGUMENTS
 
-El material está en `material/` como `capNN.md`: un capítulo entero del
-libro, bajado con curl + pandoc (si vino como imágenes, en la raíz de
-la carpeta). No entres a `material/visto/`: eso ya está explicado.
+El material está en `material/tanda.txt`: el texto de la tanda que
+copié de la web del libro. El tamaño lo decido yo, según lo que me
+parece bueno ver sin saturarme (no va por capítulo): explicá todo lo
+pegado. Si hay pantallazos, los pego en el chat.
 
-Una tanda acá es un RANGO de secciones numeradas de UN capítulo
-(~250-400 líneas), no el capítulo entero. Si no te dije cuáles, seguí
-desde el punto exacto del INICIO RÁPIDO y elegí vos el rango. NO leas
-el capítulo completo: sacá el índice con Grep (`^#{2,3} ` sobre el
-`capNN.md`) y leé con Read solo las líneas de esas secciones.
+Leelo ENTERO con Read y, en el mismo movimiento, dejalo VACÍO (Write
+con contenido vacío) para que yo pegue ahí la tanda siguiente; no
+guardes copia. Si está vacío o no existe, decímelo en una línea (si
+faltaba, crealo vacío) y frená hasta que lo pegue.
 
 El libro está en INGLÉS y no lo domino: cada término o frase que cites
 va con su traducción al lado, sin excepciones, y los términos nuevos
@@ -25,7 +25,7 @@ instalado, verificalo antes de enseñarlo y marcalo como NOTA DEL PROFE
 Aplicá el **flujo por tanda** completo de CLAUDE.md (no lo leas con
 Read: ya lo tenés cargado), respetando el presupuesto de contexto:
 
-1. Leé el material de la tanda (solo su rango de secciones).
+1. Leé `material/tanda.txt` y dejalo vacío (ver arriba).
 2. Explicámelo PIEZA POR PIEZA, anunciando siempre cuál ("SECCIÓN 2.3:",
    "PANTALLAZO 2:") para que lo pueda seguir con la vista. En español,
    con palabras propias, COMPRIMIENDO — no transcribiendo. Si algo no
@@ -40,9 +40,8 @@ Read: ya lo tenés cargado), respetando el presupuesto de contexto:
 5. Verificá que entendí con 1-2 preguntas cortas antes de cerrar.
 
 Cuando termines de explicar, en el mismo turno:
-- si se explicó la ÚLTIMA sección del capítulo, mové `capNN.md` a
-  `material/visto/`; si no, dejalo donde está y anotá el punto exacto
-  ("cap. 2, hasta la 2.4 incluida") en el INICIO RÁPIDO;
+- anotá el punto exacto ("cap. 2, hasta la 2.4 incluida") en el
+  INICIO RÁPIDO: de ahí sé desde dónde copiar la tanda siguiente;
 - actualizá `GUIA.md` con la sesión en FORMATO CORTO (5-8 bullets,
   máx ~15 líneas) y el INICIO RÁPIDO, incluida la línea
   **PRÓXIMA SESIÓN**;

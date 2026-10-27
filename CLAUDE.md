@@ -187,9 +187,9 @@ Reglas que salen de eso:
      notación densa)
    - tanda MIXTA: si incluye una sola imagen, cuenta como tanda de
      imágenes.
-   - en ESTE proyecto, una tanda de texto = un rango de secciones
-     numeradas de UN capítulo, ~250-400 líneas del `.md` de pandoc
-     (ver "Formato del material y herramientas del tema").
+   - en ESTE proyecto, una tanda de texto = lo que el usuario pega en
+     `material/tanda.txt`; el tamaño lo decide el usuario, no va por
+     capítulo (ver "Formato del material y herramientas del tema").
 3. UNA tanda de IMÁGENES por sesión de Claude. Al terminar de
    explicarla, Claude AVISA al usuario que conviene cambiar de sesión
    antes de la siguiente tanda (`/cambio` → Ctrl+D → sesión nueva).
@@ -451,31 +451,34 @@ Reglas de la prueba:
 
 ### Formato del material y herramientas del tema
 
-- **Formato por defecto: TEXTO.** El libro es HTML libre: el USUARIO
-  baja un capítulo por vez y lo convierte a Markdown con pandoc
-  (verificado en el setup: el cap. 2 sale en ~557 líneas, con títulos
-  `##`/`###` limpios del tipo "2.1. Introduction to Modal Editing"):
-
-  ```bash
-  curl -s https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/ | pandoc -f html -t gfm --wrap=none -o material/cap02.md
-  ```
-
-  (para otro capítulo cambian el número de la URL y el `cap02`).
-- **Una tanda = un RANGO de secciones numeradas de UN capítulo**
-  (~250-400 líneas), no un capítulo largo entero. Claude NO lee el
-  capítulo completo: primero saca el índice con Grep (`^#{2,3} ` sobre
-  `material/capNN.md`) y después lee con Read solo las líneas de las
-  secciones de la tanda. Cada pieza se anuncia por sección
+- **Formato por defecto: TEXTO, pegado en `material/tanda.txt`** —
+  REGLA PERMANENTE (pedido del usuario, 2026-10-27). `tanda.txt` es una
+  bandeja FIJA: el usuario copia de la web del libro el texto de la
+  tanda y lo pega ahí. Nunca crea un archivo por tanda.
+  - En `/tanda`, Claude lee `material/tanda.txt` ENTERO con Read y, en
+    el mismo movimiento, lo deja VACÍO (Write con contenido vacío) para
+    que el usuario pegue ahí la tanda siguiente. No se guarda copia: el
+    libro está online y el punto exacto queda en el INICIO RÁPIDO y en
+    Engram.
+  - Si `/tanda` lo encuentra vacío (o no existe), Claude lo dice en una
+    línea, lo crea vacío si faltaba y se detiene hasta que el usuario
+    pegue el texto.
+- **Una tanda = lo que el usuario pega.** El tamaño lo decide el
+  usuario, según lo que considera bueno ver sin saturarse; NO va por
+  capítulo (puede ser media sección o varias). Claude no lo recorta ni
+  lo discute: explica todo lo pegado, anunciando cada pieza por sección
   ("SECCIÓN 2.3:").
-- `capNN.md` se mueve a `material/visto/` recién cuando se explicó su
-  ÚLTIMA sección; mientras tanto, el punto exacto ("cap. 2, hasta la
-  2.4 incluida") vive en el INICIO RÁPIDO y en Engram.
+- El punto exacto ("cap. 2, hasta la 2.4 incluida") vive en el INICIO
+  RÁPIDO y en Engram: es lo que le dice al usuario desde dónde copiar
+  la tanda siguiente.
 - PANTALLAZO solo cuando el libro muestra algo VISUAL que el texto
   pierde (una captura de la pantalla de LazyVim, un popup, un layout de
-  ventanas); esa tanda pasa a contar como mixta.
+  ventanas): el usuario lo pega en el CHAT cuando hace falta, y esa
+  tanda pasa a contar como mixta.
 - **F2 (Practical Vim)**: el usuario aporta el PDF y el flujo es el de
-  Extron: `pdftotext -f N -l M -layout <pdf> material/tanda.md`, con
-  una línea `## PÁGINA NN` por página. Se detalla al llegar.
+  Extron, a la MISMA bandeja: `pdftotext -f N -l M -layout <pdf>
+  material/tanda.txt`, con una línea `## PÁGINA NN` por página. Se
+  detalla al llegar.
 - `material/` NUNCA va a git (copyright; el repo es PÚBLICO), y `*.pdf`
   también está ignorado como red de seguridad.
 
@@ -487,7 +490,7 @@ Reglas de la prueba:
 | LazyVim | la distribución, con extras lang.java, lang.json, lang.toml, lang.python, dap.core, ai.claudecode y coding.mini-surround (ai.avante está como extra pero desactivado) | 16.0.0 |
 | Mason: jdtls, java-debug-adapter, java-test | LSP, debug y tests de Java en nvim | instalados |
 | openjdk + Maven | compilar, correr y testear `java-lab/` | openjdk 26, Maven 3.9.16 |
-| curl + pandoc | bajar y convertir los capítulos | pandoc 3.10.2 |
+| curl + pandoc | reserva: bajar un capítulo como texto si copiar de la web falla (el flujo normal es pegar en `material/tanda.txt`) | pandoc 3.10.2 |
 | ttyper | mecanografía | 1.6.0 |
 | Anki | tarjetas (app externa) | — |
 | zathura + pdftotext | el PDF de Practical Vim (F2) | instalados |
@@ -501,8 +504,8 @@ nvim --version | head -1 && pandoc --version | head -1 && ttyper --version
 **Carpetas de trabajo de este tema:** `ejercicios/` (katas, prácticas y
 preguntas; protegida por el candado), `java-lab/` (el proyecto Maven de
 práctica; protegida también: Claude CREA su código como material y
-después no lo toca; se crea en el cap. 10) y `material/` +
-`material/visto/` (locales, fuera de git).
+después no lo toca; se crea en el cap. 10) y `material/` (con
+la bandeja `tanda.txt`; local, fuera de git).
 
 ### Sistema de repasos (repetición espaciada) — REGLA PERMANENTE
 
@@ -676,8 +679,8 @@ puntero "Si te trabás" (ej: "Checklist: ToDo/nombre-del-tema.md").
 ### Flujo por cada tanda de material (lo dispara `/tanda`)
 
 1. Leer el material de la tanda (texto de material/ o las imágenes
-   indicadas, según formato — ver Presupuesto de contexto). Acá: SOLO
-   el rango de secciones de la tanda, con el índice sacado por Grep
+   indicadas, según formato — ver Presupuesto de contexto). Acá:
+   `material/tanda.txt` ENTERO, y en el mismo movimiento dejarlo VACÍO
    (ver "Formato del material y herramientas del tema").
    Si falta un pedazo, CLASIFICARLO EN EL MOMENTO (regla de
    PENDIENTES.md) y decirlo en UNA línea: "cubierto igual" (se descarta
@@ -707,8 +710,8 @@ puntero "Si te trabás" (ej: "Checklist: ToDo/nombre-del-tema.md").
 4. Si la tanda trae ejercicios del material: avisar cuáles son y
    aplicar la regla de prácticas (archivo de arranque + registro).
 5. Verificar comprensión con 1-2 preguntas cortas antes de cerrar.
-6. Mover el material ya explicado a material/visto/ (acá: `capNN.md`
-   se mueve recién cuando se explicó su ÚLTIMA sección).
+6. Mover el material ya explicado a material/visto/ (acá no aplica:
+   `tanda.txt` ya quedó vacío en el paso 1; se anota el punto exacto).
 7. Actualizar GUIA.md agregando la sesión en FORMATO CORTO (5-8
    bullets, SIN bloques de código ni contenido repetido del chat,
    máx ~15 líneas; ver el formato de referencia al final de la guía),
@@ -761,7 +764,7 @@ Es lo primero de CADA sesión. Claude:
    | --- | --- | --- |
    | 1 | un repaso VENCIDO en REPASOS PROGRAMADOS | **REPASO** (el más antiguo primero) |
    | 2 | una práctica [~] en curso que el usuario ya entregó | **ENTREGA** |
-   | 3 | material sin explicar en material/ | **TANDA** |
+   | 3 | texto en `material/tanda.txt` (no vacío) | **TANDA** |
    | 4 | prácticas [ ] pendientes y nada de material nuevo | **PRÁCTICA** |
    | 5 | nada de lo anterior | **PREGUNTA** qué quiere hacer |
 
@@ -784,7 +787,7 @@ Viven en `.claude/commands/`. Claude los nombra por su nombre exacto:
 | Comando | Para qué |
 | --- | --- |
 | `/arranque` | dónde quedamos, cómo se llama esta sesión y qué toca hoy — el primero de cada sesión |
-| `/tanda` | explicar la tanda de material que está en material/ |
+| `/tanda` | explicar la tanda pegada en `material/tanda.txt` |
 | `/entrega` | corregir una práctica terminada |
 | `/repaso` | hacer un repaso vencido, desde cero |
 | `/cambio` | cerrar esta sesión y abrir una limpia (mitad del día) |

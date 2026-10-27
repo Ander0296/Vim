@@ -34,9 +34,8 @@ profe me dice cuál sigue. Tampoco escribo comandos de git: los hace él.
 
 ```
 Vim/
-├── material/        el capítulo que estoy viendo (capNN.md, bajado con
-│   │                curl + pandoc). NO va a git: copyright
-│   └── visto/       capítulos ya explicados — los archiva Claude solo
+├── material/        tanda.txt: ahí pego el texto de cada tanda; el profe
+│                    lo lee y lo deja vacío. NO va a git: copyright
 ├── ejercicios/      mis prácticas. Claude deja el ENUNCIADO + el
 │   │                prompt de entrega; la solución la hago yo
 │   ├── kNN-.../     KATAS: inicio.txt → objetivo.txt, con mis teclas
@@ -83,7 +82,7 @@ a hacer un repaso. **Siempre es lo mismo:**
 
 ```
 [TERMINAL]  cd ~/Proyectos/Vim
-[TERMINAL]  si hace falta, bajo el capítulo a material/  (ver "Cómo traer una tanda")
+[TERMINAL]  si vengo a ver material, pego la tanda en material/tanda.txt  (ver "Cómo traer una tanda")
 [TERMINAL]  claude
 [CLAUDE]    /arranque
 ```
@@ -118,7 +117,7 @@ Los prompts completos viven en `.claude/commands/`.
 | Comando | Para qué | Cuándo lo uso |
 | --- | --- | --- |
 | `/arranque` | dónde quedamos, cómo se llama esta sesión y qué toca hoy | **siempre, primero** |
-| `/tanda` | me explica las secciones del capítulo que está en `material/` | por cada tanda |
+| `/tanda` | me explica las secciones que pegué en `material/tanda.txt` | por cada tanda |
 | `/entrega` | corrige la práctica que terminé (kata, java-lab o preguntas) | cuando termino una |
 | `/repaso` | repaso vencido, desde cero | cuando el profe avisa |
 | `/pendientes` | triage: qué se pudre, qué se salda, qué doy de baja | domingo, 5 minutos |
@@ -147,45 +146,26 @@ REGLA MADRE: el libro es una página web con texto, así que va como
 TEXTO. Un pantallazo cuesta 3 o 4 veces más que la misma página en
 texto, y encima Claude lo lee con menos precisión.
 
-El libro está online, un capítulo por página. Lo bajo de a UN capítulo,
-ya convertido a texto, con este comando (desde `~/Proyectos/Vim`;
-este ejemplo es el capítulo 2):
+El libro está online, un capítulo por página. Copio de la web el texto
+de la tanda y lo pego en **`material/tanda.txt`**: siempre el MISMO
+archivo, nunca creo uno nuevo. Cuando corro `/tanda`, el profe lo lee
+y lo deja vacío, listo para la siguiente.
 
-```
-curl -s https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/ | pandoc -f html -t gfm --wrap=none -o material/cap02.md
-```
-
-Qué hace cada parte:
-- `curl -s <dirección>` baja la página web (el HTML), sin mostrar la
-  barra de progreso.
-- `|` le pasa lo que bajó al comando siguiente.
-- `pandoc -f html -t gfm` lo convierte de HTML a Markdown (texto con
-  títulos `##`); `--wrap=none` no corta las líneas largas.
-- `-o material/cap02.md` lo guarda en ese archivo.
-
-Para otro capítulo cambio el número en DOS lugares: `chapter-2` y
-`cap02` (siempre con dos dígitos: `cap07`, `cap12`).
-
-Una TANDA no es el capítulo entero: es un rango de secciones numeradas
-(2.1, 2.2...), unas 250-400 líneas. El capítulo queda en `material/`
-hasta que se explica su última sección; el profe lee solo el pedazo de
-cada tanda y anota por dónde vamos. Yo no corto nada: si quiero, le
-digo qué secciones (`/tanda cap. 2, de la 2.1 a la 2.4`), y si no,
-elige él.
+Cuánto entra en una tanda lo decido YO: lo que me parezca bueno ver
+sin saturarme, no va por capítulo. El INICIO RÁPIDO de la guía dice
+por dónde vamos ("cap. 2, hasta la 2.4 incluida"): copio desde la
+sección que sigue.
 
 | Formato del material             | Tanda                                   | Tandas por sesión |
 | -------------------------------- | --------------------------------------- | ----------------- |
-| TEXTO (el capítulo en .md)       | 250-400 líneas (menos si es muy denso)  | 2-3               |
+| TEXTO (pegado en tanda.txt)      | lo que yo decida                        | 2-3               |
 | IMÁGENES (pantallazos)           | 3-5 imágenes                            | 1                 |
 | MIXTA (aunque sea 1 imagen)      | como imágenes                           | 1                 |
 
 Pantallazos: SOLO si el libro muestra algo visual que el texto pierde
 (una captura de cómo se ve la pantalla, un popup, un layout de
-ventanas). Ese pantallazo suelto va a `material/` y el resto sigue en
-texto; la tanda pasa a ser mixta: una sola en esa sesión.
-
-Cuando se termina un capítulo, Claude mueve solo su `capNN.md` a
-`material/visto/`. Yo no muevo nada.
+ventanas). Ese pantallazo lo pego directo en el chat y el resto sigue
+en texto; la tanda pasa a ser mixta: una sola en esa sesión.
 
 En la FASE 2 (Practical Vim) el material es un PDF que aporto yo: el
 texto se saca con `pdftotext` y el profe me pasa el comando exacto al
@@ -285,9 +265,10 @@ me lo dice el profe (ver "quién decide qué", más abajo).
 cd ~/Proyectos/Vim
 ```
 
-Si el capítulo que toca todavía no está en `material/`, lo bajo con el
-comando de "Cómo traer una tanda". Si ya está (vamos por la mitad de
-ese capítulo), no hago nada: el profe sabe por qué sección vamos.
+Pego en `material/tanda.txt` el texto de la tanda que toca, copiado de
+la web desde la sección donde quedamos (lo dice el INICIO RÁPIDO de la
+guía). El archivo ya existe y el profe lo deja vacío después de cada
+tanda: nunca creo uno nuevo.
 
 Si hoy no vengo a ver material nuevo —vengo a entregar una práctica, a hacer
 un repaso o a que me tome examen— este paso no va.
@@ -337,8 +318,8 @@ Si toca un repaso vencido, `/repaso`. Si el profe me propuso examen,
 
 Me explica el material pieza por pieza, anunciando cuál va ("SECCIÓN 2.3:")
 para que lo siga con la vista. Cuando termina, deja todo guardado solo:
-guía, líneas de tipeo, tarjetas de Anki, y si se terminó el capítulo lo
-mueve a `material/visto/`.
+guía, líneas de tipeo, tarjetas de Anki y por dónde vamos. `tanda.txt`
+ya queda vacío para la próxima.
 
 **Puedo interrumpirlo cuando quiera.** Si algo no se entendió, lo digo y lo
 explica de nuevo de otra forma, las veces que haga falta. Eso no "gasta" la
@@ -351,7 +332,7 @@ motivo en una línea:
 
 | Me dice | Qué hago |
 | --- | --- |
-| "seguimos con otra tanda" | otro `/tanda` (si es otro capítulo, primero lo bajo a `material/`) |
+| "seguimos con otra tanda" | pego la siguiente en `material/tanda.txt` y otro `/tanda` |
 | "conviene cortar acá" | `/cambio` → `Ctrl+D` → `claude` → el `/rename` que me dio |
 | "cerremos el día" | `/cierre` |
 
@@ -418,10 +399,10 @@ Solo para retomar el MISMO día. Día nuevo = sesión nueva.
 
 1. `/arranque` siempre primero. De ahí sale el nombre de la sesión y
    todo lo demás.
-2. El libro va como TEXTO (curl + pandoc). Pantallazo solo para lo que
-   el texto pierde.
-3. Tamaño de tanda según formato (tabla de arriba). Es un techo, no una
-   cuota: si me paso, el profe me avisa.
+2. El libro va como TEXTO, pegado en `material/tanda.txt`. Pantallazo
+   (en el chat) solo para lo que el texto pierde.
+3. El tamaño de una tanda de texto lo decido yo; con imágenes, 3-5
+   por sesión (tabla de arriba).
 4. NUNCA salir sin `/cierre`: es lo que guarda el día y lo sube.
 5. **Cuándo cortar lo dice el profe**, yo no lo calculo. Cuando lo dice:
    `/cambio` primero, nunca `Ctrl+D` pelado — sin eso la tanda no queda
