@@ -30,3 +30,9 @@ s02 — Neovim, Lua y LazyVim: el mismo "hola" en Lua y en VimScript:
 
 s03 — la terminal: en qué terminal corre nvim (repaso de lo anterior):
 `:echo $TERM :echo "kitty" :lua print("gpu") :w :q :wq :q! :s/vi/vim/`
+
+s04 — la fuente: probar que la terminal dibuja los íconos de una Nerd Font:
+`:echo "" :echo $TERM :lua print("nerd") :echo "font" :w :q :wq :q!`
+
+s05 — instalar Neovim: chequear versión y requisitos desde adentro:
+`:checkhealth lazyvim :checkhealth nvim-treesitter :version :echo "" :w :q :wq :q!`

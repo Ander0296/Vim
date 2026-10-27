@@ -9,9 +9,9 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 1, 1.4 "Choosing a Terminal" completa (hasta "…you'll notice the improvement.") → la próxima tanda se copia desde lo que sigue (instalación: ahí se hace la mudanza a `nvim-ia`, ver Engram vim/config-estudio)
-- Última tanda: Sesión #03 (2026-10-27, en la sesión de Claude vim-s01)
-- PRÓXIMA SESIÓN: `/rename vim-s02`
+- Último punto estudiado: cap. 1, 1.6 "Install Neovim" completa (1.6.1 a 1.6.4, hasta "…you should be good to go.") → la próxima tanda se copia desde lo que sigue (instalar LazyVim: ahí se hace la mudanza a `nvim-ia`, ver Engram vim/config-estudio)
+- Última tanda: Sesión #05 (2026-10-27, en la sesión de Claude vim-s02)
+- PRÓXIMA SESIÓN: `/rename vim-s03`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
@@ -45,6 +45,22 @@ Prácticas: ver EJERCICIOS.md.
 | GUI (Graphical User Interface) | interfaz gráfica | programa con ventana propia, no dentro de una terminal |
 | featureful | con muchas funciones | que trae muchas características |
 | choppy | entrecortado | que se traba o va a los saltos |
+| glyph | glifo | el dibujo concreto de un carácter o de un ícono dentro de una fuente |
+| Nerd Fonts | (nombre propio) | proyecto que les agrega miles de íconos a las fuentes de programación |
+| patched font | fuente parchada | fuente normal a la que se le "cosieron" glifos extra (íconos) |
+| monospace font | fuente monoespaciada | todos los caracteres miden lo mismo de ancho, como casilleros de una grilla |
+| look and feel | aspecto y sensación | cómo se ve un programa y cómo se siente usarlo |
+| stable release | versión estable | versión publicada y probada: la recomendada para el día a día |
+| nightly build | compilación nocturna | versión que se arma sola cada noche con lo último del código: nueva, pero sin garantía |
+| master branch | rama principal | la línea principal del código en GitHub, donde entran los cambios nuevos |
+| pre-release | versión previa | versión anterior al lanzamiento oficial (acá, la nightly) |
+| live on the edge | vivir al límite | usar lo más nuevo aunque pueda fallar |
+| WSL (Windows Subsystem for Linux) | subsistema de Windows para Linux | un Linux que corre dentro de Windows |
+| tarball | archivo tar | archivo comprimido `.tar.gz` con un programa adentro |
+| system path (PATH) | ruta del sistema | lista de carpetas donde la shell busca los programas que tipeás |
+| C compiler | compilador de C | programa que convierte código C en un ejecutable (ej. `gcc`) |
+| parser | analizador sintáctico | programa que lee código y entiende su estructura |
+| treesitter | (nombre propio) | parser que arma el árbol de sintaxis del código: colorea y navega por estructura |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -83,6 +99,26 @@ SESIÓN #03 — 2026-10-27 — Elegir terminal (cap. 1, 1.4 completa)
 - Ejercicios de la tanda: ninguno. PRÁCTICAS CREADAS: ninguna. Nota del profe: ninguna.
 - Dudas: ninguna.
 - PRÓXIMO PASO: instalación (resto del cap. 1) + mudanza de la config de la IA a `nvim-ia`, en sesión limpia.
+
+SESIÓN #04 — 2026-10-27 — La fuente de la terminal (cap. 1, 1.5 completa)
+- Los íconos y marcos de LazyVim no los dibuja nvim: nvim manda un carácter y la TERMINAL lo dibuja con su fuente. Sin la fuente adecuada se ven cuadraditos.
+- Nerd Font = fuente de programación monoespaciada "patched" (parchada) con miles de glifos extra: íconos de tipo de archivo, git, flechas, marcos.
+- Kitty usa una fuente de respaldo: si a la fuente principal le falta un glifo, lo toma de otra. Por eso al libro le alcanza con la "Symbols Only" (solo símbolos).
+- Nota del profe: el libro manda instalar NerdFontsSymbolsOnly para kitty; hoy kitty ya la trae adentro (verificado: `SymbolsNerdFontMono-Regular.ttf` en `/usr/lib/kitty/fonts/`, kitty 0.48.2). No hay que instalar nada.
+- El usuario ya tiene JetBrainsMono Nerd Font instalada y puesta en `font_family` de `~/.config/kitty/kitty.conf`: nada que cambiar. Prueba: `:echo ""` muestra un ícono.
+- Ejercicios de la tanda: ninguno (contexto). PRÁCTICAS CREADAS: ninguna.
+- Dudas: ninguna.
+- PRÓXIMO PASO: lo que sigue a la 1.5 (instalación) + mudanza de la config de la IA a `nvim-ia`.
+
+SESIÓN #05 — 2026-10-27 — Instalar Neovim (cap. 1, 1.6 completa: 1.6.1 a 1.6.4)
+- Estable (stable release: publicada y probada) vs nightly (se compila cada noche desde la rama master: lo más nuevo, sin garantía). Para aprender, la estable; a nightly solo si un plugin lo pide.
+- Windows: WSL (o instalador MSI, Winget, Chocolatey, Scoop). MacOS: Homebrew (`brew install neovim`; `--HEAD` = nightly). Linux: el gestor de la distro (`sudo pacman -S neovim`); hay distros con versiones muy viejas.
+- Treesitter = parser que arma el árbol de sintaxis del código (coloreado preciso, navegar por estructura). Cada parser es código C que se compila en la máquina → hace falta un compilador de C.
+- Nota del profe 1: el libro da 0.11.0 como última estable; LazyVim 16 exige Neovim >= 0.11.2 (`health.lua`). El usuario tiene 0.12.5 por pacman.
+- Nota del profe 2: el libro pide solo un compilador de C; LazyVim 16 usa la rama `main` de nvim-treesitter y pide CLI `tree-sitter`, compilador de C, `tar` y `curl` (si falta la CLI, intenta instalarla con Mason). En la máquina, todo OK. Se verifica con `:checkhealth lazyvim`; `:version` muestra la versión desde adentro.
+- Ejercicios de la tanda: ninguno (contexto). PRÁCTICAS CREADAS: ninguna. Mudanza a `nvim-ia`: todavía no, va cuando el libro instale LazyVim.
+- Dudas: qué es un parser → explicado (análisis sintáctico escolar aplicado al código; `javac` también parsea). Creyó que treesitter compila sus clases → corregido: se compila el PARSER (C); el código solo se lee. Para verlo: `:InspectTree`.
+- PRÓXIMO PASO: lo que sigue a la 1.6 (instalar LazyVim + mudanza a `nvim-ia`), en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)
