@@ -40,12 +40,17 @@ cp "inicio.$ext" "trabajo.$ext"
 # env -u: siempre la config real (nvim), aunque NVIM_APPNAME apunte a otra.
 env -u NVIM_APPNAME nvim -W teclas.log "trabajo.$ext" || true
 
+# La última línea es siempre un comando exacto, listo para copiar y pegar.
 echo
 if diff --color=auto -u "trabajo.$ext" "objetivo.$ext"; then
   echo "✅ Salió: trabajo.$ext quedó idéntico al objetivo."
-  echo "   Contale a Claude qué comandos usaste y entregá con: /entrega $id"
+  echo "   Entregá en Claude con esto, y agregá qué comandos usaste y por qué:"
+  echo
+  echo "/entrega $id"
 else
   echo
   echo "❌ Todavía no. Arriba: las líneas con - son tu archivo, las con + el objetivo."
-  echo "   Para otro intento desde cero: ./kata $id"
+  echo "   Para otro intento desde cero, copiá y pegá esto:"
+  echo
+  echo "cd ${raiz/#$HOME/\~} && ./kata $id"
 fi

@@ -19,6 +19,9 @@ trabajás y antes de entregar.
   al principio o al final de la línea, entro con `I` o `A`, no con
   `i`/`a` después de caminar con `hhhh`/`llll`. Por qué: `.` repite
   también el lugar; con `I`/`A` el `.` cae solo en la línea siguiente.
+- [ ] Al abrir una línea nueva, miro en qué columna quedó el cursor
+  ANTES de escribir. Por qué: la línea nueva copia la sangría de la
+  línea desde la que la abrí, y una línea vacía no tiene sangría.
 - [ ] Si un comando salió mal: Esc y `u` (deshacer), en vez de parchar
   encima.
 - [ ] Termino en modo normal (abajo a la izquierda dice NORMAL) y salgo
