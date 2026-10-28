@@ -336,21 +336,26 @@ propia numeración (`k01`, `k02`... · `j01`... · `lib01`...):
 | PREGUNTAS DE CONCEPTO | `ejercicios/libNN-nombre.md` | responde por escrito preguntas de concepto o del libro |
 
 **KATA `kNN-nombre/`** — tres archivos que crea Claude:
-- `README.md`: enunciado en español (qué transformación hay que hacer;
-  lo citado del libro, en inglés con la traducción al lado); un "Par: N
-  teclas" OPCIONAL, como en VimGolf (una meta, no un examen); los
-  comandos exactos, para correr desde la carpeta de la kata:
-  ```
-  cd ~/Proyectos/Vim/ejercicios/kNN-nombre
-  cp inicio.txt trabajo.txt
-  nvim -W teclas.log trabajo.txt
-  diff -u trabajo.txt objetivo.txt
-  ```
-  "Si te trabás: revisá la Sesión #Y de GUIA.md" (+ el checklist de
-  ToDo/ si hay uno), una sección `## MI EXPLICACIÓN` vacía y, AL FINAL,
-  el prompt `/entrega` ya relleno.
+- `README.md`, CORTO: enunciado en español (qué transformación hay que
+  hacer; lo citado del libro, en inglés con la traducción al lado); un
+  "Par: N teclas" OPCIONAL, como en VimGolf (una meta, no un examen);
+  cómo se corre (`./kata kNN`, desde `~/Proyectos/Vim`); "Si te trabás:
+  revisá la Sesión #Y de GUIA.md" (+ el checklist de ToDo/ si hay uno)
+  y, al final, cómo se entrega: `/entrega kNN`. Para las katas, eso
+  reemplaza al prompt largo de la regla general de prácticas.
 - `inicio.txt`: el texto de partida.
 - `objetivo.txt`: cómo tiene que quedar.
+
+**`./kata kNN`** — script en la raíz del repo (pedido del usuario el
+2026-10-28: cd + cp + `nvim -W` + `diff` + README + MI EXPLICACIÓN le
+resultaba enredado). Copia el inicio sobre `trabajo`, abre `nvim -W
+teclas.log trabajo` con la config real (limpia `NVIM_APPNAME`) y, al
+salir, compara contra el objetivo y dice ✅ o ❌ con el diff. Cada
+corrida es un intento nuevo desde cero; un repaso se corre con `./kata
+kNN-rX`. Al crear una kata, Claude da el ENUNCIADO EN EL CHAT (2-3
+líneas, para que el usuario lo lea antes de abrir nvim y no abra el
+README adentro, que ensucia el log) más el comando. La EXPLICACIÓN va
+en el chat, y `/entrega kNN` alcanza: la ruta sale del número.
 
 `inicio.txt` y `objetivo.txt` son el ENUNCIADO (material), no la
 solución: la solución es la secuencia de teclas, y esa NUNCA se escribe
@@ -364,8 +369,8 @@ concepto lo permite (es lo que va a editar en la vida real). Excepción
 de extensión: si la kata necesita objetos de texto de treesitter
 (`af`/`if` función, `ac`/`ic` clase, `ao`/`io` bloque — los da mini.ai
 y solo andan con filetype java) o el LSP, los tres archivos van como
-`inicio.java`, `objetivo.java` y `trabajo.java`, y el README lo dice en
-sus comandos. Si no hace falta, `.txt`: abre más rápido y sin ruido de
+`inicio.java`, `objetivo.java` y `trabajo.java` (`./kata` detecta la
+extensión sola). Si no hace falta, `.txt`: abre más rápido y sin ruido de
 diagnósticos.
 
 **PRÁCTICA SOBRE JAVA `jNN-nombre/`** — sobre `java-lab/`, un proyecto
@@ -409,7 +414,8 @@ PROMPT DE ENTREGA (copiá esto y pegalo en Claude cuando termines):
 **REPASOS** — en `ejercicios/repasos/`, con el nombre del original +
 `-rX`: `kNN-nombre-r1/`, `jNN-nombre-r2/`, `libNN-nombre-r3.md`. Una
 kata se repasa con el MISMO `inicio`/`objetivo` (o una variante con la
-misma transformación) en carpeta nueva, para poder comparar sus teclas
+misma transformación) en carpeta nueva (se corre con `./kata
+kNN-rX`), para poder comparar sus teclas
 contra el `teclas.log` original, que Claude nunca muestra antes del
 repaso.
 
@@ -421,9 +427,10 @@ de nvim (`-W` mayúscula sobrescribe: cada intento deja un log nuevo).
 Eso vuelve corregible una kata. La prueba tiene TRES partes, y las tres
 van a la entrega:
 
-1. **RESULTADO** — `diff -u trabajo.txt objetivo.txt` no muestra nada.
-   Si muestra líneas, la kata no salió todavía: se rehace desde el
-   `cp`. Lo corre el usuario.
+1. **RESULTADO** — `./kata` corre `diff -u` solo al salir de nvim y
+   dice ✅ o ❌. Con ❌ la kata no salió todavía: se corre `./kata kNN`
+   otra vez, que arranca de cero. En la entrega, Claude lo confirma
+   comparando `trabajo` contra `objetivo` con Read.
 2. **EFICIENCIA** — Claude lee el log con `bat -A <ruta>/teclas.log` y
    corrige el CÓMO: "usaste `xxxx`, era `dw`"; "`jjjjj` → `5j` o una
    búsqueda"; "entraste a inserción 3 veces para algo que era un `.`".
@@ -443,8 +450,8 @@ van a la entrega:
 
    Una flecha o un Backspace en una kata de modo normal ya es un
    hallazgo: se marca siempre.
-3. **EXPLICACIÓN** — el usuario explica, en voz alta o por escrito (la
-   sección MI EXPLICACIÓN del README de la kata, o el chat), qué hace
+3. **EXPLICACIÓN** — el usuario explica en el chat (en una kata, si no
+   la trae con el `/entrega`, Claude se la pide antes de corregir) qué hace
    cada comando que usó y por qué lo eligió. Teclear bien sin saber
    por qué es memoria de dedos, no dominio.
 
@@ -953,8 +960,8 @@ Si algo de eso hace falta, se explica y se espera la decisión.
   con ese motivo, NO es un error del sistema ni algo para esquivar: es
   la regla de arriba aplicada. La corrección va al chat; el archivo lo
   cambia el usuario.
-- El usuario también PRUEBA su propio trabajo: `diff -u trabajo.txt
-  objetivo.txt` vacío + su `teclas.log` grabado con `nvim -W` + la
+- El usuario también PRUEBA su propio trabajo: el ✅ de `./kata` + su
+  `teclas.log` grabado con `nvim -W` + la
   explicación de los comandos que usó (ver "Cómo se PRUEBA una
   práctica acá"); los errores o mensajes de nvim, del LSP o de Maven
   que pegue en el chat se explican con calma (y traducidos): entender

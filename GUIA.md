@@ -15,7 +15,7 @@ Prácticas: ver EJERCICIOS.md.
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
-- Prácticas pendientes: k01-insertar-en-su-lugar, k02-abrir-lineas — esta línea lista SOLO lo
+- Prácticas pendientes: k02-abrir-lineas — esta línea lista SOLO lo
   pendiente (nombres, sin historial); estados completos, fechas y
   repasos viven en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): nunca todavía

@@ -182,53 +182,31 @@ aprieto, así el profe ve no solo SI llegué, sino CÓMO llegué.
 
 Cada kata es una carpeta en `ejercicios/` (ej:
 `ejercicios/k01-borrar-palabras/`) con tres archivos que deja el profe:
-`README.md` (el enunciado, los comandos y el prompt de entrega),
+`README.md` (el enunciado y cómo correrla),
 `inicio.txt` y `objetivo.txt`. Esos dos son el ENUNCIADO: no los toco.
 
-**1. `[TERMINAL]` Entro a la carpeta de la kata:**
+**1. Leo el enunciado** (el profe me lo da en el chat). Lo leo ANTES de
+abrir nvim: todo lo que hago adentro queda grabado.
+
+**2. `[TERMINAL]` Corro la kata**, desde `~/Proyectos/Vim`:
 
 ```
-cd ~/Proyectos/Vim/ejercicios/k01-borrar-palabras
+./kata k01
 ```
 
-**2. `[TERMINAL]` Miro qué hay que cambiar** (las líneas con `-` son lo
-que sobra, las con `+` lo que tiene que quedar):
+Hace todo solo: copia `inicio.txt` a `trabajo.txt` y abre mi nvim de
+siempre GRABANDO cada tecla en `teclas.log`. Edito hasta que quede como
+el objetivo y salgo con `:wq` (si guardo y no salgo, el log queda
+vacío).
 
-```
-diff -u inicio.txt objetivo.txt
-```
+**3. Miro el resultado.** Al salir, `./kata` compara contra el
+objetivo. `✅ Salió` = listo. `❌ Todavía no` = me muestra qué falta
+(las líneas con `-` son mi archivo, las con `+` el objetivo) y vuelvo a
+correr `./kata k01`, que arranca de cero. Un repaso se corre igual:
+`./kata k01-r1`.
 
-**3. `[TERMINAL]` Hago mi copia de trabajo:**
-
-```
-cp inicio.txt trabajo.txt
-```
-
-**4. `[TERMINAL]` Abro nvim GRABANDO mis teclas:**
-
-```
-nvim -W teclas.log trabajo.txt
-```
-
-`-W` (mayúscula) graba en `teclas.log` todo lo que tecleo hasta que
-salgo. Es con mi config de LazyVim de siempre: nada de `--clean`.
-Edito hasta que quede como el objetivo y salgo con `:wq`.
-
-**5. `[TERMINAL]` Compruebo el resultado:**
-
-```
-diff -u trabajo.txt objetivo.txt
-```
-
-Sin salida = salió. Si muestra líneas, vuelvo al paso 3: cada intento
-pisa `teclas.log`, así que queda grabado solo el último (el bueno).
-
-**6. Explico.** En la sección `MI EXPLICACIÓN` del `README.md` de la
-kata escribo qué comandos usé y por qué (o lo digo en el chat al
-entregar). Teclear bien sin saber por qué no cuenta.
-
-**7. `[CLAUDE]` Entrego** con el prompt `/entrega` que está al final del
-`README.md`.
+**4. `[CLAUDE]` Entrego** con `/entrega k01` y cuento en el chat qué
+comandos usé y por qué. Teclear bien sin saber por qué no cuenta.
 
 El profe mira mis teclas y me corrige la EFICIENCIA: "usaste `xxxx`,
 era `dw`". Si la kata dice **"Par: N teclas"**, esa es la meta (como en
@@ -416,9 +394,9 @@ Solo para retomar el MISMO día. Día nuevo = sesión nueva.
    está en `.gitignore`). El profe lo verifica antes de cada commit.
 9. El número de sesión solo avanza. Varias sesiones en un día es lo
    NORMAL: cada tanda de imágenes abre una nueva.
-10. Las katas SIEMPRE con `nvim -W teclas.log` y con mi config de
-    siempre (nunca `--clean`): sin el log, el profe no puede corregir
-    el CÓMO.
+10. Las katas SIEMPRE con `./kata kNN`: graba mis teclas con
+    `nvim -W` y usa mi config de siempre (nunca `--clean`). Sin el log,
+    el profe no puede corregir el CÓMO.
 11. Mi config de nvim NO vive en este repo: los cambios van en
     `~/.config/nvim`, escritos por mí, con el git de `~/.config`.
 

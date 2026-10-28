@@ -6,17 +6,20 @@ argument-hint: [número o nombre de la práctica, ruta, y qué pasó al probarla
 Terminé una práctica. $ARGUMENTS
 
 Si no te dije la ruta o CÓMO la probé, pedímelos antes de corregir:
-sin eso la corrección es a ciegas.
+sin eso la corrección es a ciegas. En una kata alcanza el número
+(`/entrega kNN`): la ruta sale de ahí.
 
 Acá no hay compilador. "Probarla" en este proyecto es esto (regla
 "Cómo se PRUEBA una práctica acá" de CLAUDE.md):
-- KATA (`kNN`): corrí `diff -u trabajo.txt objetivo.txt` y te digo si
-  salió vacío; mis teclas están en el `teclas.log` de la carpeta;
+- KATA (`kNN`): corrí `./kata kNN` y terminó con ✅ (confirmalo
+  comparando `trabajo` contra `objetivo`); mis teclas están en el
+  `teclas.log` de su carpeta;
 - PRÁCTICA SOBRE JAVA (`jNN`): el resultado que pedía la práctica (la
   salida de `mvn -q test`, lo que mostró el debugger...) + mi
   `teclas.log`;
 - CONCEPTO (`libNN`): mi respuesta escrita en el archivo.
-En todas, mi explicación de qué hice y por qué (en el archivo o acá).
+En todas, mi explicación de qué hice y por qué (acá en el chat, o en
+el archivo). En una kata, si no te la di, pedímela antes de corregir.
 
 Después, corregime así:
 

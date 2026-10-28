@@ -42,9 +42,6 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 # PRÁCTICAS ABIERTAS
 # ============================================================
 
-KATA k01 — Insertar en su lugar (`private` y `;` en una clase Java) — [ ] pendiente
-Arranque: ejercicios/k01-insertar-en-su-lugar/ | Par: no tiene (primera kata, calibra) | Si te trabás: Sesión #12 de GUIA.md | Checklist: ToDo/hacer-una-kata.md
-
 KATA k02 — Abrir líneas (`o`/`O` en una clase Java) — [ ] pendiente
 Arranque: ejercicios/k02-abrir-lineas/ | Par: no tiene (calibra) | Si te trabás: Sesión #13 de GUIA.md | Checklist: ToDo/hacer-una-kata.md
 
@@ -52,7 +49,8 @@ Arranque: ejercicios/k02-abrir-lineas/ | Par: no tiene (calibra) | Si te trabás
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
 # ============================================================
 
-(vacío por ahora)
+REPASO — k01 insertar en su lugar (r1) — programado: 2026-10-31 — [ ] pendiente
+Arranque: ejercicios/repasos/k01-insertar-en-su-lugar-r1/ (desde cero, sin mirar el original)
 
 # ============================================================
 # CONCEPTOS DOMINADOS (entran al graduarse una práctica con r3 bien)

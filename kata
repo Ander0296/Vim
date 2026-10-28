@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Corre una kata de edición con un solo comando, desde la raíz del repo:
+#   ./kata k02       una kata
+#   ./kata k01-r1    su repaso
+# Copia el inicio sobre trabajo, abre nvim grabando cada tecla en teclas.log
+# y, al salir, compara contra el objetivo. Cada corrida es un intento nuevo
+# desde cero: pisa el trabajo y el teclas.log del intento anterior.
+
+set -euo pipefail
+shopt -s nullglob
+
+raiz="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+id="${1:-}"
+
+if [[ ! "$id" =~ ^k[0-9]+(-r[0-9]+)?$ ]]; then
+  echo "Uso: ./kata kNN      (una kata, ej: ./kata k02)"
+  echo "     ./kata kNN-rX   (un repaso, ej: ./kata k01-r1)"
+  exit 1
+fi
+
+if [[ "$id" == *-r* ]]; then
+  carpetas=("$raiz/ejercicios/repasos/${id%-r*}-"*"-${id##*-}/")
+else
+  carpetas=("$raiz/ejercicios/$id-"*/)
+fi
+if (( ${#carpetas[@]} != 1 )); then
+  echo "No encontré una sola carpeta para $id en ejercicios/ (encontré ${#carpetas[@]})."
+  exit 1
+fi
+cd "${carpetas[0]}"
+
+inicios=(inicio.*)
+if (( ${#inicios[@]} != 1 )) || [[ ! -f "objetivo.${inicios[0]#inicio.}" ]]; then
+  echo "A la carpeta $(basename "$PWD") le falta su inicio.* o su objetivo.*."
+  exit 1
+fi
+ext="${inicios[0]#inicio.}"
+
+cp "inicio.$ext" "trabajo.$ext"
+# env -u: siempre la config real (nvim), aunque NVIM_APPNAME apunte a otra.
+env -u NVIM_APPNAME nvim -W teclas.log "trabajo.$ext" || true
+
+echo
+if diff --color=auto -u "trabajo.$ext" "objetivo.$ext"; then
+  echo "✅ Salió: trabajo.$ext quedó idéntico al objetivo."
+  echo "   Contale a Claude qué comandos usaste y entregá con: /entrega $id"
+else
+  echo
+  echo "❌ Todavía no. Arriba: las líneas con - son tu archivo, las con + el objetivo."
+  echo "   Para otro intento desde cero: ./kata $id"
+fi

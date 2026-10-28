@@ -45,4 +45,4 @@ estás dejando que otro encuentre tus errores por vos.
 
 - [mudanza-a-lazyvim-limpio.md](mudanza-a-lazyvim-limpio.md) — pasar a un LazyVim limpio sin perder la config vieja (`nvim-ia`), en este PC y en el otro
 - [actualizar-plugins.md](actualizar-plugins.md) — actualizar los plugins con lazy.nvim sin perder la posibilidad de volver atrás, y copiar las mismas versiones al otro PC
-- [hacer-una-kata.md](hacer-una-kata.md) — los pasos de cada kata: copiar el inicio, grabar las teclas con `nvim -W`, comprobar con `diff` y entregar
+- [hacer-una-kata.md](hacer-una-kata.md) — los pasos de cada kata: leer el enunciado, correr `./kata kNN`, salir con `:wq` y entregar

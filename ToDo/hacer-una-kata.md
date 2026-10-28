@@ -5,29 +5,31 @@ trabajás y antes de entregar.
 
 ## Antes de abrir nvim
 
-- [ ] Estoy en la carpeta de la kata (`pwd` termina en `kNN-nombre`).
-- [ ] Copié el inicio otra vez: `cp inicio.txt trabajo.txt` (o `.java`
-  si la kata es de Java). Un `trabajo.txt` con cambios de un intento
-  viejo hace que el log nuevo no cuente toda la historia.
-- [ ] Abro con `nvim -W teclas.log trabajo.txt`: `-W` en MAYÚSCULA y el
-  log antes del archivo. Sin `-W` no se graba ninguna tecla.
-- [ ] Uso `nvim` (mi LazyVim), no `nvim --clean` ni
-  `NVIM_APPNAME=nvim-ia nvim`: sus atajos son parte de lo que se mide.
+- [ ] Leí el enunciado ANTES de abrir nvim. Por qué: todo lo que hago
+  adentro (abrir el README, el explorador, scrollear) queda en el log y
+  se mezcla con la kata.
+- [ ] Estoy en `~/Proyectos/Vim` y corro `./kata kNN` (un repaso:
+  `./kata kNN-rX`). El resto lo hace solo: copia el inicio, abre mi
+  `nvim` grabando cada tecla y, al salir, compara contra el objetivo.
 
 ## Mientras trabajo
 
 - [ ] Sin flechas ni mouse.
+- [ ] Antes de entrar a inserción, miro DÓNDE tengo que escribir. Si es
+  al principio o al final de la línea, entro con `I` o `A`, no con
+  `i`/`a` después de caminar con `hhhh`/`llll`. Por qué: `.` repite
+  también el lugar; con `I`/`A` el `.` cae solo en la línea siguiente.
 - [ ] Si un comando salió mal: Esc y `u` (deshacer), en vez de parchar
   encima.
 - [ ] Termino en modo normal (abajo a la izquierda dice NORMAL) y salgo
-  con `:wq`.
+  con `:wq`. Guardar sin salir (`:w`, Ctrl-s) NO alcanza: nvim escribe
+  `teclas.log` recién al cerrarse, y mientras siga abierto el log está
+  vacío.
 
 ## Antes de entregar
 
-- [ ] `diff -u trabajo.txt objetivo.txt` no muestra NADA.
-- [ ] Si mostró algo y abrí nvim de nuevo para arreglarlo: rehago TODO
-  desde el `cp`. `-W` pisa el log, así que el segundo intento borra las
-  teclas del primero y el log queda incompleto.
-- [ ] Llené MI EXPLICACIÓN del README: qué hace cada comando que usé y
-  por qué lo elegí.
-- [ ] Copio el prompt `/entrega` del final del README tal cual.
+- [ ] `./kata` terminó con ✅.
+- [ ] Si dijo ❌: corro `./kata kNN` otra vez, que arranca de cero. No
+  arreglo `trabajo` abriéndolo a mano: esas teclas no quedan en el log.
+- [ ] Entrego con `/entrega kNN` y en el mismo mensaje cuento qué hace
+  cada comando que usé y por qué lo elegí.
