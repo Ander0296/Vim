@@ -42,9 +42,7 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 # PRÁCTICAS ABIERTAS
 # ============================================================
 
-KATA k02 — Abrir líneas (`o`/`O` en una clase Java) — [~] en curso
-Arranque: ejercicios/k02-abrir-lineas/ | Par: no tiene (calibra) | Si te trabás: Sesión #13 de GUIA.md | Checklist: ToDo/hacer-una-kata.md
-Intento 1 (2026-10-28): ❌ los 2 comentarios quedaron sin sangría (abiertos desde una línea vacía). Lo demás, limpio y con conteos (`4j`, `2j`). Rehacer con `./kata k02`.
+(ninguna abierta)
 
 # ============================================================
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
@@ -52,6 +50,9 @@ Intento 1 (2026-10-28): ❌ los 2 comentarios quedaron sin sangría (abiertos de
 
 REPASO — k01 insertar en su lugar (r1) — programado: 2026-10-31 — [ ] pendiente
 Arranque: ejercicios/repasos/k01-insertar-en-su-lugar-r1/ (desde cero, sin mirar el original)
+
+REPASO — k02 abrir líneas (r1) — programado: 2026-11-01 — [ ] pendiente
+Arranque: ejercicios/repasos/k02-abrir-lineas-r1/ (desde cero, sin mirar el original)
 
 # ============================================================
 # CONCEPTOS DOMINADOS (entran al graduarse una práctica con r3 bien)
