@@ -129,6 +129,15 @@ NUNCA la copia (ni entera ni en pedazos "para practicar").
   (remoto Ander-Arch), que tiene SU PROPIO CLAUDE.md con sus reglas: el
   usuario escribe TODA la config a mano, un concepto por vez, y los
   commits se hacen desde `~/.config` (la raíz de ese repo).
+- Desde el 2026-10-28 (Sesión #07), `~/.config/nvim` es un LazyVim
+  LIMPIO, clonado del starter, que crece solo con lo que el usuario
+  escribe. La config anterior (armada por una IA, con los extras de
+  Java) vive en `~/.config/nvim-ia` y se abre con
+  `NVIM_APPNAME=nvim-ia nvim`: no se estudia ni se toca desde acá; sirve
+  para programar Java mientras `nvim` no tenga esos extras. Sus
+  divergencias (`scrolloff = 999`, `<leader>e` → yazi) NO aplican a
+  `nvim`. El CLAUDE.md propio de esa config se mudó con ella; el de la
+  raíz `~/.config` sigue rigiendo para las dos.
 - Cuando el material toca config (cap. 5 "Plugin Basics", cap. 19
   "Comprehensive Guide to Plugin Configuration", o cualquier atajo u
   opción nueva): el cambio se hace en la config REAL, siguiendo las
@@ -274,13 +283,14 @@ CONTEXTO, NO PARA DOMINAR — se explica, se entiende de qué se trata, y
 se sigue. Claude lo dice explícitamente al llegar:
 
 - Cap. 16 (Configuring AI): el usuario YA usa claudecode.nvim,
-  documentado en `~/.config/nvim/guia.txt`. Se lee para ubicarse, no
-  se practica.
+  documentado en `~/.config/nvim-ia/guia.txt` (la config secundaria;
+  la limpia todavía no lo tiene). Se lee para ubicarse, no se practica.
 - Los detalles de tabs y sesiones (cap. 9): saber que existen y para
   qué sirven.
 - Plugins exóticos o de nicho que el libro muestre de pasada.
-- Cap. 1 (introducción e instalación): ya está instalado; se lee
-  rápido, mirando solo lo que difiera de la máquina.
+- Cap. 1 (introducción e instalación): se lee rápido, mirando lo que
+  difiera de la máquina. La instalación de LazyVim se hizo de verdad
+  (mudanza a `nvim-ia` + starter limpio, Sesión #07).
 - Cap. 20 (Where To Go Next): índice de recursos, se lee al cierre.
 
 EN LOS TRES NIVELES:
@@ -487,8 +497,9 @@ Reglas de la prueba:
 | Herramienta | Para qué | Versión |
 | --- | --- | --- |
 | Neovim | el editor que se estudia | NVIM v0.12.5 |
-| LazyVim | la distribución, con extras lang.java, lang.json, lang.toml, lang.python, dap.core, ai.claudecode y coding.mini-surround (ai.avante está como extra pero desactivado) | 16.0.0 |
-| Mason: jdtls, java-debug-adapter, java-test | LSP, debug y tests de Java en nvim | instalados |
+| LazyVim (`nvim`) | la distribución que se estudia: instalada LIMPIA desde el starter el 2026-10-28, sin extras; los de Java se activan a mano en los caps. 5 y 10 | 16.0.1 (primer arranque, 2026-10-28) |
+| Config secundaria (`nvim-ia`) | la config anterior: LazyVim con extras lang.java, lang.json, lang.toml, lang.python, dap.core, ai.claudecode y coding.mini-surround (ai.avante desactivado); `NVIM_APPNAME=nvim-ia nvim` | LazyVim 16.0.0 |
+| Mason: jdtls, java-debug-adapter, java-test | LSP, debug y tests de Java en nvim | instalados en `nvim-ia`; en `nvim` llegan con el extra de Java (cap. 10) |
 | openjdk + Maven | compilar, correr y testear `java-lab/` | openjdk 26, Maven 3.9.16 |
 | curl + pandoc | reserva: bajar un capítulo como texto si copiar de la web falla (el flujo normal es pegar en `material/tanda.txt`) | pandoc 3.10.2 |
 | ttyper | mecanografía | 1.6.0 |
