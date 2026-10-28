@@ -9,9 +9,9 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 1, 1.6 "Install Neovim" completa (1.6.1 a 1.6.4, hasta "…you should be good to go.") → la próxima tanda se copia desde lo que sigue (instalar LazyVim: ahí se hace la mudanza a `nvim-ia`, ver Engram vim/config-estudio)
-- Última tanda: Sesión #05 (2026-10-27, en la sesión de Claude vim-s02)
-- PRÓXIMA SESIÓN: `/rename vim-s03`
+- Último punto estudiado: cap. 1, 1.9 "The Dashboard" hasta "…we'll discuss a few of them more deeply in later chapters." → la próxima tanda se copia desde lo que sigue a esa frase. Mudanza a `nvim-ia` y primer arranque: hechos (Sesiones #07 y #08)
+- Última tanda: Sesión #08 (2026-10-28, en la sesión de Claude vim-s03)
+- PRÓXIMA SESIÓN: `/rename vim-s04`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
@@ -20,7 +20,7 @@ Prácticas: ver EJERCICIOS.md.
   repasos viven en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): nunca todavía
 - Último examen (`/examen`): nunca todavía
-- Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.0, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
+- Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
 
 ## VOCABULARIO (solo si el material está en otro idioma; una fila por término nuevo)
 
@@ -61,6 +61,30 @@ Prácticas: ver EJERCICIOS.md.
 | C compiler | compilador de C | programa que convierte código C en un ejecutable (ej. `gcc`) |
 | parser | analizador sintáctico | programa que lee código y entiende su estructura |
 | treesitter | (nombre propio) | parser que arma el árbol de sintaxis del código: colorea y navega por estructura |
+| raw (Neovim raw) | crudo, pelado | Neovim sin config ni plugins, como viene de fábrica (`nvim --clean`) |
+| if you dare | si te animás | invitación medio en broma a probar algo difícil |
+| visually unappealing | feo a la vista | poco atractivo visualmente |
+| trapped | atrapado | sin saber cómo salir (el chiste clásico de Vim) |
+| incantation | conjuro | secuencia de teclas que se repite sin entender por qué funciona |
+| mental model | modelo mental | la idea interna de cómo funciona algo: permite deducir en vez de memorizar |
+| command mode | modo comando | el modo que abre `:` para escribir un comando ex abajo de la pantalla |
+| override (to override) | forzar, pasar por encima | ignorar una protección del editor (el `!` de `:q!`) |
+| tutor (`:Tutor`) | tutorial | archivo interactivo de Neovim que enseña lo básico editándolo |
+| clean slate | borrón y cuenta nueva | empezar de cero, sin nada de antes |
+| back up (to back up) | respaldar | guardar una copia antes de tocar algo (acá, con `mv` en vez de `rm -rf`) |
+| environment variable | variable de entorno | valor que la shell le pasa a un programa al arrancarlo (ej. `NVIM_APPNAME`) |
+| shell startup file | archivo de arranque de la shell | archivo que la shell lee al abrirse (en fish, `config.fish`) |
+| state | estado | lo que un programa recuerda entre usos: historial, undo, sesiones |
+| cache | caché | archivos que se guardan para ir más rápido; se pueden regenerar |
+| dependency | dependencia | programa externo que otro necesita para funcionar completo |
+| starter template | plantilla de arranque | repo mínimo que se copia para empezar una config (LazyVim/starter) |
+| clone (to clone) | clonar | descargar una copia completa de un repo git |
+| flurry of activity | ráfaga de actividad | muchas cosas pasando rápido en pantalla |
+| grammar (treesitter grammar) | gramática | el parser de un lenguaje para treesitter |
+| plugin manager | gestor de plugins | programa que descarga, actualiza y carga los plugins (lazy.nvim) |
+| dashboard | tablero, pantalla de inicio | lo que muestra LazyVim al abrir sin archivo: accesos de una sola tecla |
+| self-explanatory | que se explica solo | obvio por su nombre |
+| lazy loading | carga perezosa | cargar un plugin recién cuando se lo necesita, para arrancar rápido |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -119,6 +143,37 @@ SESIÓN #05 — 2026-10-27 — Instalar Neovim (cap. 1, 1.6 completa: 1.6.1 a 1.
 - Ejercicios de la tanda: ninguno (contexto). PRÁCTICAS CREADAS: ninguna. Mudanza a `nvim-ia`: todavía no, va cuando el libro instale LazyVim.
 - Dudas: qué es un parser → explicado (análisis sintáctico escolar aplicado al código; `javac` también parsea). Creyó que treesitter compila sus clases → corregido: se compila el PARSER (C); el código solo se lee. Para verlo: `:InspectTree`.
 - PRÓXIMO PASO: lo que sigue a la 1.6 (instalar LazyVim + mudanza a `nvim-ia`), en sesión limpia.
+
+SESIÓN #06 — 2026-10-28 — Neovim pelado y cómo salir (cap. 1, 1.7 completa)
+- `nvim` o `nvim archivo` abre el editor. Neovim "raw" (pelado: sin config ni plugins) es soso; desde 0.10 trae colores más modernos, pero sigue sin íconos, explorador ni dashboard.
+- Salir sin guardar: Esc → `:q!` → Enter. Esc asegura modo normal (en inserción, `:q!` se escribiría como texto); `:` abre la línea de comandos (ex); `q` = quit (salir); `!` = forzar (descarta los cambios).
+- `:q` con cambios sin guardar se niega (`E37`); `:wq` guarda y sale; `:qa` sale de todo y `:qa!` de todo descartando. En LazyVim, `<leader>qq` = `:qa` (verificado en `keymaps.lua`).
+- `:Tutor` abre el tutorial interactivo (en 0.12.5 solo en inglés, japonés y chino). El libro no lo asume; parte de lo que enseña LazyVim ya lo trae puesto (ej. `:set ic` → LazyVim activa `ignorecase` + `smartcase`).
+- Nota del profe: el libro asume Neovim recién instalado, donde `nvim` abre el editor pelado. En esta máquina `nvim` carga la config del usuario: para verlo pelado, `nvim --clean` (factory defaults, valores de fábrica: sin config ni plugins).
+- Ejercicios de la tanda: ninguno (contexto). PRÁCTICAS CREADAS: ninguna. Mudanza a `nvim-ia`: todavía no, va con la instalación de LazyVim.
+- Dudas: preguntas de comprensión → bien las dos. Matiz: sin Esc, `:q!` + Enter no es "nada": escribe el texto y un salto de línea en el archivo (lo deja modificado). Salir es una SECUENCIA de teclas, no una combinación apretada a la vez.
+- PRÓXIMO PASO: lo que sigue a la 1.7 (instalar LazyVim + mudanza a `nvim-ia`).
+
+SESIÓN #07 — 2026-10-28 — Instalar LazyVim (cap. 1, 1.8.1 a 1.8.3)
+- Neovim guarda todo en 4 carpetas: config (`~/.config/nvim`), datos (`~/.local/share/nvim`: plugins y Mason), estado (`~/.local/state/nvim`: historial, undo, logs) y caché (`~/.cache/nvim`). "Clean slate" (borrón y cuenta nueva) = borrar o mover las cuatro.
+- `NVIM_APPNAME` (variable de entorno) cambia el nombre de las cuatro a la vez: `NVIM_APPNAME=x nvim` usa `~/.config/x`, etc. Así conviven varias configs. El libro la usa para la nueva; acá al revés: la vieja pasa a `nvim-ia` y la nueva queda como `nvim`.
+- Dependencias recomendadas: lazygit (git en la terminal), ripgrep `rg` (buscar texto en el proyecto), fd (buscar archivos). Instaladas: lazygit 0.64.1, rg 15.2.0, fd 10.4.2.
+- Instalar = `git clone` del starter en `~/.config/nvim` + borrar su `.git` (LazyVim se actualiza solo; la historia del repo no sirve). Acá importa el doble: `~/.config` es repo de dotfiles y un `.git` anidado le escondería los archivos.
+- Nota del profe: el libro pide 3 herramientas; `:checkhealth lazyvim` de LazyVim 16 revisa 6 (git, rg, fd, lazygit, fzf, curl), todas instaladas. La URL del starter sigue vigente (README de LazyVim).
+- Config tocada: mudanza a `nvim-ia` + clon del starter, hecha por el usuario y verificada (nvim = starter sin `.git`; nvim-ia con 49 plugins y Mason). Incidente: el bloque corrió dos veces y el 2º `mv` dejó basura en `nvim-ia/nvim` (config y state): borrada por el usuario y verificada. CLAUDE.md actualizado (HERRAMIENTAS, nvim-ia, caps. 1 y 16). Commit desde `~/.config`.
+- Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna. Checklist nuevo: `ToDo/mudanza-a-lazyvim-limpio.md` (sirve también para el otro PC).
+- Dudas: mover solo la config → bien la idea; faltó la consecuencia concreta (nvim-ia re-descarga plugins y Mason, sin historial). Por qué borrar el `.git` → bien lo de que LazyVim se actualiza solo; corregido: la config YA tiene repo (dotfiles) y un repo adentro de otro solo guarda un puntero.
+- PRÓXIMO PASO: lo que sigue a la 1.8.3 (primer arranque de LazyVim).
+
+SESIÓN #08 — 2026-10-28 — Primer arranque y el dashboard (cap. 1, 1.9; la 1.8.3 vino repetida) — tanda MIXTA (1 pantallazo)
+- Primer `nvim`: lazy.nvim (gestor de plugins) descarga los plugins a `~/.local/share/nvim/lazy` y se compilan parsers de treesitter. Ante un `-- More --` (hay más), `G` salta al final; en la ventana de Lazy, `q` la cierra.
+- El dashboard (pantalla de inicio) tiene acciones de UNA tecla que solo valen ahí: `f` buscar archivo, `n` nuevo, `r` recientes, `g` buscar texto, `c` config, `s` restaurar sesión, `x` extras, `l` Lazy, `q` salir (`:qa`).
+- "Neovim loaded 25/70 plugins in N ms" = carga perezosa (lazy loading): arranca con los imprescindibles y el resto se carga al usarlo. De ahí el nombre "Lazy".
+- `c` abre un picker sobre `stdpath('config')`: hoy es la config limpia, no la de la IA.
+- Nota del profe: el starter bajó LazyVim 16.0.1 (el setup verificó 16.0.0). El dashboard es de snacks.nvim (`plugins/ui.lua`) con las mismas teclas que la figura; solo cambia el orden ("Find Text" antes de "Recent Files").
+- Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna. Primer arranque hecho por el usuario (ya existen `lazy-lock.json` y `lazyvim.json`).
+- Dudas: carga perezosa → bien el mecanismo; faltó la ganancia (arranque en milisegundos). `c` del dashboard → bien que muestra `~/.config/nvim`; faltó que desde la mudanza esa carpeta es el starter limpio, no la config de la IA.
+- PRÓXIMO PASO: lo que sigue a la 1.9, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)

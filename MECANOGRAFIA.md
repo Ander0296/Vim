@@ -36,3 +36,12 @@ s04 — la fuente: probar que la terminal dibuja los íconos de una Nerd Font:
 
 s05 — instalar Neovim: chequear versión y requisitos desde adentro:
 `:checkhealth lazyvim :checkhealth nvim-treesitter :version :echo "" :w :q :wq :q!`
+
+s06 — Neovim pelado y cómo salir (con y sin forzar):
+`nvim --clean :Tutor :q! :qa :qa! :wq :w :q :Tutor :q!`
+
+s07 — instalar LazyVim: abrir otra config, las dependencias y el chequeo:
+`NVIM_APPNAME=nvim-ia nvim git clone mv lazygit rg fd :checkhealth lazyvim :q!`
+
+s08 — primer arranque y dashboard: Lazy, los extras y salir:
+`:Lazy :LazyExtras :qa :enew :checkhealth lazyvim :Lazy G q :qa :LazyExtras`

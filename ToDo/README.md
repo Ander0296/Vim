@@ -43,4 +43,4 @@ estás dejando que otro encuentre tus errores por vos.
 
 ## Índice
 
-- (vacío — Claude agrega una línea acá cada vez que crea un checklist)
+- [mudanza-a-lazyvim-limpio.md](mudanza-a-lazyvim-limpio.md) — pasar a un LazyVim limpio sin perder la config vieja (`nvim-ia`), en este PC y en el otro
