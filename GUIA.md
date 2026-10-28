@@ -11,7 +11,7 @@ Prácticas: ver EJERCICIOS.md.
 
 - Último punto estudiado: cap. 2, 2.1.1 "A Note on Keybinding Mnemonics" completa (termina en "…you'll be alternating between them constantly.") → la próxima tanda se copia desde lo que sigue: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/
 - Última tanda: Sesión #13 (2026-10-28, en la sesión de Claude vim-s07)
-- PRÓXIMA SESIÓN: `/rename vim-s08`
+- PRÓXIMA SESIÓN: `/rename vim-s09`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
