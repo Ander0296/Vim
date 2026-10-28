@@ -51,31 +51,34 @@ cuatro a la vez.
 
 ## B. En otro PC que recibe esos dotfiles por git
 
-El `git pull` de dotfiles trae `~/.config/nvim` (nueva) y
-`~/.config/nvim-ia` (vieja), pero NO las otras tres carpetas: esas son
-locales de cada PC.
+El `git pull` de dotfiles trae `~/.config/nvim` (nueva). `nvim-ia` vive
+solo en el PC de origen, como consulta: el `.gitignore` de `~/.config`
+es lista blanca y no tiene `!/nvim-ia`. Las otras tres carpetas nunca
+viajan: son locales de cada PC.
 
 - [ ] ANTES del `git pull` de dotfiles (o como mucho antes de abrir
-      nvim): cerrá todos los nvim y mové las tres carpetas locales:
+      nvim): cerrá todos los nvim y apartá las tres carpetas locales
+      viejas (o borralas si no las querés):
       ```
-      mv ~/.local/share/nvim ~/.local/share/nvim-ia
-      mv ~/.local/state/nvim ~/.local/state/nvim-ia
-      mv ~/.cache/nvim       ~/.cache/nvim-ia
+      mv ~/.local/share/nvim ~/.local/share/nvim-viejo
+      mv ~/.local/state/nvim ~/.local/state/nvim-viejo
+      mv ~/.cache/nvim       ~/.cache/nvim-viejo
       ```
       Por qué: si no, el LazyVim nuevo arranca con los plugins y el
-      estado de la config vieja, y `NVIM_APPNAME=nvim-ia nvim` descarga
-      todo de nuevo.
-- [ ] Probá las dos: `NVIM_APPNAME=nvim-ia nvim` (la vieja, sin
-      descargas) y `nvim` (la nueva: su primer arranque descarga sus
-      plugins).
+      estado de la config vieja.
+- [ ] Abrí `nvim`: su primer arranque descarga sus plugins. Después,
+      `<leader>l` → `R` para quedar en las versiones del `lazy-lock.json`.
 
 ## Trampas conocidas
 
+- Un `.gitignore` de lista blanca (empieza con `/*`) deja afuera, sin
+  avisar, toda carpeta nueva o renombrada hasta que se le agrega su
+  línea `!/nombre`.
 - `mv a b` con `b` ya existente NO renombra: mete `a` adentro de `b`.
   Señal de que pasó: aparece una carpeta `nvim/` adentro de alguna
   `nvim-ia/` (revisá las cuatro con `eza -a`).
 - `alias v nvim` y `EDITOR=nvim` (fish) abren la config NUEVA, que no
   trae los extras de Java hasta activarlos. Para programar Java mientras
-  tanto: `NVIM_APPNAME=nvim-ia nvim`.
+  tanto (solo en el PC de origen): `NVIM_APPNAME=nvim-ia nvim`.
 - Lo que vivía dentro de `~/.config/nvim` (ej. su `CLAUDE.md` o
   `guia.txt`) se muda con la carpeta: queda en `~/.config/nvim-ia`.

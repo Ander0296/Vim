@@ -9,9 +9,9 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 1, 1.10 "Lazy.nvim Plugin Manager" completa, hasta "…return to what you were doing." → la próxima tanda se copia desde lo que sigue a la 1.10. Mudanza a `nvim-ia` y primer arranque: hechos (Sesiones #07 y #08)
-- Última tanda: Sesión #09 (2026-10-28, en la sesión de Claude vim-s04)
-- PRÓXIMA SESIÓN: `/rename vim-s05`
+- Último punto estudiado: cap. 1 COMPLETO (1.11 "A Note on Managing Dot Files" y 1.12 "Summary" incluidas, hasta "…in LazyVim.") → la próxima tanda es el cap. 2 (edición modal) desde el principio: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/
+- Última tanda: Sesión #10 (2026-10-28, en la sesión de Claude vim-s05)
+- PRÓXIMA SESIÓN: `/rename vim-s06`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
@@ -92,6 +92,10 @@ Prácticas: ver EJERCICIOS.md.
 | sync | sincronizar | en lazy.nvim (`S`): install + clean + update de una vez |
 | lockfile | archivo de bloqueo | fija el commit exacto de cada plugin (`lazy-lock.json`) |
 | Space mode | "modo Espacio" (nombre del libro) | apretar Espacio (`<leader>`) y elegir en el menú; en Vim no es un modo real |
+| dot files | dotfiles, "archivos punto" | la config personal de Linux; el punto inicial del nombre los oculta (`.bashrc`, `.config/`) |
+| settings sync | sincronización de ajustes | VS Code guarda tu config en la nube y la baja en otra PC; LazyVim no lo trae |
+| bare repository | repositorio pelado | solo los datos de git, sin carpeta de trabajo propia; truco para versionar dotfiles de `$HOME` |
+| GitHub Codespaces | entornos de desarrollo en la nube de GitHub | pueden instalarte tus dotfiles al crear el entorno |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -193,6 +197,16 @@ SESIÓN #09 — 2026-10-28 — El gestor de plugins lazy.nvim (cap. 1, 1.10 comp
 - Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna (se prueba en vivo). Checklist nuevo: `ToDo/actualizar-plugins.md`.
 - Dudas: lazy.nvim vs LazyVim → bien (analogía del rice); matiz: no es "lo mismo más liviano" (quedaría Neovim pelado + gestor vacío) y LazyVim es un plugin más que lazy.nvim actualiza. Secuencia para actualizar desde inserción → 1º `;wq` (corregido: `;` ≠ `:`, y `:wq` guarda y sale); 2º bien el núcleo (`<leader>l`, `S`, `q`), faltaron el `Esc` inicial y el `i` final.
 - PRÓXIMO PASO: lo que sigue a la 1.10, en sesión limpia.
+
+SESIÓN #10 — 2026-10-28 — Dotfiles en git y resumen del cap. 1 (cap. 1, 1.11-1.12: CAPÍTULO 1 CERRADO)
+- Dotfiles = la config personal de Linux; el punto inicial del nombre la oculta (`eza -a` la muestra). LazyVim no trae "settings sync" (sincronización de ajustes) como VS Code: el autor recomienda un repo de git, y sumarle la config de la terminal, `.gitconfig` y la de la shell.
+- Técnica del libro (artículo de Atlassian): bare repository (repo pelado) con el work tree en `$HOME` + un alias. La del usuario: `~/.config` como repo normal con `.gitignore` de lista blanca (`/*` + `!/carpeta`) y los secretos excluidos. Es más simple, pero no cubre la raíz de `$HOME` (`~/.gitconfig`; git también lee `~/.config/git/config`).
+- Qué viaja al otro PC: `~/.config/nvim` con `lazy-lock.json`. No viajan `~/.local/share|state/nvim` ni `~/.cache/nvim` (se regeneran). Allá: pull → abrir nvim → `<leader>l` → `R`.
+- Hallazgo: la lista blanca no tiene `!/nvim-ia`. Decisión del usuario: queda solo local, de consulta (para rescatar ideas); la config principal es `nvim`. El checklist de mudanza decía que el pull la traía: corregido.
+- 1.12 (resumen): historia, terminal con GPU + Nerd Font, instalar Neovim y LazyVim. El cap. 2 (edición modal) abre el núcleo "A DOMINAR" y las primeras katas.
+- Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna. Checklist tocado: `ToDo/mudanza-a-lazyvim-limpio.md`.
+- Dudas: ninguna; preguntas de cierre (qué viaja al otro PC, qué hace `/*`) omitidas a pedido del usuario.
+- PRÓXIMO PASO: cap. 2 desde el principio, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)

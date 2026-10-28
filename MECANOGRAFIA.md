@@ -48,3 +48,6 @@ s08 — primer arranque y dashboard: Lazy, los extras y salir:
 
 s09 — lazy.nvim: abrir, chequear, sincronizar, ver el log, restaurar y cerrar:
 `:Lazy C S q :Lazy L q :Lazy R q :Lazy P q`
+
+s10 — dotfiles: el repo de la config, la lista blanca y restaurar en el otro PC:
+`.gitignore !/nvim /* ~/.config/nvim git pull :Lazy R q eza -a ~/.gitconfig`
