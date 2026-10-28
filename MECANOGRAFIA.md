@@ -61,3 +61,7 @@ s12 — modos Inserción y Normal: entrar en el lugar justo, put y salir; el `n`
 
 s13 — abrir líneas arriba y abajo, volver a la última inserción:
 `o O gi o O gi I A i a :wq :q!`
+
+s14 — modo Comando: guardar, salir, abrir archivos y la ayuda:
+`:w :q :wq :x :q! :e :help :qall :x :w`
+`:write :w :quit :q :edit :e :help :x :wq`

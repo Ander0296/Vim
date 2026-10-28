@@ -9,15 +9,12 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 2, 2.1.1 "A Note on Keybinding Mnemonics" completa (termina en "…you'll be alternating between them constantly.") → la próxima tanda se copia desde lo que sigue: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/
-- Última tanda: Sesión #13 (2026-10-28, en la sesión de Claude vim-s07)
-- PRÓXIMA SESIÓN: `/rename vim-s09`
-  (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
-  calcula: es un contador distinto al de las tandas, porque una sesión
-  de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
-- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01) — esta línea lista SOLO lo
-  pendiente (nombres, sin historial); estados completos, fechas y
-  repasos viven en EJERCICIOS.md (fuente de verdad)
+- Último punto estudiado: cap. 2 COMPLETO (2.2-2.4, termina en "…ways to move the cursor around inside a document.") → la próxima tanda es el cap. 3 desde el principio: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
+- Última tanda: Sesión #14 (2026-10-28, en la sesión de Claude vim-s09)
+- PRÓXIMA SESIÓN: `/rename vim-s10` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- QUEDÓ PENDIENTE de vim-s09 (el usuario tuvo que salir): el lab en vivo de 2 min y las 2 preguntas de cierre de la Sesión #14 (están en sus bullets) → hacerlos al arrancar, antes que nada; después, `/examen` del cap. 2 (propuesto).
+- Otro PC: todavía tiene la config de la IA como `nvim` → antes de la primera kata o tanda ahí, ToDo/mudanza-a-lazyvim-limpio.md, sección B (se hace desde `~/.config`, con su flujo; ahí no queda config con Java hasta el cap. 10).
+- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01; arranques listos, se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): nunca todavía
 - Último examen (`/examen`): nunca todavía
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
@@ -115,6 +112,15 @@ Prácticas: ver EJERCICIOS.md.
 | mnemonic | mnemotecnia, regla para recordar | `o` = open (abrir) una línea; minúscula hace, mayúscula agranda o invierte |
 | Go To mode | "modo Ir a" (nombre del libro) | el prefijo `g` + el menú `+goto` de which-key; en Vim no es un modo real |
 | afresh | desde cero, de nuevo | el código se edita mucho más de lo que se escribe desde cero |
+| Visual mode | modo Visual | el modo para seleccionar texto moviendo el cursor (cap. 8) |
+| Command mode | modo Comando | se entra con `:` desde Normal; se escribe un comando y Enter lo ejecuta |
+| Ex command | comando Ex | lo que se escribe después de `:` (`:w`, `:q`, `:e`); el nombre viene del editor `ex` |
+| command palette | paleta de comandos | buscador de comandos de VS Code/Sublime; el modo Comando se le parece |
+| tab completion | completado con Tab | Tab termina de escribir el comando o la ruta por vos |
+| completion menu | menú de completado | la lista de opciones que aparece mientras escribís; en LazyVim 16 la dibuja blink.cmp |
+| ghost text | texto fantasma | la sugerencia en gris que aparece adelante del cursor antes de aceptarla |
+| prefix | prefijo | el comienzo de una palabra: `:w` es la abreviatura de `:write` |
+| nested | anidado | carpetas una dentro de otra (`foo/baz/fizz.txt`) |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -261,6 +267,17 @@ SESIÓN #13 — 2026-10-28 — Mayúsculas, `o`/`O` y `gi` (cap. 2, 2.1.1 comple
 - Ejercicio del libro: probar a/i/o/A/I/O/gi moviéndose con el mouse (en vivo, sin entrega). PRÁCTICAS CREADAS: k02-abrir-lineas.
 - Dudas: qué es "implementation" → explicado (interfaz = QUÉ, sin cuerpo; la clase que `implements` = CÓMO; `gd` va a la declaración, `gI` al cuerpo que corre). Preguntas de cierre: 1 bien (`gi`; `i` escribe donde estás). 2 bien el qué; faltó el porqué: LazyVim remapea `gI` cuando hay LSP.
 - PRÓXIMO PASO: lo que sigue a la 2.1.1, en sesión limpia.
+
+SESIÓN #14 — 2026-10-28 — Modo Visual (anticipo) y modo Comando: `:w` `:q` `:x` `:e`, completado y `:help` (cap. 2, 2.2-2.4: CAP. 2 COMPLETO) — tanda MIXTA (4 pantallazos: Figuras 8-10 y Listings 5-6)
+- Modo Visual = seleccionar texto con las teclas de movimiento; el libro lo deja para el cap. 8.
+- Modo Comando: `:` desde Normal abre la ventanita Cmdline (la dibuja noice.nvim) para escribir un comando Ex (de `ex`, el antecesor de vi). `<Esc>:q!<Enter>` desarmado: a Normal, a Comando, quit, forzar sin guardar, ejecutar.
+- `:w` (write) guarda; `:w otro.txt` con el buffer ya nombrado escribe una COPIA (guardar como = `:saveas`). `:q` sale, `:wq` guarda y sale, `:x` igual pero escribe solo si hubo cambios. La abreviatura oficial la da `:help` con corchetes: `:w[rite]`.
+- `:e ruta` (edit) abre un archivo; la ruta es relativa a la carpeta donde se abrió nvim (`:pwd`). Enter EJECUTA lo que haya en la línea; `Ctrl-y` (yes) acepta la opción del menú y deja seguir escribiendo la ruta.
+- `:help tema`: la documentación viene con el editor. Prefijos por modo: `i_` Inserción, `c_` Comando, `v_` Visual (`:help i_CTRL-R`); sin prefijo es Normal. En LazyVim, `<leader>sh` busca en la ayuda con el picker; `Ctrl-]` sigue un enlace y `Ctrl-o` vuelve.
+- Nota del profe: el libro describe el menú nativo (wildmenu). LazyVim 16 usa blink.cmp v1.10.2 (`extras/coding/blink.lua`, preset `cmdline`): el menú aparece SOLO al tipear después de `:`, sin nada preseleccionado; Tab/Shift-Tab (o Ctrl-n/Ctrl-p) recorren; Ctrl-y acepta; Ctrl-e cancela; ←/→ mueven el cursor; ↓/↑ NO entran a la carpeta: traen comandos del historial.
+- Ejercicios de la tanda: ninguno. Lab en vivo PENDIENTE (en el nvim limpio, desde `~/Proyectos/Vim`): `:q` y ver el menú solo + Tab + Ctrl-e; `:e ejer` + Tab + Ctrl-y + Tab; `:e ` + ↓ (historial); `:help :x`. PRÁCTICAS CREADAS: ninguna.
+- Dudas: ninguna. Preguntas de cierre SIN RESPONDER (el usuario tuvo que salir): (1) en `:e src/` con `main/` resaltado, ¿qué tecla acepta y deja seguir la ruta, y qué haría Enter? (2) ¿cómo se pide la ayuda de Ctrl-r en modo Inserción?
+- PRÓXIMO PASO: cap. 3 (movimientos) desde el principio, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)
