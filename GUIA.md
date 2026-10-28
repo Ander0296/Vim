@@ -9,9 +9,9 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 1, 1.9 "The Dashboard" hasta "…we'll discuss a few of them more deeply in later chapters." → la próxima tanda se copia desde lo que sigue a esa frase. Mudanza a `nvim-ia` y primer arranque: hechos (Sesiones #07 y #08)
-- Última tanda: Sesión #08 (2026-10-28, en la sesión de Claude vim-s03)
-- PRÓXIMA SESIÓN: `/rename vim-s04`
+- Último punto estudiado: cap. 1, 1.10 "Lazy.nvim Plugin Manager" completa, hasta "…return to what you were doing." → la próxima tanda se copia desde lo que sigue a la 1.10. Mudanza a `nvim-ia` y primer arranque: hechos (Sesiones #07 y #08)
+- Última tanda: Sesión #09 (2026-10-28, en la sesión de Claude vim-s04)
+- PRÓXIMA SESIÓN: `/rename vim-s05`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
@@ -85,6 +85,13 @@ Prácticas: ver EJERCICIOS.md.
 | dashboard | tablero, pantalla de inicio | lo que muestra LazyVim al abrir sin archivo: accesos de una sola tecla |
 | self-explanatory | que se explica solo | obvio por su nombre |
 | lazy loading | carga perezosa | cargar un plugin recién cuando se lo necesita, para arrancar rápido |
+| barebones | pelado, lo mínimo | sin nada más que lo básico |
+| out of date | desactualizado | hay una versión más nueva disponible |
+| notification | notificación, aviso | mensaje emergente en una esquina de la pantalla |
+| floating window | ventana flotante | ventana que aparece encima de las demás, con atajos propios (la de Lazy) |
+| sync | sincronizar | en lazy.nvim (`S`): install + clean + update de una vez |
+| lockfile | archivo de bloqueo | fija el commit exacto de cada plugin (`lazy-lock.json`) |
+| Space mode | "modo Espacio" (nombre del libro) | apretar Espacio (`<leader>`) y elegir en el menú; en Vim no es un modo real |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -174,6 +181,18 @@ SESIÓN #08 — 2026-10-28 — Primer arranque y el dashboard (cap. 1, 1.9; la 1
 - Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna. Primer arranque hecho por el usuario (ya existen `lazy-lock.json` y `lazyvim.json`).
 - Dudas: carga perezosa → bien el mecanismo; faltó la ganancia (arranque en milisegundos). `c` del dashboard → bien que muestra `~/.config/nvim`; faltó que desde la mudanza esa carpeta es el starter limpio, no la config de la IA.
 - PRÓXIMO PASO: lo que sigue a la 1.9, en sesión limpia.
+
+SESIÓN #09 — 2026-10-28 — El gestor de plugins lazy.nvim (cap. 1, 1.10 completa) — tanda MIXTA (2 pantallazos)
+- lazy.nvim ≠ LazyVim: lazy.nvim es SOLO el gestor de plugins (instala, actualiza, carga perezosa); LazyVim es la distribución (plugins + config) y lazy.nvim es uno de sus plugins. Mismo autor.
+- Abrir la ventana de Lazy: `l` en el dashboard, `<leader>l` (Espacio → `l`) en modo normal, o `:Lazy` (verificado en `keymaps.lua` y `plugins/ui.lua`). El modo se lee abajo a la izquierda (LazyVim usa una sola barra de estado, `laststatus = 3`).
+- Es una ventana flotante (floating window) con atajos propios, todos en MAYÚSCULA: I install, U update, S sync, X clean, C check, L log, R restore, P profile, D debug, ? help; `q` cierra.
+- `S` (Sync) = install + clean + update. Cada update reescribe `~/.config/nvim/lazy-lock.json` (commit exacto de cada plugin); `R` (Restore) vuelve a esas versiones. Con el lockfile en git: se deshace una actualización rota y el otro PC usa `R`, no `S`.
+- Figura 3: ● cargado / ○ sin cargar; al lado, tiempo de carga y qué lo dispara (VeryLazy, LazyFile, una tecla como `<leader>ut`); debajo, los commits nuevos (conventional commits).
+- "Space mode" es un nombre del libro: en Vim es la tecla líder (`<leader>` = Espacio) + el menú de which-key; el libro lo ve en el cap. 2.
+- Nota del profe: el libro dice que al abrir salta el aviso "Plugin Updates" (Figura 2). El starter de LazyVim 16 trae en `lua/config/lazy.lua` `checker = { enabled = true, notify = false }`: el chequeo corre en silencio y el aviso es un ícono + número abajo a la derecha (lualine, `lazy.status.updates`). Motivo no documentado en el código.
+- Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna (se prueba en vivo). Checklist nuevo: `ToDo/actualizar-plugins.md`.
+- Dudas: lazy.nvim vs LazyVim → bien (analogía del rice); matiz: no es "lo mismo más liviano" (quedaría Neovim pelado + gestor vacío) y LazyVim es un plugin más que lazy.nvim actualiza. Secuencia para actualizar desde inserción → 1º `;wq` (corregido: `;` ≠ `:`, y `:wq` guarda y sale); 2º bien el núcleo (`<leader>l`, `S`, `q`), faltaron el `Esc` inicial y el `i` final.
+- PRÓXIMO PASO: lo que sigue a la 1.10, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)

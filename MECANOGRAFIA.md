@@ -45,3 +45,6 @@ s07 — instalar LazyVim: abrir otra config, las dependencias y el chequeo:
 
 s08 — primer arranque y dashboard: Lazy, los extras y salir:
 `:Lazy :LazyExtras :qa :enew :checkhealth lazyvim :Lazy G q :qa :LazyExtras`
+
+s09 — lazy.nvim: abrir, chequear, sincronizar, ver el log, restaurar y cerrar:
+`:Lazy C S q :Lazy L q :Lazy R q :Lazy P q`

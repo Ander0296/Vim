@@ -44,3 +44,4 @@ estás dejando que otro encuentre tus errores por vos.
 ## Índice
 
 - [mudanza-a-lazyvim-limpio.md](mudanza-a-lazyvim-limpio.md) — pasar a un LazyVim limpio sin perder la config vieja (`nvim-ia`), en este PC y en el otro
+- [actualizar-plugins.md](actualizar-plugins.md) — actualizar los plugins con lazy.nvim sin perder la posibilidad de volver atrás, y copiar las mismas versiones al otro PC
