@@ -11,12 +11,12 @@ Prácticas: ver EJERCICIOS.md.
 
 - Último punto estudiado: cap. 2 COMPLETO (2.2-2.4, termina en "…ways to move the cursor around inside a document.") → la próxima tanda es el cap. 3 desde el principio: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
 - Última tanda: Sesión #14 (2026-10-28, en la sesión de Claude vim-s09)
-- PRÓXIMA SESIÓN: `/rename vim-s10` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
-- QUEDÓ PENDIENTE de vim-s09 (el usuario tuvo que salir): el lab en vivo de 2 min y las 2 preguntas de cierre de la Sesión #14 (están en sus bullets) → hacerlos al arrancar, antes que nada; después, `/examen` del cap. 2 (propuesto).
-- Otro PC: todavía tiene la config de la IA como `nvim` → antes de la primera kata o tanda ahí, ToDo/mudanza-a-lazyvim-limpio.md, sección B (se hace desde `~/.config`, con su flujo; ahí no queda config con Java hasta el cap. 10).
-- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01; arranques listos, se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- PRÓXIMA SESIÓN: `/rename vim-s11` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- vim-s10: Sesión #14 cerrada (lab + preguntas) y examen del cap. 2 hecho. Siguiente: la tanda del cap. 3.
+- Otro PC: mudanza B HECHA (verificado en vim-s10: `nvim` limpio, LazyVim 16.0.1, blink v1.10.2, carpetas `-viejo` apartadas). Ahí no hay `nvim-ia`: sin config con Java hasta el cap. 10.
+- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): nunca todavía
-- Último examen (`/examen`): nunca todavía
+- Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
 
 ## VOCABULARIO (solo si el material está en otro idioma; una fila por término nuevo)
@@ -275,8 +275,8 @@ SESIÓN #14 — 2026-10-28 — Modo Visual (anticipo) y modo Comando: `:w` `:q` 
 - `:e ruta` (edit) abre un archivo; la ruta es relativa a la carpeta donde se abrió nvim (`:pwd`). Enter EJECUTA lo que haya en la línea; `Ctrl-y` (yes) acepta la opción del menú y deja seguir escribiendo la ruta.
 - `:help tema`: la documentación viene con el editor. Prefijos por modo: `i_` Inserción, `c_` Comando, `v_` Visual (`:help i_CTRL-R`); sin prefijo es Normal. En LazyVim, `<leader>sh` busca en la ayuda con el picker; `Ctrl-]` sigue un enlace y `Ctrl-o` vuelve.
 - Nota del profe: el libro describe el menú nativo (wildmenu). LazyVim 16 usa blink.cmp v1.10.2 (`extras/coding/blink.lua`, preset `cmdline`): el menú aparece SOLO al tipear después de `:`, sin nada preseleccionado; Tab/Shift-Tab (o Ctrl-n/Ctrl-p) recorren; Ctrl-y acepta; Ctrl-e cancela; ←/→ mueven el cursor; ↓/↑ NO entran a la carpeta: traen comandos del historial.
-- Ejercicios de la tanda: ninguno. Lab en vivo PENDIENTE (en el nvim limpio, desde `~/Proyectos/Vim`): `:q` y ver el menú solo + Tab + Ctrl-e; `:e ejer` + Tab + Ctrl-y + Tab; `:e ` + ↓ (historial); `:help :x`. PRÁCTICAS CREADAS: ninguna.
-- Dudas: ninguna. Preguntas de cierre SIN RESPONDER (el usuario tuvo que salir): (1) en `:e src/` con `main/` resaltado, ¿qué tecla acepta y deja seguir la ruta, y qué haría Enter? (2) ¿cómo se pide la ayuda de Ctrl-r en modo Inserción?
+- Ejercicios de la tanda: ninguno. Lab en vivo HECHO en vim-s10 (menú, Ctrl-y/Ctrl-e, ↓ historial, `:help :x`, `:help i_CTRL-R`): `:e carpeta` + Enter abre el explorador de snacks (`replace_netrw = true`). PRÁCTICAS CREADAS: ninguna.
+- Dudas: ninguna. Preguntas de cierre (respondidas en vim-s10): 1 `Ctrl-y` bien; corregido: Enter no "entra" a la carpeta, EJECUTA `:e carpeta/`. 2 bien el prefijo `i_`; faltó `:help ` delante (sin eso, `i` entra a Inserción).
 - PRÓXIMO PASO: cap. 3 (movimientos) desde el principio, en sesión limpia.
 
 # ============================================================

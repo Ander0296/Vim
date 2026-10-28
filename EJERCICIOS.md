@@ -54,6 +54,9 @@ Arranque: ejercicios/repasos/k01-insertar-en-su-lugar-r1/ (desde cero, sin mirar
 REPASO — k02 abrir líneas (r1) — programado: 2026-11-01 — [ ] pendiente
 Arranque: ejercicios/repasos/k02-abrir-lineas-r1/ (desde cero, sin mirar el original)
 
+REPASO — lib01 modo Normal como base, `:wq` vs `:x` y portapapeles (flojos en el examen del cap. 2, 2026-10-28) — programado: 2026-11-02 — [ ] pendiente
+Arranque: ejercicios/lib01-normal-x-portapapeles.md (ya creado) | Si te trabás: Sesiones #12-#14 de GUIA.md
+
 # ============================================================
 # CONCEPTOS DOMINADOS (entran al graduarse una práctica con r3 bien)
 # ============================================================

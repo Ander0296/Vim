@@ -24,6 +24,10 @@ trabajás y antes de entregar.
   línea desde la que la abrí, y una línea vacía no tiene sangría.
 - [ ] Si un comando salió mal: Esc y `u` (deshacer), en vez de parchar
   encima.
+- [ ] Antes de salir, comparo la pantalla contra el objetivo línea por
+  línea: cada `;`, cada espacio, cada línea vacía (el objetivo, abierto
+  en OTRA terminal, no dentro de nvim). Por qué: un ❌ obliga a correr
+  la kata de cero, y un cambio olvidado se ve en 10 segundos mirando.
 - [ ] Termino en modo normal (abajo a la izquierda dice NORMAL) y salgo
   con `:wq`. Guardar sin salir (`:w`, Ctrl-s) NO alcanza: nvim escribe
   `teclas.log` recién al cerrarse, y mientras siga abierto el log está
