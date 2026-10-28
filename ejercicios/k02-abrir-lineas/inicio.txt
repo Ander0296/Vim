@@ -1,0 +1,11 @@
+public class Contador {
+    private int cuenta;
+
+    public void sumar() {
+        cuenta++;
+    }
+
+    public void reiniciar() {
+        cuenta = 0;
+    }
+}

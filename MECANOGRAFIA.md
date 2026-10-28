@@ -54,3 +54,10 @@ s10 — dotfiles: el repo de la config, la lista blanca y restaurar en el otro P
 
 s11 — menú de Espacio: which-key y lo que hay debajo de los splits y del otro buffer:
 `:WhichKey :sp :vs :q :e# :Lazy q :WhichKey :e# :sp :vs :qa`
+
+s12 — modos Inserción y Normal: entrar en el lugar justo, put y salir; el `n` del dashboard:
+`i a I A gI p u :wq A I a i gI :q!`
+`:enew :startinsert :checkhealth :WhichKey :wq :q! i a I A`
+
+s13 — abrir líneas arriba y abajo, volver a la última inserción:
+`o O gi o O gi I A i a :wq :q!`

@@ -9,13 +9,13 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 2, intro + 2.1 hasta la Figura 4 "Space Mode" incluida (el texto termina en "…yours won't be identical):") → la próxima tanda se copia desde lo que sigue a la Figura 4: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/
-- Última tanda: Sesión #11 (2026-10-28, en la sesión de Claude vim-s06)
-- PRÓXIMA SESIÓN: `/rename vim-s07`
+- Último punto estudiado: cap. 2, 2.1.1 "A Note on Keybinding Mnemonics" completa (termina en "…you'll be alternating between them constantly.") → la próxima tanda se copia desde lo que sigue: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/
+- Última tanda: Sesión #13 (2026-10-28, en la sesión de Claude vim-s07)
+- PRÓXIMA SESIÓN: `/rename vim-s08`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
-- Prácticas pendientes: ninguna todavía — esta línea lista SOLO lo
+- Prácticas pendientes: k01-insertar-en-su-lugar, k02-abrir-lineas — esta línea lista SOLO lo
   pendiente (nombres, sin historial); estados completos, fechas y
   repasos viven en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): nunca todavía
@@ -102,6 +102,19 @@ Prácticas: ver EJERCICIOS.md.
 | leader key | tecla líder | prefijo de los atajos de la config; en LazyVim es Espacio (`<leader>`) |
 | group (which-key) | grupo, submenú | entrada con `+` en el menú de which-key: abre otro nivel de teclas |
 | pane | panel | cada división de la pantalla del editor (en Vim se llama ventana) |
+| Insert mode | modo Inserción | las teclas escriben texto; indicador INSERT, cursor de barra |
+| Normal mode | modo Normal | las teclas son comandos; indicador NORMAL, cursor de bloque |
+| put | poner (pegar) | lo que significa `p`: pone el último texto copiado o borrado |
+| register | registro | "cajón" con nombre donde Vim guarda texto copiado o borrado (`+` = portapapeles) |
+| clipboard | portapapeles | el copiar/pegar del sistema, compartido con las otras apps |
+| undo / redo | deshacer / rehacer | `u` deshace; `Ctrl-r` (en Normal) deshace el deshacer |
+| append | agregar (al final) | lo que significa `a`: escribir DESPUÉS del carácter del cursor |
+| home row | fila de inicio | la fila del medio del teclado, donde descansan los dedos |
+| touch type | tipear sin mirar | escribir con los diez dedos sin mirar el teclado |
+| remap | reasignar (una tecla) | hacer que una tecla haga lo de otra (ej. Capslock → Esc) |
+| mnemonic | mnemotecnia, regla para recordar | `o` = open (abrir) una línea; minúscula hace, mayúscula agranda o invierte |
+| Go To mode | "modo Ir a" (nombre del libro) | el prefijo `g` + el menú `+goto` de which-key; en Vim no es un modo real |
+| afresh | desde cero, de nuevo | el código se edita mucho más de lo que se escribe desde cero |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -224,6 +237,30 @@ SESIÓN #11 — 2026-10-28 — Qué es la edición modal: intro y menú de Espac
 - Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna (las katas llegan con operadores y movimientos).
 - Dudas: ninguna. Preguntas de cierre: 1 bien con matiz (Espacio ES la tecla líder, no "Espacio + líder"); 2 corregida (`f` es un grupo que abre submenú, `<leader>ff` busca archivos; el grep es `<leader>/`, acción directa).
 - PRÓXIMO PASO: lo que sigue a la Figura 4, en sesión limpia.
+
+SESIÓN #12 — 2026-10-28 — Modos Inserción y Normal: entrar y salir (cap. 2, 2.1 desde la Figura 4 hasta `I` y `A`)
+- El meollo de la edición modal: la misma tecla hace otra cosa según el modo. `f` en el dashboard busca archivo; después de Espacio abre el grupo `+file/find`. Esc sale del menú.
+- `n` en el dashboard = `:ene | startinsert` (verificado en snacks.nvim): buffer vacío y ya en Inserción, por eso aparece INSERT abajo a la izquierda. Figuras 5 y 6 (indicadores): cubiertas igual.
+- Inserción (viene de vi): las teclas escriben. Ctrl-r + nombre de registro pega ese registro (`+` = portapapeles); which-key muestra la lista (plugin "registers", también en `"` de Normal).
+- Normal: las teclas son comandos (cursor de bloque, NORMAL). Ctrl-r = redo (rehacer, deshace un `u`). Atajos memorables: `p` = put (poner), no paste. El autor casi no usa comandos en Inserción: vuelve a Normal.
+- Salir: Esc. Ctrl-c también, pero no dispara InsertLeave ni expande abreviaturas (`:help i_CTRL-C`). Mover Esc (Capslock, `jk`): el núcleo no se remapea antes de F4; en dvorak `jk` ni siquiera está en la fila de inicio.
+- Entrar: `i` antes del carácter del cursor, `a` (append) después, `A` al final de la línea, `I` antes del primer no-blanco.
+- Nota del profe 1: `p` pega del portapapeles del sistema solo porque LazyVim pone `clipboard = "unnamedplus"` (`options.lua`; vacío si hay SSH). En Vim puro y `nvim --clean`, `p` usa el registro sin nombre. Se ve con `:set clipboard?`. Nota 2: el libro dice que `I` va al "very beginning" (principio absoluto); en realidad va después de la sangría; `gI` = columna 1 (`:help I`; con LSP activo no: ver Sesión #13).
+- Ejercicios del libro: ninguno (`i Esc i Esc` es ilustración). PRÁCTICAS CREADAS: k01-insertar-en-su-lugar. Checklist nuevo: `ToDo/hacer-una-kata.md`.
+- Dudas: ninguna. Preguntas de cierre: 1 bien (`a` para `xy`; faltó decir que `i` daba `yx`). 2 bien la idea; corregido: es `unnamedplus` (`+`, Ctrl-c/Ctrl-v), no `unnamed` (`*`, selección primaria del clic del medio), y en `--clean` `p` SÍ pega, pero lo último copiado/borrado dentro de nvim (o E353 si no hay nada).
+- PRÓXIMO PASO: lo que sigue al párrafo de `I` y `A`.
+
+SESIÓN #13 — 2026-10-28 — Mayúsculas, `o`/`O` y `gi` (cap. 2, 2.1.1 completa) — tanda MIXTA (1 pantallazo: Figura 7)
+- Regla de las mayúsculas: la minúscula hace algo; la mayúscula hace lo mismo MÁS GRANDE (`i`/`a` → `I`/`A`) o lo CONTRARIO (`o` → `O`).
+- `o` (open: abrir) = línea nueva debajo + Inserción; `O` = arriba. La sangría la pone nvim (`autoindent` copia la de la línea actual; LazyVim suma `smartindent` con `shiftwidth = 2` después de `{`).
+- `gi` = volver a donde se SALIÓ de Inserción la última vez en ese buffer (marca `'^`, `:help gi`) y seguir escribiendo. El libro dice "entered" (entraste): impreciso.
+- "Go To mode" es nombre del libro: `g` es un prefijo, como Espacio; which-key muestra el grupo `+goto` (`editor.lua`).
+- El código se edita mucho más de lo que se escribe desde cero: Normal ↔ Inserción todo el tiempo, con Normal como base.
+- Nota del profe 1: la Figura 7 trae extras del autor; en LazyVim 16 limpio no existen `g/` (rip-substitute), `ga` (text-case), `gp`/`gP` "Put Text…" (yanky) ni `g^A`/`g^X` (extra dial). `gD`/`gI`/`gr`/`gy` solo aparecen con LSP. `gi` dice "Go to last insert" (como la figura; el texto del libro trae otra etiqueta).
+- Nota del profe 2 (corrige la #12): con LSP activo, LazyVim remapea `gI` a Goto Implementation (`lsp/init.lua:82`); la columna 1 vale solo sin LSP. Tarjeta de Anki corregida.
+- Ejercicio del libro: probar a/i/o/A/I/O/gi moviéndose con el mouse (en vivo, sin entrega). PRÁCTICAS CREADAS: k02-abrir-lineas.
+- Dudas: qué es "implementation" → explicado (interfaz = QUÉ, sin cuerpo; la clase que `implements` = CÓMO; `gd` va a la declaración, `gI` al cuerpo que corre). Preguntas de cierre: 1 bien (`gi`; `i` escribe donde estás). 2 bien el qué; faltó el porqué: LazyVim remapea `gI` cuando hay LSP.
+- PRÓXIMO PASO: lo que sigue a la 2.1.1, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)
