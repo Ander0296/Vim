@@ -51,3 +51,6 @@ s09 — lazy.nvim: abrir, chequear, sincronizar, ver el log, restaurar y cerrar:
 
 s10 — dotfiles: el repo de la config, la lista blanca y restaurar en el otro PC:
 `.gitignore !/nvim /* ~/.config/nvim git pull :Lazy R q eza -a ~/.gitconfig`
+
+s11 — menú de Espacio: which-key y lo que hay debajo de los splits y del otro buffer:
+`:WhichKey :sp :vs :q :e# :Lazy q :WhichKey :e# :sp :vs :qa`

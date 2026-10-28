@@ -9,9 +9,9 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 1 COMPLETO (1.11 "A Note on Managing Dot Files" y 1.12 "Summary" incluidas, hasta "…in LazyVim.") → la próxima tanda es el cap. 2 (edición modal) desde el principio: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/
-- Última tanda: Sesión #10 (2026-10-28, en la sesión de Claude vim-s05)
-- PRÓXIMA SESIÓN: `/rename vim-s06`
+- Último punto estudiado: cap. 2, intro + 2.1 hasta la Figura 4 "Space Mode" incluida (el texto termina en "…yours won't be identical):") → la próxima tanda se copia desde lo que sigue a la Figura 4: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-2/
+- Última tanda: Sesión #11 (2026-10-28, en la sesión de Claude vim-s06)
+- PRÓXIMA SESIÓN: `/rename vim-s07`
   (el nombre de la sesión de Claude sale SIEMPRE de esta línea, no se
   calcula: es un contador distinto al de las tandas, porque una sesión
   de Claude puede cubrir 2-3 tandas. Claude la actualiza al cerrar.)
@@ -96,6 +96,12 @@ Prácticas: ver EJERCICIOS.md.
 | settings sync | sincronización de ajustes | VS Code guarda tu config en la nube y la baja en otra PC; LazyVim no lo trae |
 | bare repository | repositorio pelado | solo los datos de git, sin carpeta de trabajo propia; truco para versionar dotfiles de `$HOME` |
 | GitHub Codespaces | entornos de desarrollo en la nube de GitHub | pueden instalarte tus dotfiles al crear el entorno |
+| keyboard-centric | centrado en el teclado | todo se hace con el teclado; el mouse es opcional |
+| modal (dialog) | ventana modal, diálogo emergente | ventanita que pide respuesta antes de seguir; NO tiene que ver con "modal editing" |
+| discoverability | descubribilidad | poder descubrir qué teclas existen mirando la pantalla (dashboard, which-key) |
+| leader key | tecla líder | prefijo de los atajos de la config; en LazyVim es Espacio (`<leader>`) |
+| group (which-key) | grupo, submenú | entrada con `+` en el menú de which-key: abre otro nivel de teclas |
+| pane | panel | cada división de la pantalla del editor (en Vim se llama ventana) |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -207,6 +213,17 @@ SESIÓN #10 — 2026-10-28 — Dotfiles en git y resumen del cap. 1 (cap. 1, 1.1
 - Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna. Checklist tocado: `ToDo/mudanza-a-lazyvim-limpio.md`.
 - Dudas: ninguna; preguntas de cierre (qué viaja al otro PC, qué hace `/*`) omitidas a pedido del usuario.
 - PRÓXIMO PASO: cap. 2 desde el principio, en sesión limpia.
+
+SESIÓN #11 — 2026-10-28 — Qué es la edición modal: intro y menú de Espacio (cap. 2, intro + 2.1 hasta la Figura 4)
+- LazyVim es keyboard-centric (centrado en el teclado): el mouse anda, pero todo se hace con teclado y casi siempre con 1-2 teclas a la vez, sin acordes Ctrl+Shift+Alt (dolorosos y causa de lesiones). La clave: edición modal.
+- Modo = la misma tecla significa otra cosa según el modo activo. "Dashboard Mode" y "Space mode" son nombres del libro: en Vim son modo Normal + atajos de una letra del buffer del dashboard, y modo Normal + tecla líder (Espacio, `vim.g.mapleader = " "`) + el menú de which-key.
+- Discoverability (descubribilidad): dashboard y which-key muestran qué teclas existen; Neovim pelado no muestra nada.
+- which-key: menú abajo a la derecha (preset "helix", verificado). `+` = grupo (submenú); sin `+` = acción directa; Esc cierra, Backspace vuelve un nivel. `:WhichKey` lo abre desde la raíz.
+- Pareto del menú: `<leader><space>`, `<leader>/`, `<leader>,` (pickers, caps. 4 y 12) y los splits `<leader>-` (= `:sp`) / `<leader>|` (= `:vs`) (cap. 9); `` <leader>` `` = `:e #`.
+- Nota del profe: la Figura 4 trae extras y atajos del autor. En LazyVim 16 limpio: `<leader>e/E` = explorador de Snacks (no mini.files); `<leader>,` dice "Buffers"; no existen `p` (extra yanky), `r`, `h`, `Del`, `Enter`, `+ai`, `+test`; `+debug` solo trae `+profiler`.
+- Ejercicios: ninguno. PRÁCTICAS CREADAS: ninguna (las katas llegan con operadores y movimientos).
+- Dudas: ninguna. Preguntas de cierre: 1 bien con matiz (Espacio ES la tecla líder, no "Espacio + líder"); 2 corregida (`f` es un grupo que abre submenú, `<leader>ff` busca archivos; el grep es `<leader>/`, acción directa).
+- PRÓXIMO PASO: lo que sigue a la Figura 4, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)
