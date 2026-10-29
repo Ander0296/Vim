@@ -10,10 +10,10 @@ Prácticas: ver EJERCICIOS.md.
 ## INICIO RÁPIDO
 
 - Último punto estudiado: cap. 3, 3.3 "The First Rule of Vim" COMPLETA y 3.4 "Counting" hasta el Listing 8 "Disable All Line Numbers" INCLUIDO → la próxima tanda arranca justo después del Listing 8: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
-- Última tanda: Sesión #17 (2026-10-28, en la sesión de Claude vim-s14). ABIERTA: la pregunta 1b de números relativos (cursor en la 120, abajo un 12: ¿qué se teclea, a qué línea se llega, qué número muestra al llegar?) → hacerla al arrancar, antes de la k05
-- PRÓXIMA SESIÓN: `/rename vim-s15` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- Última tanda: Sesión #17 (2026-10-28, en la sesión de Claude vim-s14). La pregunta 1b de números relativos se cerró en vim-s15 (le faltaba: la línea del cursor muestra su número ABSOLUTO)
+- PRÓXIMA SESIÓN: `/rename vim-s16` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
-- Prácticas pendientes: k04-scroll-y-flash (`./kata k04`), k05-contar-con-relativos (`./kata k05`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03, k04-r1 el 2026-11-04, k05-r1 el 2026-11-05; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0

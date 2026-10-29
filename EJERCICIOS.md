@@ -42,12 +42,7 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 # PRÁCTICAS ABIERTAS
 # ============================================================
 
-KATA k04 — desplazar la pantalla y saltar con flash — [ ] pendiente
-Arranque: ejercicios/k04-scroll-y-flash/ (`./kata k04`) | Par: no tiene | Si te trabás: Sesión #16 de GUIA.md
-Ojo: Ctrl-f liberado en kitty el 2026-10-28. Si todavía abre la búsqueda de kitty, falta recargar kitty (Ctrl+Shift+F5 o cerrarla y abrirla).
-
-KATA k05 — contar con números relativos — [ ] pendiente
-Arranque: ejercicios/k05-contar-con-relativos/ (`./kata k05`) | Par: ~54 teclas | Si te trabás: Sesión #17 de GUIA.md
+- (ninguna por ahora)
 
 # ============================================================
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
@@ -64,6 +59,12 @@ Arranque: ejercicios/lib01-normal-x-portapapeles.md (ya creado) | Si te trabás:
 
 REPASO — k03 saltar con flash (r1) — programado: 2026-11-03 (primer día libre después de los otros tres) — [ ] pendiente
 Arranque: ejercicios/repasos/k03-saltar-con-flash-r1/ (`./kata k03-r1`; desde cero, sin mirar el original)
+
+REPASO — k04 desplazar la pantalla y saltar con flash (r1) — programado: 2026-11-04 (primer día libre después de los otros cuatro) — [ ] pendiente
+Arranque: ejercicios/repasos/k04-scroll-y-flash-r1/ (`./kata k04-r1`; desde cero, sin mirar el original)
+
+REPASO — k05 contar con números relativos (r1) — programado: 2026-11-05 (primer día libre después de los otros cinco) — [ ] pendiente
+Arranque: ejercicios/repasos/k05-contar-con-relativos-r1/ (`./kata k05-r1`; desde cero, sin mirar el original)
 
 # ============================================================
 # CONCEPTOS DOMINADOS (entran al graduarse una práctica con r3 bien)

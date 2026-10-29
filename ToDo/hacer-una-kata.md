@@ -18,10 +18,20 @@ trabajás y antes de entregar.
 - [ ] Antes de cada salto, chequeo que la tecla esté entre las que la
   kata permite. Por qué: un `3j` o un `f` llegan igual y el ✅ no lo
   detecta, pero ese salto no entrenó lo que la kata buscaba.
+- [ ] Antes de corregir, chequeo que el comando de edición también esté
+  permitido. Si el cursor ya está SOBRE la letra mala y la kata pide
+  `r`, es `r` + la letra buena: nada de `a`/`i` + Backspace. Por qué:
+  entrar a inserción y borrar hacia atrás suma teclas, y el Backspace es
+  justo lo que la kata quiere sacarte.
 - [ ] Antes de entrar a inserción, miro DÓNDE tengo que escribir. Si es
   al principio o al final de la línea, entro con `I` o `A`, no con
   `i`/`a` después de caminar con `hhhh`/`llll`. Por qué: `.` repite
   también el lugar; con `I`/`A` el `.` cae solo en la línea siguiente.
+- [ ] Después de apretar `A` (o `I`), miro que el cursor haya saltado al
+  final (o al principio) de la línea ANTES de escribir. Si no saltó,
+  apreté `a` (o `i`) sin Shift: Esc y de nuevo. Por qué: `a` también
+  entra a Inserción, pero justo a la derecha del cursor; que el texto
+  caiga al final es casualidad, no el comando.
 - [ ] Al abrir una línea nueva, miro en qué columna quedó el cursor
   ANTES de escribir. Por qué: la línea nueva copia la sangría de la
   línea desde la que la abrí, y una línea vacía no tiene sangría.

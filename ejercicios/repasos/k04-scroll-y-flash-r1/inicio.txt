@@ -1,0 +1,181 @@
+import java.util.ArrayList;
+import java.util.Lisr;
+import java.util.Optional;
+
+public class Biblioteca {
+
+    private final List<Libro> libros = new ArrayList<>();
+    private final List<Socio> socios = new ArrayList<>();
+    private int prestamosActivos;
+
+    public void agregarLibro(Libro libro) {
+        libros.add(libro);
+    }
+
+    public void agregarSocio(Socio socio) {
+        socios.add(socio);
+    }
+
+    public int cantidadDeLibros() {
+        return libros.size();
+    }
+
+    public int cantidadDeSocios() {
+        return socios.size();
+    }
+
+    public int getPrestamosActivos() {
+        return prestamosActivos;
+    }
+
+    public Optional<Libro> buscarPorTitulo(String titulo) {
+        for (Libro libro : libros) {
+            if (libro.getTitulo().equals(titulo)) {
+                return Optional.of(libro);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public Libro obtenerPorTitulo(String titulo) {
+        Optional<Libro> encontrado = buscarPorTitulo(titulo);
+        if (encontrado.isEmpty()) {
+            throw new IllegalArgumentException("Libro no encontrsdo: " + titulo);
+        }
+        return encontrado.get();
+    }
+
+    public Optional<Socio> buscarSocio(int numero) {
+        for (Socio socio : socios) {
+            if (socio.getNumero() == numero) {
+                return Optional.of(socio);
+            }
+        }
+        return Optional.empty();
+    }
+
+    public boolean estaDisponible(String titulo) {
+        Optional<Libro> libro = buscarPorTitulo(titulo);
+        return libro.isPresent() && !libro.get().estaPrestado();
+    }
+
+    public List<Libro> librosDisponibles() {
+        List<Libro> resultado = new ArrayList<>();
+        for (Libro libro : libros) {
+            if (!libro.estaPrestado()) {
+                resultado.add(libro);
+            }
+        }
+        return resultado;
+    }
+
+    public List<Libro> librosPrestados() {
+        List<Libro> resultado = new ArrayList<>();
+        for (Libro libro : libros) {
+            if (libro.estaPrestado()) {
+                resultado.add(libro);
+            }
+        }
+        return resultado;
+    }
+
+    public List<Libro> buscarPorAutor(String autor) {
+        List<Libro> resultado = new ArrayList<>();
+        for (Libro libro : libros) {
+            if (libro.getAutor().equals(autor)) {
+                resultado.add(libro);
+            }
+        }
+        retirn resultado;
+    }
+
+    public List<Libro> buscarPorAnio(int anio) {
+        List<Libro> resultado = new ArrayList<>();
+        for (Libro libro : libros) {
+            if (libro.getAnio() == anio) {
+                resultado.add(libro);
+            }
+        }
+        return resultado;
+    }
+
+    public void prestar(String titulo, int numeroSocio) {
+        Libro libro = obtenerPorTitulo(titulo);
+        Optional<Socio> socio = buscarSocio(numeroSocio);
+        if (socio.isEmpty()) {
+            throw new IllegalArgumentException("Socio inexistente: " + numeroSocio);
+        }
+        if (libro.estaPrestado()) {
+            throw new IllegalStateException("Ya prestado: " + titulo);
+        }
+        libro.prestarA(socio.get());
+        prestamosActivos++;
+    }
+
+    public void devolver(String titulo) {
+        Libro libro = obtenerPorTitulo(titulo);
+        if (!libro.estaPrestado()) {
+            throw new IllegalStateException("No estaba prestado: " + titulo);
+        }
+        libro.devolver();
+        prestamosActivos--;
+    }
+
+    public int librosDeSocio(int numeroSocio) {
+        int total = 0;
+        for (Libro libro : libros) {
+            if (libro.estaPrestado() && libro.getSocio().getNumero() == numeroSocio) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public boolean puedePedirPrestado(int numeroSocio) {
+        return librosDeSocio(numeroSocio) < 3;
+    }
+
+    public void quitarLibro(String titulo) {
+        Libro libro = obtenerPorTitulo(titulo);
+        if (libro.estaPrestado()) {
+            throw new IllegalStateException("No se puede quitar un libro prestado: " + titulo);
+        }
+        libros.remove(libro);
+    }
+
+    public void quitarSocio(int numero) {
+        if (librosDeSocio(numero) > 0) {
+            throw new IllegalStateException("El socio tiene libros: " + numero);
+        }
+        socios.removeIf(socio -> socio.getNumero() == numero);
+    }
+
+    public String resumen() {
+        return "Libros: " + cantidadDeLibros()
+            + " | Socios: " + cantidadDeSocios()
+            + " | Prestados: " + prestamosActivos;
+    }
+
+    public List<String> titulos() {
+        List<String> resultado = new ArrayList<>();
+        for (Libro libro : libros) {
+            resultado.add(libro.getTitulo());
+        }
+        return resultado;
+    }
+
+    public void vaciar() {
+        if (prestamosActivos > 0) {
+            throw new IllegalStateException("Quedan libros prestados: " + prestamosActivos);
+        }
+        libros.clear();
+        socios.clear();
+    }
+
+    public double promedioPorSocio() {
+        if (socios.isEmpty()) {
+            return 0;
+        }
+        return (double) prestamosActivos / socios.size()
+    }
+}
