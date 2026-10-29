@@ -1,0 +1,36 @@
+public class Inventario {
+
+    private final String nombre;
+    private int cantidad;
+    private double precio;
+
+    public Inventario(String nombre, int cantidad, double precio) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void agregar(int unidades) {
+        // TODO: validar unidades
+        cantidad = cantidad + unidades;
+    }
+
+    public void quitar(int unidades) {
+        if (unidades > cantidad) {
+            throw new IllegalArgumentException("No hay stock");
+        }
+        cantidad = cantidad - unidades;
+    }
+
+    public double valorTotal() {
+        return cantidad * precio;
+    }
+}

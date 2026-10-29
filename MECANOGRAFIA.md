@@ -71,3 +71,6 @@ s15 — flash: saltar a lo que ves, reemplazar un carácter y llegar al final de
 
 s16 — desplazar la pantalla: el menú `z` para ubicar la línea del cursor:
 `zt zz zb zt0 zz0 zb0 z. z- zs ze zH zL`
+
+s17 — conteos y números relativos: número + `j`/`k` para cambiar de línea, y la opción escrita en Lua:
+`15k 5l 5j 12k 3j 7k 20j vim.opt.relativenumber=false vim.opt.number=false`

@@ -46,6 +46,9 @@ KATA k04 — desplazar la pantalla y saltar con flash — [ ] pendiente
 Arranque: ejercicios/k04-scroll-y-flash/ (`./kata k04`) | Par: no tiene | Si te trabás: Sesión #16 de GUIA.md
 Ojo: Ctrl-f liberado en kitty el 2026-10-28. Si todavía abre la búsqueda de kitty, falta recargar kitty (Ctrl+Shift+F5 o cerrarla y abrirla).
 
+KATA k05 — contar con números relativos — [ ] pendiente
+Arranque: ejercicios/k05-contar-con-relativos/ (`./kata k05`) | Par: ~54 teclas | Si te trabás: Sesión #17 de GUIA.md
+
 # ============================================================
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
 # ============================================================
