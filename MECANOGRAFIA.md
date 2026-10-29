@@ -74,3 +74,6 @@ s16 — desplazar la pantalla: el menú `z` para ubicar la línea del cursor:
 
 s17 — conteos y números relativos: número + `j`/`k` para cambiar de línea, y la opción escrita en Lua:
 `15k 5l 5j 12k 3j 7k 20j vim.opt.relativenumber=false vim.opt.number=false`
+
+s18 — `f`/`t` y palabras: saltar a un carácter, repetir el salto y moverse por palabras:
+`fs 3fs Fs 2Ft t) T( d2ts 3w 3e 2b 4ge be ; ,`

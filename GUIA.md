@@ -9,11 +9,11 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 3, 3.3 "The First Rule of Vim" COMPLETA y 3.4 "Counting" hasta el Listing 8 "Disable All Line Numbers" INCLUIDO → la próxima tanda arranca justo después del Listing 8: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
-- Última tanda: Sesión #17 (2026-10-28, en la sesión de Claude vim-s14). La pregunta 1b de números relativos se cerró en vim-s15 (le faltaba: la línea del cursor muestra su número ABSOLUTO)
-- PRÓXIMA SESIÓN: `/rename vim-s16` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- Último punto estudiado: cap. 3, 3.5 "Find Mode" y 3.6 "Moving by Words" COMPLETAS (la 3.6 termina en "…changing or deleting a word or sequence of words.") → la próxima tanda arranca en lo que sigue a la 3.6: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
+- Última tanda: Sesión #18 (2026-10-29, en la sesión de Claude vim-s16)
+- PRÓXIMA SESIÓN: `/rename vim-s17` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
-- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03, k04-r1 el 2026-11-04, k05-r1 el 2026-11-05; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: k06-f-t-y-palabras (`./kata k06`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03, k04-r1 el 2026-11-04, k05-r1 el 2026-11-05; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
@@ -141,6 +141,10 @@ Prácticas: ver EJERCICIOS.md.
 | relative line numbering | numeración relativa de líneas | cada línea muestra su distancia al cursor, no su número |
 | gutter | margen izquierdo (canaleta) | la columna de la izquierda con números de línea, signos y marcas |
 | option | opción | interruptor con nombre de nvim (`number`, `wrap`); se cambia con `:set` o `vim.opt` |
+| find mode | modo Encontrar | `f`/`F` + carácter: el cursor salta a la siguiente/anterior aparición de ese carácter |
+| 'til (until) | hasta | `t`/`T` + carácter: como `f`/`F`, pero frena justo antes del carácter |
+| word | palabra | para Vim: letras, dígitos y `_` seguidos, o puntuación seguida; los espacios separan |
+| dim | atenuar (oscurecer) | lo que hace flash con el texto donde no se puede saltar |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -332,6 +336,16 @@ SESIÓN #17 — 2026-10-28 — Sin flechas, conteos y números relativos (cap. 3
 - Config: `vim.opt.<opción> = valor` en `~/.config/nvim/lua/config/options.lua` (se abre con `<leader>fc`, "Find Config File", un picker del cap. 4) = un `:set` permanente. Gana sobre LazyVim porque se carga después (`config/init.lua:297-300`). El Listing 8 apaga las dos. En vivo: `<leader>uL` (relativos) y `<leader>ul` (todos). Decisión: no se toca la config, los relativos se quedan.
 - Ejercicios del libro: ninguno (el "experiment" con un archivo largo lo cubre la kata). PRÁCTICAS CREADAS: k05-contar-con-relativos.
 - Dudas: en dvorak, a él le resulta cómodo `hjkl`: la mano derecha hace lo horizontal (`h` a la izquierda, `l` a la derecha) y la izquierda lo vertical (`j`/`k`) → dato para F4. Preguntas de cierre: 1 mal: leyó el 7 relativo como número absoluto (`33k`); el número que se ve ES el conteo → `7k`, línea 33. Se repregunta (1b: cursor en la 120, abajo un 12) → quedó SIN RESPONDER al cerrar el día: se hace al arrancar. 2 bien (solo relativos, 0 en el cursor); el porqué lo completó el profe: `relativenumber` sigue en `true` por LazyVim.
+
+SESIÓN #18 — 2026-10-29 — Find/'Til y moverse por palabras (cap. 3, 3.5 y 3.6 completas) — tanda de TEXTO
+- 3.5 "Find mode" (modo Encontrar): `f` + carácter salta a la PRIMERA aparición después del cursor, sin etiquetas; más lejos, con conteo (`3f`) o repitiendo `f`; `F` = hacia atrás. Estrategia del autor: adivinar el conteo y corregir (`18f` → `3F`). Es para objetivos CERCA del cursor; para el resto de la pantalla, `s` (flash).
+- "'Til mode" (modo Hasta): `t`/`T`, iguales pero frenan justo antes del carácter (con `T`, justo a su derecha). Brillan con operadores: `d2ts` borra hasta la segunda `s` sin tocarla (cap. 6).
+- 3.6 palabra (`:help word`): letras/dígitos/`_` seguidos, O puntuación seguida; los espacios separan. En Java `System.out.println("hola");` son 8 palabras: los puntos y los paréntesis cuentan.
+- `w` (word) → principio de la siguiente; `e` (end) → final de la actual (o de la siguiente, si ya estás al final); `b` (back) → principio de la actual (o de la anterior); `ge` → final de la anterior (`4ge`, no `g4e`; el autor usa `be`). Precisión: `3e` llega "two words after" (dos palabras después) solo si el cursor NO estaba ya al final. Los "web words" son los movimientos más usados. En dvorak, `e` y `t` están en la fila de inicio.
+- Nota del profe (verificado en flash.nvim, `config.lua:160-207` y `plugins/char.lua:273-288`): 1) en LazyVim, `f`/`t` son el modo `char` de flash con `multi_line = true` y siguen buscando en las líneas de abajo; en Vim puro (y en F2) buscan solo en la línea actual. 2) Al repetir, la minúscula sigue en la dirección del primer salto y la mayúscula se da vuelta (estilo clever-f): el "F = hacia atrás" del libro es exacto solo si arrancaste con `f`. `;` (misma dirección) y `,` (contraria) andan igual en Vim puro: son el hábito portátil.
+- Ejercicios del libro: ninguno. PRÁCTICAS CREADAS: k06-f-t-y-palabras.
+- Dudas: ninguna. Preguntas de cierre: 1 bien (`3w` desde la `S` → el segundo punto; `t(` → la `n` de `println`). 2 bien (tras `Fx`, `f` sigue atrás y `F` adelante); matiz: nombró `;` y `,` juntas: `;` = misma dirección (sigue atrás), `,` = contraria.
+- PRÓXIMO PASO: lo que sigue a la 3.6.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)
