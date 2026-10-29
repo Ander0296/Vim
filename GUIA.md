@@ -9,11 +9,11 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 3, intro + 3.1 "Seeking Text" COMPLETA (termina en "…Move cursor to end of current line") → la próxima tanda arranca justo después de la 3.1: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
-- Última tanda: Sesión #15 (2026-10-28, en la sesión de Claude vim-s12)
-- PRÓXIMA SESIÓN: `/rename vim-s13` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- Último punto estudiado: cap. 3, hasta la 3.2 "Scrolling the Screen" COMPLETA, con la 3.2.1 "Z Mode" (termina en "…nuanced methods of navigating code.") → la próxima tanda arranca justo después de la 3.2.1: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
+- Última tanda: Sesión #16 (2026-10-28, en la sesión de Claude vim-s13)
+- PRÓXIMA SESIÓN: `/rename vim-s14` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B HECHA (verificado en vim-s10: `nvim` limpio, LazyVim 16.0.1, blink v1.10.2, carpetas `-viejo` apartadas). Ahí no hay `nvim-ia`: sin config con Java hasta el cap. 10.
-- Prácticas pendientes: ninguna abierta (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: k04-scroll-y-flash (`./kata k04`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
@@ -129,6 +129,13 @@ Prácticas: ver EJERCICIOS.md.
 | split window | ventana dividida | la pantalla partida en varias ventanas (cap. 9) |
 | typo | error de tipeo | una letra mal escrita |
 | carriage return | retorno de carro | la tecla Enter (nombre heredado de las máquinas de escribir) |
+| scroll / scrolling | desplazar (la pantalla) / desplazamiento | correr el texto dentro de la ventana; el cursor acompaña |
+| half a screen / page | media pantalla / página | lo que desplazan `Ctrl-d`/`Ctrl-u` y `Ctrl-f`/`Ctrl-b` |
+| mnemonic | mnemotecnia | la palabra que ayuda a recordar una tecla (`d` = down: abajo) |
+| relative cursor positioning | posicionamiento relativo del cursor | mover la PANTALLA alrededor del cursor (`zt` `zz` `zb`), no el cursor |
+| eclectic | ecléctico (variado) | mezcla de cosas sin relación entre sí: así es el menú de `z` |
+| code folding / fold | plegado de código / pliegue | esconder un bloque detrás de una sola línea, como colapsar un método en un IDE |
+| spell list | lista de ortografía | el diccionario propio al que `zg` agrega palabras |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -297,6 +304,19 @@ SESIÓN #15 — 2026-10-28 — Intro del cap. 3 y flash: saltar a lo que ves (ca
 - Ejercicios del libro: ninguno (el `ss` + `t` + `p` + `rx` es ilustración). PRÁCTICAS CREADAS: k03-saltar-con-flash.
 - Dudas: ninguna. Preguntas de cierre: 1 bien (`a`, y las etiquetas no usan letras que continúan; matiz: de NINGUNA coincidencia visible, no solo de tu palabra). 2 bien `$`/`A` y Enter; faltó la causa exacta: después del último carácter no hay nada que tipear para achicar. Semilla F4: las etiquetas de flash (`asdfghjkl…`) están pensadas para la fila de inicio de qwerty; en dvorak se pueden cambiar.
 - PRÓXIMO PASO: lo que sigue a la 3.1, en sesión limpia.
+
+SESIÓN #16 — 2026-10-28 — Desplazar la pantalla y el menú de `z` (cap. 3, 3.2 completa con la 3.2.1) — tanda MIXTA (1 pantallazo: Figura 14)
+- Flash solo llega a lo visible ("You can't label something you can't see!"). Lo que está fuera de pantalla se busca (`/`) o se trae con scroll, y después se salta. Los scrolls son con Ctrl ("anti-modal") y el autor casi no los usa.
+- `Ctrl-d`/`Ctrl-u` (down/up): media pantalla; el cursor queda a la misma altura de la PANTALLA, o sea que en el ARCHIVO se mueve media pantalla. `Ctrl-f`/`Ctrl-b` (forward/backward): pantalla entera, con conteo (`5` + `Ctrl-f`). `Ctrl-e`/`Ctrl-y`: una línea, sin mover el cursor salvo en el borde. En dvorak, `u` y `d` están en la fila de inicio.
+- Menú `z` (which-key `+fold`): posición de la línea, pliegues (folds) y ortografía, mezclados. Lo útil hoy: `zt`/`zz`/`zb` llevan la línea del cursor arriba/al medio/abajo de la ventana sin mover el cursor del texto; `zt0` = eso + columna 0.
+- Pareto: `Ctrl-d`/`Ctrl-u` + `zt`/`zz`/`zb` de uso diario (kata k04); `Ctrl-f`/`b`, `Ctrl-e`/`y` y el scroll horizontal (`zs` `ze` `zH` `zL`), segundo nivel; folds y ortografía, contexto (el libro vuelve después). `:help scrolling` lista todo.
+- Nota del profe (verificado en LazyVim 16): 1) las "few lines of context" (unas líneas de contexto) son `scrolloff = 4` (`options.lua:90`); en `nvim-ia` es 999 y `zt`/`zb` no se notan. 2) El scroll es animado (snacks `scroll`, `ui.lua:279`). 3) Con un popup de LSP abierto, `Ctrl-f`/`Ctrl-b` desplazan el popup (noice, `ui.lua:234`). 4) En código `wrap = false` (de ahí el scroll horizontal), pero en text/markdown/gitcommit LazyVim prende `wrap` + `spell` en inglés (`autocmds.lua:104`).
+- Nota del profe (precisión del libro): `Ctrl-d` SÍ acepta conteo, pero `5` + `Ctrl-d` cambia la opción `scroll` a 5 líneas para los siguientes (`:help CTRL-D`). `z<CR>`/`z.`/`z-` dejan el cursor en el primer NO BLANCO (= `zt^`), no en la columna 1.
+- Ejercicios del libro: ninguno. PRÁCTICAS CREADAS: k04-scroll-y-flash.
+- Hallazgo: `Ctrl-f` NO llega a nvim. Kitty se lo queda (`~/.config/kitty/kitty.conf:25`: abre `search.py` en un split abajo, borde verde = ventana de kitty activa; Esc la cierra). La línea 26 ya da lo mismo con `kitty_mod+f` (Ctrl+Shift+F).
+- Config tocada (por Claude, a pedido explícito del usuario; commit y push en `~/.config` también a pedido): `kitty/kitty.conf` sin el `map ctrl+f` (queda Ctrl+Shift+F para buscar); `nvim/lua/config/autocmds.lua` con `vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")`: en text/markdown/gitcommit ya no hay wrap ni ortografía en inglés.
+- Dudas: `wrap` → en código está apagado (`.java` no parte líneas); lo que vio fue un `.txt`, que LazyVim parte a propósito (`lazyvim_wrap_spell`). Opciones: `<leader>uw`/`<leader>us` por buffer, o borrar ese augroup en `lua/config/autocmds.lua` (el starter trae el ejemplo en la línea 8) → elegido: borrarlo. Preguntas de cierre: 1 corregida (probó en un archivo de 21 líneas que entra entero: sin nada para desplazar solo se mueve el cursor; en uno largo se mueven los dos y el cursor queda en la misma fila de la pantalla). 2 bien `zt`; corregido el porqué: no queda en la fila 1 por `scrolloff = 4`. La `a` al lado del número de línea → una marca (`ma`), la dibuja la statuscolumn de snacks (`left = { "mark", "sign" }`); se borra con `:delmarks a` (las marcas son del cap. 3/12, Pareto).
+- PRÓXIMO PASO: lo que sigue a la 3.2.1, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)

@@ -68,3 +68,6 @@ s14 — modo Comando: guardar, salir, abrir archivos y la ayuda:
 
 s15 — flash: saltar a lo que ves, reemplazar un carácter y llegar al final de la línea:
 `s rx $ A r* $r{ A; r> rc :x`
+
+s16 — desplazar la pantalla: el menú `z` para ubicar la línea del cursor:
+`zt zz zb zt0 zz0 zb0 z. z- zs ze zH zL`
