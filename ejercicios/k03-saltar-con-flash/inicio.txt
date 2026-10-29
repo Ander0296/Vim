@@ -1,0 +1,23 @@
+public class Inventario {
+    private Strinf nombre;
+    private int cantidad;
+    private double precio;
+
+    public Inventario(String nombre, int cantidad, double precio) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
+
+    public double valorTotal() {
+        return cantidad + precio;
+    }
+
+    public void vender(int unidades) (
+        if (unidades < cantidad) {
+            System.out.println("No alcanza el stoek");
+            return;
+        }
+        cantidad -= unidades
+    }
+}

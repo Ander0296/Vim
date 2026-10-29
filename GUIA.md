@@ -9,12 +9,11 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 2 COMPLETO (2.2-2.4, termina en "…ways to move the cursor around inside a document.") → la próxima tanda es el cap. 3 desde el principio: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
-- Última tanda: Sesión #14 (2026-10-28, en la sesión de Claude vim-s09)
-- PRÓXIMA SESIÓN: `/rename vim-s12` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
-- vim-s11: solo el primer triage (sin tanda). Siguiente: la primera tanda del cap. 3.
+- Último punto estudiado: cap. 3, intro + 3.1 "Seeking Text" COMPLETA (termina en "…Move cursor to end of current line") → la próxima tanda arranca justo después de la 3.1: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
+- Última tanda: Sesión #15 (2026-10-28, en la sesión de Claude vim-s12)
+- PRÓXIMA SESIÓN: `/rename vim-s13` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B HECHA (verificado en vim-s10: `nvim` limpio, LazyVim 16.0.1, blink v1.10.2, carpetas `-viejo` apartadas). Ahí no hay `nvim-ia`: sin config con Java hasta el cap. 10.
-- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: k03-saltar-con-flash (`./kata k03`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
@@ -121,6 +120,15 @@ Prácticas: ver EJERCICIOS.md.
 | ghost text | texto fantasma | la sugerencia en gris que aparece adelante del cursor antes de aceptarla |
 | prefix | prefijo | el comienzo de una palabra: `:w` es la abreviatura de `:write` |
 | nested | anidado | carpetas una dentro de otra (`foo/baz/fizz.txt`) |
+| getting around | moverse (por el código) | llegar con el cursor a donde hay que editar |
+| refactoring | refactorizar | reordenar el código sin cambiar lo que hace |
+| Go to Definition / Go to Symbol | ir a la definición / ir al símbolo | saltos del LSP: a donde se declaró algo, o a una clase/método por su nombre |
+| seek | buscar (con la vista) | nombre del libro para flash: ir a un texto que ya estás viendo |
+| label | etiqueta | la letra que flash pone al lado de cada coincidencia: tipearla salta ahí |
+| mental math | cálculo mental | contar líneas o palabras para saber cuántas veces mover |
+| split window | ventana dividida | la pantalla partida en varias ventanas (cap. 9) |
+| typo | error de tipeo | una letra mal escrita |
+| carriage return | retorno de carro | la tecla Enter (nombre heredado de las máquinas de escribir) |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -278,6 +286,17 @@ SESIÓN #14 — 2026-10-28 — Modo Visual (anticipo) y modo Comando: `:w` `:q` 
 - Ejercicios de la tanda: ninguno. Lab en vivo HECHO en vim-s10 (menú, Ctrl-y/Ctrl-e, ↓ historial, `:help :x`, `:help i_CTRL-R`): `:e carpeta` + Enter abre el explorador de snacks (`replace_netrw = true`). PRÁCTICAS CREADAS: ninguna.
 - Dudas: ninguna. Preguntas de cierre (respondidas en vim-s10): 1 `Ctrl-y` bien; corregido: Enter no "entra" a la carpeta, EJECUTA `:e carpeta/`. 2 bien el prefijo `i_`; faltó `:help ` delante (sin eso, `i` entra a Inserción).
 - PRÓXIMO PASO: cap. 3 (movimientos) desde el principio, en sesión limpia.
+
+SESIÓN #15 — 2026-10-28 — Intro del cap. 3 y flash: saltar a lo que ves (cap. 3, intro + 3.1 completa) — tanda MIXTA (3 pantallazos: Figuras 11-13)
+- El código se edita y se recorre mucho más de lo que se escribe: moverse rápido es la mitad del oficio. En VS Code eso es mouse + flechas con Ctrl; en Vim, todo el teclado en modo Normal son comandos de movimiento.
+- flash.nvim (de folke, el autor de LazyVim): `s` en Normal → se tipea el carácter que estás mirando → cada coincidencia visible recibe una etiqueta, las más cercanas al cursor primero → tipear la etiqueta salta ahí. Esc cancela. Funciona en todas las ventanas visibles (`multi_window`).
+- Si el objetivo no tiene etiqueta: se tipea el carácter SIGUIENTE y las coincidencias se achican. Funciona porque flash nunca usa como etiqueta una letra que podría continuar alguna coincidencia.
+- Mínimo 3 teclas, pero sin cálculo mental ni "acercarse de a poco". Sirve solo para lo que está en pantalla; buscar en todo el archivo es otra cosa (`/`).
+- Límite: el final de una línea con un carácter común. Flash no acepta Enter como "carácter siguiente". Truco del libro: saltar a una palabra del medio de esa línea y después `A` (Inserción al final) o `$` (cursor al final, sigue en Normal). `r` + carácter (replace) reemplaza uno sin salir de Normal (el libro lo profundiza en el cap. 6).
+- Nota del profe: verificado en LazyVim 16 (`plugins/editor.lua:38`, flash.nvim). 1) `s` en Vim puro es substitute (borra el carácter y entra a Inserción, = `cl`); LazyVim lo pisa con flash en Normal, Visual y pendiente de operador. 2) Enter dentro de flash HOY salta a la primera coincidencia (`state.lua:390`); el libro solo dice que no sirve como carácter. 3) Con tokyonight las etiquetas salen en fucsia (no en verde, como en las figuras), y el ⚡ es el prompt de flash abajo a la izquierda, no la barra de estado.
+- Ejercicios del libro: ninguno (el `ss` + `t` + `p` + `rx` es ilustración). PRÁCTICAS CREADAS: k03-saltar-con-flash.
+- Dudas: ninguna. Preguntas de cierre: 1 bien (`a`, y las etiquetas no usan letras que continúan; matiz: de NINGUNA coincidencia visible, no solo de tu palabra). 2 bien `$`/`A` y Enter; faltó la causa exacta: después del último carácter no hay nada que tipear para achicar. Semilla F4: las etiquetas de flash (`asdfghjkl…`) están pensadas para la fila de inicio de qwerty; en dvorak se pueden cambiar.
+- PRÓXIMO PASO: lo que sigue a la 3.1, en sesión limpia.
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)

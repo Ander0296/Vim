@@ -65,3 +65,6 @@ s13 — abrir líneas arriba y abajo, volver a la última inserción:
 s14 — modo Comando: guardar, salir, abrir archivos y la ayuda:
 `:w :q :wq :x :q! :e :help :qall :x :w`
 `:write :w :quit :q :edit :e :help :x :wq`
+
+s15 — flash: saltar a lo que ves, reemplazar un carácter y llegar al final de la línea:
+`s rx $ A r* $r{ A; r> rc :x`

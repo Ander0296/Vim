@@ -42,7 +42,8 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 # PRÁCTICAS ABIERTAS
 # ============================================================
 
-(ninguna abierta)
+KATA k03 — saltar con flash — [ ] pendiente
+Arranque: ejercicios/k03-saltar-con-flash/ (`./kata k03`) | Par: no tiene | Si te trabás: Sesión #15 de GUIA.md
 
 # ============================================================
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
