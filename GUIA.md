@@ -12,7 +12,7 @@ Prácticas: ver EJERCICIOS.md.
 - Último punto estudiado: cap. 3, hasta la 3.2 "Scrolling the Screen" COMPLETA, con la 3.2.1 "Z Mode" (termina en "…nuanced methods of navigating code.") → la próxima tanda arranca justo después de la 3.2.1: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
 - Última tanda: Sesión #16 (2026-10-28, en la sesión de Claude vim-s13)
 - PRÓXIMA SESIÓN: `/rename vim-s14` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
-- Otro PC: mudanza B HECHA (verificado en vim-s10: `nvim` limpio, LazyVim 16.0.1, blink v1.10.2, carpetas `-viejo` apartadas). Ahí no hay `nvim-ia`: sin config con Java hasta el cap. 10.
+- Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
 - Prácticas pendientes: k04-scroll-y-flash (`./kata k04`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
