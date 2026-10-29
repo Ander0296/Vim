@@ -42,8 +42,7 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 # PRÁCTICAS ABIERTAS
 # ============================================================
 
-KATA k03 — saltar con flash — [ ] pendiente
-Arranque: ejercicios/k03-saltar-con-flash/ (`./kata k03`) | Par: no tiene | Si te trabás: Sesión #15 de GUIA.md
+(ninguna)
 
 # ============================================================
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
@@ -57,6 +56,9 @@ Arranque: ejercicios/repasos/k02-abrir-lineas-r1/ (desde cero, sin mirar el orig
 
 REPASO — lib01 modo Normal como base, `:wq` vs `:x` y portapapeles (flojos en el examen del cap. 2, 2026-10-28) — programado: 2026-11-02 — [ ] pendiente
 Arranque: ejercicios/lib01-normal-x-portapapeles.md (ya creado) | Si te trabás: Sesiones #12-#14 de GUIA.md
+
+REPASO — k03 saltar con flash (r1) — programado: 2026-11-03 (primer día libre después de los otros tres) — [ ] pendiente
+Arranque: ejercicios/repasos/k03-saltar-con-flash-r1/ (`./kata k03-r1`; desde cero, sin mirar el original)
 
 # ============================================================
 # CONCEPTOS DOMINADOS (entran al graduarse una práctica con r3 bien)

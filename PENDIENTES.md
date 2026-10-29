@@ -52,7 +52,10 @@ deuda falsa que se relee para siempre y no se salda nunca.
   cada comando de Practical Vim que en LazyVim hace otra cosa o está
   tomado, con la alternativa a usar. Ya conocidos (verificados en el
   código de LazyVim 16 en el setup): `s`/`S` → flash.nvim; `gs` →
-  prefijo de mini.surround (`gsa`, `gsd`, `gsr`...). Cada entrada se
+  prefijo de mini.surround (`gsa`, `gsd`, `gsr`...); `f`/`F`/`t`/`T`/`;`/`,`
+  → modo carácter de flash, que CRUZA LÍNEAS (en Vim puro `f` no sale de
+  la línea; verificado en `flash.nvim/lua/flash/config.lua` el 2026-10-28:
+  `modes.char.enabled = true`, `multi_line = true`). Cada entrada se
   verifica en la config instalada (`:verbose map`, código de LazyVim)
   antes de escribirse. Por qué se difiere: en F1 el material ES LazyVim;
   el choque aparece recién con el libro de Vim puro.

@@ -15,6 +15,9 @@ trabajás y antes de entregar.
 ## Mientras trabajo
 
 - [ ] Sin flechas ni mouse.
+- [ ] Antes de cada salto, chequeo que la tecla esté entre las que la
+  kata permite. Por qué: un `3j` o un `f` llegan igual y el ✅ no lo
+  detecta, pero ese salto no entrenó lo que la kata buscaba.
 - [ ] Antes de entrar a inserción, miro DÓNDE tengo que escribir. Si es
   al principio o al final de la línea, entro con `I` o `A`, no con
   `i`/`a` después de caminar con `hhhh`/`llll`. Por qué: `.` repite

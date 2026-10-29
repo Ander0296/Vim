@@ -13,7 +13,7 @@ Prácticas: ver EJERCICIOS.md.
 - Última tanda: Sesión #15 (2026-10-28, en la sesión de Claude vim-s12)
 - PRÓXIMA SESIÓN: `/rename vim-s13` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B HECHA (verificado en vim-s10: `nvim` limpio, LazyVim 16.0.1, blink v1.10.2, carpetas `-viejo` apartadas). Ahí no hay `nvim-ia`: sin config con Java hasta el cap. 10.
-- Prácticas pendientes: k03-saltar-con-flash (`./kata k03`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: ninguna abierta (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0

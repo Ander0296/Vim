@@ -19,3 +19,9 @@ Arranque: ejercicios/k02-abrir-lineas/ | Sesión #13 de GUIA.md
 Bien: 2º intento casi óptimo — una apertura por línea, conteos justos (`2j` `5j` `2j`), `O` desde el método, `:wq`.
 Mal: 1er intento abrió los comentarios con `o` desde la línea vacía → quedaron sin sangría (❌).
 Por qué: la línea nueva copia la sangría de la línea de origen; explicación oral salteada a pedido del usuario.
+
+KATA k03 — Saltar con flash (`s` + `r` en una clase Java) — [x] completada (2026-10-28, 1er intento, 35 teclas)
+Arranque: ejercicios/k03-saltar-con-flash/ | Sesión #15 de GUIA.md
+Bien: los 4 saltos con `s` fueron 1 letra + etiqueta (3 teclas, el mínimo); `r` en los 5 reemplazos, `A;` para el `;`.
+Mal: rompió 2 reglas de movimiento (`f(` y `3j`: buen instinto, pero no entrenan `s`), un `i`+Esc de más, y explicó la etiqueta `q` por exclusión cuando era por distancia.
+Por qué: en LazyVim `f` es de flash y cruza líneas (en Vim puro no); flash etiqueta primero lo más cercano al cursor y saltea letras que continúan una coincidencia.
