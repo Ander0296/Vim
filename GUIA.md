@@ -9,11 +9,11 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 3, 3.5 "Find Mode" y 3.6 "Moving by Words" COMPLETAS (la 3.6 termina en "…changing or deleting a word or sequence of words.") → la próxima tanda arranca en lo que sigue a la 3.6: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
-- Última tanda: Sesión #18 (2026-10-29, en la sesión de Claude vim-s16)
-- PRÓXIMA SESIÓN: `/rename vim-s17` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- Último punto estudiado: cap. 3, de la 3.7 "Moving by Words, Only BIGGER" a la 3.9 "Jumping to Specific Lines", COMPLETAS (la 3.9 termina en "…used for line number navigation.") → la próxima tanda arranca en la 3.10 "Jump History": https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
+- Última tanda: Sesión #19 (2026-10-30, en la sesión de Claude vim-s17)
+- PRÓXIMA SESIÓN: `/rename vim-s18` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
-- Prácticas pendientes: k06-f-t-y-palabras (`./kata k06`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03, k04-r1 el 2026-11-04, k05-r1 el 2026-11-05; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: k07-lineas-y-words (`./kata k07`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03, k04-r1 el 2026-11-04, k05-r1 el 2026-11-05, k06-r1 el 2026-11-06; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
@@ -145,6 +145,14 @@ Prácticas: ver EJERCICIOS.md.
 | 'til (until) | hasta | `t`/`T` + carácter: como `f`/`F`, pero frena justo antes del carácter |
 | word | palabra | para Vim: letras, dígitos y `_` seguidos, o puntuación seguida; los espacios separan |
 | dim | atenuar (oscurecer) | lo que hace flash con el texto donde no se puede saltar |
+| WORD | PALABRA (en mayúsculas) | para Vim: todo lo que hay entre espacios, puntuación incluida; la usan `W` `B` `E` `gE` |
+| whitespace | espacio en blanco | espacios, tabs y saltos de línea: lo único que corta una WORD |
+| line targets | destinos en la línea | `0`, `^`, `$`, `g_`: saltos al principio o al final de la línea |
+| caret | circunflejo | el símbolo `^` |
+| non-blank character | carácter no blanco | cualquier carácter que no sea espacio ni tab |
+| trailing whitespace | espacios sobrantes al final | espacios o tabs después del último carácter visible de la línea |
+| linter | analizador de código | programa que revisa el código y avisa errores o malas prácticas, con número de línea |
+| CamelCase / snake_case | — | nombres pegados con mayúsculas (`calcularIva`) o con guion bajo (`total_con_iva`); para `w` son UNA palabra |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -346,6 +354,16 @@ SESIÓN #18 — 2026-10-29 — Find/'Til y moverse por palabras (cap. 3, 3.5 y 3
 - Ejercicios del libro: ninguno. PRÁCTICAS CREADAS: k06-f-t-y-palabras.
 - Dudas: ninguna. Preguntas de cierre: 1 bien (`3w` desde la `S` → el segundo punto; `t(` → la `n` de `println`). 2 bien (tras `Fx`, `f` sigue atrás y `F` adelante); matiz: nombró `;` y `,` juntas: `;` = misma dirección (sigue atrás), `,` = contraria.
 - PRÓXIMO PASO: lo que sigue a la 3.6.
+
+SESIÓN #19 — 2026-10-30 — WORDS, destinos en la línea y saltos a una línea (cap. 3, 3.7 a 3.9 completas) — tanda de TEXTO
+- 3.7 "Moving by Words, Only BIGGER" (moverse por palabras, solo que más grandes): `W`/`B`/`E`/`gE` = `w`/`b`/`e`/`ge` pero por WORD (PALABRA): todo lo que hay entre espacios, puntuación incluida. En el Listing 10, `w` frena 11 veces y `W` 2. CamelCase/snake_case: ninguno de los dos para adentro; por ahora `fC`/`t_`, y nvim-spider más adelante (no viene en LazyVim: verificado).
+- 3.8 "Line Targets" (destinos en la línea): `0` = columna 0; `^` = primer no blanco (salta la sangría: en Java es casi siempre el que va); `$` = último carácter; `g_` = último no blanco. Son para quedarse en Normal; para escribir ahí, `I`/`A`. `0` es la única cifra que es un comando.
+- Precisión del libro: `$ge`/`$be` como reemplazo de `g_` andan solo si la línea termina en espacios; si no, `$` ya estaba en el último no blanco y `ge` te saca (en `total;` cae en la `l`).
+- 3.9 "Jumping to Specific Lines" (saltar a una línea concreta): `100G` o `:100` + Enter; `G` = última línea; `gg` (= `1G`) = primera. El número sale del mensaje del compilador o del linter, no de la columna relativa. `g` = "Go to" (ir a); LazyVim pisa varios `g...` (ej. `gd`, ir a la definición, cap. 10): `g` + esperar = which-key con el grupo `goto` (`editor.lua:81`).
+- Nota del profe (Neovim vs Vim): Neovim viene con `nostartofline` y LazyVim no lo cambia (`options.lua`): `G`, `gg` y `100G` mantienen la columna; en Vim clásico caen en el primer no blanco. Después de `12G`, para ir al principio del texto, `^`.
+- Ejercicios del libro: ninguno. PRÁCTICAS CREADAS: k07-lineas-y-words.
+- Dudas: ninguna. Preguntas de cierre: 1 bien (`0` = columna 0, `^` = primer no blanco). 2 mal: `gg` + `42j` cae en la 43 (`j` cuenta distancia, `G` número de línea) y no dijo la columna → 2b: `41j` (cuenta bien, pero sin `G`; el `41j` se lo había dejado el profe) y "primera columna" (mal: con `nostartofline` conserva la columna) → corregido: `42G`, misma columna, `^` si hace falta.
+- PRÓXIMO PASO: 3.10 "Jump History" (historial de saltos).
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)

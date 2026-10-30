@@ -77,3 +77,6 @@ s17 — conteos y números relativos: número + `j`/`k` para cambiar de línea, 
 
 s18 — `f`/`t` y palabras: saltar a un carácter, repetir el salto y moverse por palabras:
 `fs 3fs Fs 2Ft t) T( d2ts 3w 3e 2b 4ge be ; ,`
+
+s19 — WORDS, destinos en la línea y saltos a una línea:
+`3W 2B E 2gE 0 ^ $ g_ 100G gg G :100 $B ^4W`

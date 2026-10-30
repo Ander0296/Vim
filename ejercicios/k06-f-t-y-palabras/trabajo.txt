@@ -1,0 +1,17 @@
+public class Pedido {
+    private String cliente;
+    private double total;
+
+    public Pedido(String cliente, double total) {
+        this.cliente = cliente;
+        this.total = total;
+    }
+
+    public double calcularIva() {
+        return total * 0.15;
+    }
+
+    public String resumen() {
+        return "Cliente: " + cliente + " - Total: " + total;
+    }
+}

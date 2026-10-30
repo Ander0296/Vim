@@ -42,8 +42,8 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 # PRÁCTICAS ABIERTAS
 # ============================================================
 
-KATA k06 — saltar con f/t y moverse por palabras — [ ] pendiente
-Arranque: ejercicios/k06-f-t-y-palabras/ (`./kata k06`) | Par: ~38 teclas | Si te trabás: Sesión #18 de GUIA.md
+KATA k07 — saltar a una línea, a sus extremos y por WORDS — [ ] pendiente
+Arranque: ejercicios/k07-lineas-y-words/ (`./kata k07`) | Par: ~40 teclas | Si te trabás: Sesión #19 de GUIA.md
 
 # ============================================================
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
@@ -67,6 +67,10 @@ Arranque: ejercicios/repasos/k04-scroll-y-flash-r1/ (`./kata k04-r1`; desde cero
 REPASO — k05 contar con números relativos (r1) — programado: 2026-11-05 (primer día libre después de los otros cinco) — [ ] pendiente
 Arranque: ejercicios/repasos/k05-contar-con-relativos-r1/ (`./kata k05-r1`; desde cero, sin mirar el original)
 OJO al corregir: el `teclas.log` original de k05 se perdió (vacío en el commit 596aefe; lo que tiene ahora son teclas sueltas de un nvim cerrado a las 15:50 del 2026-10-29). Comparar contra la corrección de EJERCICIOS-ARCHIVO.md y Engram, no contra ese log.
+
+REPASO — k06 saltar con f/t y moverse por palabras (r1) — programado: 2026-11-06 (primer día libre después de los otros seis) — [ ] pendiente
+Arranque: ejercicios/repasos/k06-f-t-y-palabras-r1/ (`./kata k06-r1`; desde cero, sin mirar el original)
+OJO al corregir: en la entrega del original explicó `ge` como "ir al final de línea hacia atrás"; chequear que ahora lo use como final de la palabra ANTERIOR.
 
 # ============================================================
 # CONCEPTOS DOMINADOS (entran al graduarse una práctica con r3 bien)

@@ -1,0 +1,18 @@
+public class carrito {
+    private final List<String> items = new ArrayList<>();
+    private double total;
+
+    public void agregar(String item, double precio) {
+        items.add(item);
+        total = total + precio:
+        System.out.println("agregado: " + item);
+    }
+
+    public double totalConIva() {
+        Return total * 1.15;
+    }
+
+    public String resumen() {
+        return "Items: " + items.size( + " - Monto: " + Total;
+    }
+}

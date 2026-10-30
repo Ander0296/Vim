@@ -8,6 +8,10 @@ trabajás y antes de entregar.
 - [ ] Leí el enunciado ANTES de abrir nvim. Por qué: todo lo que hago
   adentro (abrir el README, el explorador, scrollear) queda en el log y
   se mezcla con la kata.
+- [ ] Anoto qué teclas la kata me OBLIGA a usar (ej.: "`w`/`e`/`b` en
+  al menos una corrección"), no solo las prohibidas. Antes de salir,
+  chequeo que las usé. Por qué: ni el ✅ ni el par detectan una tecla
+  obligatoria que nunca apreté.
 - [ ] Estoy en `~/Proyectos/Vim` y corro `./kata kNN` (un repaso:
   `./kata kNN-rX`). El resto lo hace solo: copia el inicio, abre mi
   `nvim` grabando cada tecla y, al salir, compara contra el objetivo.

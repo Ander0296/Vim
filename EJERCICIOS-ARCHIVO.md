@@ -37,3 +37,8 @@ Arranque: ejercicios/k05-contar-con-relativos/ | Sesión #17 de GUIA.md
 Bien: 2º intento con los 5 saltos por conteo leído de la columna relativa (`4j` `13j` `4j` `5j` `7j`), `O` con sangría correcta y `:x`.
 Mal: 1er intento con flash (prohibido) en 4 de 5; en los dos usó `a;` creyendo que era `A;` (funcionó porque el cursor cayó en el último carácter), y `bbb` en vez de `F<`.
 Por qué: `a` agrega a la derecha del cursor y `A` al final de la línea; `F` es `f` hacia atrás y cae en el carácter justo.
+
+KATA k06 — Saltar con f/t y moverse por palabras (`f`/`F`/`t`/`T` con conteo y `w`/`e`/`b`/`ge` en una clase Java) — [x] completada (2026-10-30, 2º intento, 37 teclas, par ~38)
+Arranque: ejercicios/k06-f-t-y-palabras/ | Sesión #18 de GUIA.md
+Bien: 2º intento dentro de las reglas, con conteos en vez de repeticiones (`3fo`, `2fl`, `3Ft`) y `f2` saltando de línea directo. Mal: 1er intento con `h` (prohibida) y sin `w`/`e`/`b`; explicó `ge` como "ir al final de línea hacia atrás".
+Por qué: `ge` va al final de la palabra ANTERIOR (el final de línea es `$`), y la puntuación (`;`, `=`) cuenta como una palabra aparte.

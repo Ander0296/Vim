@@ -38,7 +38,9 @@ ext="${inicios[0]#inicio.}"
 
 cp "inicio.$ext" "trabajo.$ext"
 # env -u: siempre la config real (nvim), aunque NVIM_APPNAME apunte a otra.
-env -u NVIM_APPNAME nvim -W teclas.log "trabajo.$ext" || true
+# -c: el cursor arranca en la línea 1, columna 0 (LazyVim lo devuelve
+# adonde quedó la última vez que se cerró ese mismo archivo).
+env -u NVIM_APPNAME nvim -W teclas.log -c 'normal! gg0' "trabajo.$ext" || true
 
 # La última línea es siempre un comando exacto, listo para copiar y pegar.
 echo
