@@ -1,0 +1,18 @@
+public class Inventario {
+    private final Map<String, Integer> stock = new HashMap<>();
+    private int unidadesEnStock;
+
+    public String reporte() {
+        return "Productos: " + stock.size() + " - Unidades en stock: " + unidadesEnStock;
+    }
+
+    public void recibir(String producto, int cantidadRecibida) {
+//        System.out.println("recibiendo: " + producto);
+        stock.merge(producto, cantidadRecibida, Integer::sum);
+        unidadesEnStock = unidadesEnStock + cantidadRecibida;
+    }
+
+    public int unidadesTotales() {
+        return unidadesEnStock;
+    }
+}

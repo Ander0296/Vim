@@ -42,3 +42,8 @@ KATA k06 — Saltar con f/t y moverse por palabras (`f`/`F`/`t`/`T` con conteo y
 Arranque: ejercicios/k06-f-t-y-palabras/ | Sesión #18 de GUIA.md
 Bien: 2º intento dentro de las reglas, con conteos en vez de repeticiones (`3fo`, `2fl`, `3Ft`) y `f2` saltando de línea directo. Mal: 1er intento con `h` (prohibida) y sin `w`/`e`/`b`; explicó `ge` como "ir al final de línea hacia atrás".
 Por qué: `ge` va al final de la palabra ANTERIOR (el final de línea es `$`), y la puntuación (`;`, `=`) cuenta como una palabra aparte.
+
+KATA k07 — Saltar a una línea, a sus extremos y por WORDS (número + `G`, `gg`, `0`/`^`/`$`, `W`/`B`/`E`/`gE` en una clase Java) — [x] completada (2026-10-30, 1er intento, 39 teclas, par ~40)
+Arranque: ejercicios/k07-lineas-y-words/ | Sesión #19 de GUIA.md
+Bien: 1er intento ✅ y sin romper ninguna regla (cortó la racha de k03-k06): `16G$B`, `7gE` contando WORDS, `12G^`, `8G0i//`, `gg$B`. Mal: `7G r;` sin `$`: cayó en el `:` solo porque `G` conservó la columna 39 de la línea 16 y la 7 es más corta; explicó `B` como "palabra anterior".
+Por qué: `NG` conserva la columna (nostartofline), no va al final; `B` va al inicio del WORD ACTUAL si el cursor no está ya en su inicio. (`7gE7gE` y `gggg` del log son which-key regrabando las teclas, no teclas de más.)

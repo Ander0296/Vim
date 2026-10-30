@@ -42,8 +42,7 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 # PRÁCTICAS ABIERTAS
 # ============================================================
 
-KATA k07 — saltar a una línea, a sus extremos y por WORDS — [ ] pendiente
-Arranque: ejercicios/k07-lineas-y-words/ (`./kata k07`) | Par: ~40 teclas | Si te trabás: Sesión #19 de GUIA.md
+- (ninguna)
 
 # ============================================================
 # REPASOS PROGRAMADOS (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
@@ -71,6 +70,10 @@ OJO al corregir: el `teclas.log` original de k05 se perdió (vacío en el commit
 REPASO — k06 saltar con f/t y moverse por palabras (r1) — programado: 2026-11-06 (primer día libre después de los otros seis) — [ ] pendiente
 Arranque: ejercicios/repasos/k06-f-t-y-palabras-r1/ (`./kata k06-r1`; desde cero, sin mirar el original)
 OJO al corregir: en la entrega del original explicó `ge` como "ir al final de línea hacia atrás"; chequear que ahora lo use como final de la palabra ANTERIOR.
+
+REPASO — k07 saltar a una línea, a sus extremos y por WORDS (r1) — programado: 2026-11-07 (primer día libre después de los otros siete) — [ ] pendiente
+Arranque: ejercicios/repasos/k07-lineas-y-words-r1/ (`./kata k07-r1`; desde cero, sin mirar el original)
+OJO al corregir: en el original, `7G r;` acertó al `:` solo por la columna recordada (nostartofline); en el r1 la línea 12 es más larga a propósito: `12G` solo NO cae en el `:`.
 
 # ============================================================
 # CONCEPTOS DOMINADOS (entran al graduarse una práctica con r3 bien)

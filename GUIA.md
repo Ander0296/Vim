@@ -11,9 +11,9 @@ Prácticas: ver EJERCICIOS.md.
 
 - Último punto estudiado: cap. 3, de la 3.7 "Moving by Words, Only BIGGER" a la 3.9 "Jumping to Specific Lines", COMPLETAS (la 3.9 termina en "…used for line number navigation.") → la próxima tanda arranca en la 3.10 "Jump History": https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
 - Última tanda: Sesión #19 (2026-10-30, en la sesión de Claude vim-s17)
-- PRÓXIMA SESIÓN: `/rename vim-s18` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- PRÓXIMA SESIÓN: `/rename vim-s19` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
-- Prácticas pendientes: k07-lineas-y-words (`./kata k07`) (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03, k04-r1 el 2026-11-04, k05-r1 el 2026-11-05, k06-r1 el 2026-11-06; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: ninguna (repasos: k01-r1 el 2026-10-31, k02-r1 el 2026-11-01, lib01 el 2026-11-02, k03-r1 el 2026-11-03, k04-r1 el 2026-11-04, k05-r1 el 2026-11-05, k06-r1 el 2026-11-06, k07-r1 el 2026-11-07; arranques listos, las katas se corren con `./kata k01-r1`) — solo nombres; el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
