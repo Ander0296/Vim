@@ -9,11 +9,11 @@ Prácticas: ver EJERCICIOS.md.
 
 ## INICIO RÁPIDO
 
-- Último punto estudiado: cap. 3, de la 3.7 "Moving by Words, Only BIGGER" a la 3.9 "Jumping to Specific Lines", COMPLETAS (la 3.9 termina en "…used for line number navigation.") → la próxima tanda arranca en la 3.10 "Jump History": https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
-- Última tanda: Sesión #19 (2026-10-30, en la sesión de Claude vim-s17)
-- PRÓXIMA SESIÓN: `/rename vim-s20` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- Último punto estudiado: cap. 3 COMPLETO (la última tanda fue la 3.10 "Jump History" (historial de saltos) + la 3.11 "Summary" (resumen), que termina en "…navigating the filesystem." (…navegar el sistema de archivos)) → la próxima tanda arranca en el cap. 4 desde el principio: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-4/
+- Última tanda: Sesión #20 (2026-11-09, en la sesión de Claude vim-s20)
+- PRÓXIMA SESIÓN: `/rename vim-s21` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
-- Prácticas pendientes: katas mixtas m02 y m03 (`./kata m02`; una por día; m01 hecha el 2026-11-09) + repaso lib01 vencido. Katas rediseñadas el 2026-11-09 (vim-s19): una sola regla, par siempre, repaso por concepto en mixtas — el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: katas mixtas m02 y m03 (`./kata m02`; una por día; m01 hecha el 2026-11-09) + repaso lib01 vencido + lib02 nueva (historial de saltos). Katas rediseñadas el 2026-11-09 (vim-s19): una sola regla, par siempre, repaso por concepto en mixtas — el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0
@@ -153,6 +153,10 @@ Prácticas: ver EJERCICIOS.md.
 | trailing whitespace | espacios sobrantes al final | espacios o tabs después del último carácter visible de la línea |
 | linter | analizador de código | programa que revisa el código y avisa errores o malas prácticas, con número de línea |
 | CamelCase / snake_case | — | nombres pegados con mayúsculas (`calcularIva`) o con guion bajo (`total_con_iva`); para `w` son UNA palabra |
+| jump / jump history (jumplist) | salto / historial de saltos (lista de saltos) | un salto es un movimiento que deja miga (`G`, `NG`, flash, búsqueda); el historial es la lista de migas que recorren `Ctrl-o` y `Ctrl-i` |
+| older / newer | más vieja / más nueva | `Ctrl-o` = Older (a la posición más vieja); `Ctrl-i`, a la más nueva |
+| ShaDa (shared data) | datos compartidos | archivo donde nvim guarda entre sesiones el historial de saltos, las marcas y los registros |
+| scratch the surface | rascar la superficie | apenas empezar con un tema |
 
 ============================================================
 (ACÁ VAN LAS SESIONES — Claude agrega la SESIÓN #01 en la primera
@@ -364,6 +368,16 @@ SESIÓN #19 — 2026-10-30 — WORDS, destinos en la línea y saltos a una líne
 - Ejercicios del libro: ninguno. PRÁCTICAS CREADAS: k07-lineas-y-words.
 - Dudas: ninguna. Preguntas de cierre: 1 bien (`0` = columna 0, `^` = primer no blanco). 2 mal: `gg` + `42j` cae en la 43 (`j` cuenta distancia, `G` número de línea) y no dijo la columna → 2b: `41j` (cuenta bien, pero sin `G`; el `41j` se lo había dejado el profe) y "primera columna" (mal: con `nostartofline` conserva la columna) → corregido: `42G`, misma columna, `^` si hace falta.
 - PRÓXIMO PASO: 3.10 "Jump History" (historial de saltos).
+
+SESIÓN #20 — 2026-11-09 — Historial de saltos y resumen del cap. 3 (cap. 3, 3.10 y 3.11 completas: CAP. 3 CERRADO) — tanda de TEXTO
+- 3.10 "Jump History" (historial de saltos): cada SALTO deja una miga donde estabas; `Ctrl-o` vuelve a la anterior (o = Older, más vieja, según `:help`), `Ctrl-i` (= Tab) avanza; aceptan conteo. Son el Atrás/Adelante del navegador. Cruzan archivos y se guardan entre sesiones (shada `'100`): recién abierto nvim, `Ctrl-o` puede llevarte al último archivo editado.
+- Qué es salto (verificado en 0.12.5 con `getjumplist()`): `G`, `gg`, `NG`, flash `s` (`jumplist = true` en flash) y los que vienen (`/`, `n`, `%`, `{`/`}`). NO: `15j`, `w`/`b`/`e`, `f`/`t`, `0`/`^`/`$`, scroll. Las migas se corren solas si agregás líneas arriba (300 → 301), y una línea no queda dos veces.
+- Precisión del libro: la 3.9 dio `:42` y `42G` como iguales, pero solo `42G` deja miga. Si pensás volver, `42G`.
+- Trampa que el ejemplo del libro (subir a poner un import y volver) no menciona: en Inserción, `Ctrl-o` ejecuta UN comando de Normal y vuelve a Inserción (`:help i_CTRL-O`). Primero Esc.
+- Nota del profe (LazyVim 16): `jumpoptions = "view"` (`options.lua:80`; Neovim trae `clean`) → al volver restaura también el scroll; `<leader>sj` = picker "Jumps" (saltos) de snacks; `:jumps` = la lista en Vim puro. Ni LazyVim ni la config del usuario mapean `Tab`/`Ctrl-i` en Normal. En dvorak `o` e `i` están en la fila de inicio, con la `o` a la izquierda: atrás = izquierda.
+- 3.11 "Summary" (resumen): repaso del cap. 3, nada nuevo. Ejercicios del libro: ninguno. PRÁCTICAS CREADAS: lib02-historial-de-saltos. Sin kata: con el objetivo a la vista nunca hace falta volver, así que `Ctrl-o` no gana; gana explorando → primera jNN con `gd` + `Ctrl-o` (cap. 10, anotado en PENDIENTES.md).
+- Dudas: "migas" no entró → re-explicado como una libreta que anota DE DÓNDE saliste, con tabla paso a paso; por qué `5j` no es salto (se clasifica por tipo de comando, no por distancia: caminar vs ir a un lugar; semilla F4: `j`/`k` con conteo grande al jumplist). Cierre: libreta (20 → `80G` `3j` `gg` → `Ctrl-o` = 83) bien; Inserción en la 120 → `Esc 8G Ctrl-o` bien (esquivó `:8` y `Ctrl-o` en Inserción), faltó `a` para volver a escribir.
+- PRÓXIMO PASO: cap. 4 desde el principio; antes conviene `/examen` del cap. 3 (capítulo cerrado).
 
 # ============================================================
 # FORMATO DE CADA SESIÓN (referencia para Claude — copiar y llenar)

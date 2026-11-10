@@ -45,7 +45,10 @@ deuda falsa que se relee para siempre y no se salda nunca.
   `java-lab/` (bajo el candado desde el primer archivo), el usuario
   verifica que `mvn -q test` pasa y que jdtls lo levanta en nvim, y se
   fijan el formato fino de las `jNN` y cómo vuelve java-lab a su estado
-  limpio entre prácticas.
+  limpio entre prácticas. La primera `jNN` incluye ir a mirar algo y
+  volver (`gd` + `Ctrl-o`): es la práctica con teclas del historial de
+  saltos, que no tuvo kata (Sesión #20: con el objetivo a la vista nunca
+  hace falta volver, así que `Ctrl-o` no gana).
 
 - **`ToDo/practical-vim-vs-lazyvim.md` — choques entre Vim puro y
   LazyVim** (diferido en el setup, 2026-10-27). Qué es: el checklist de

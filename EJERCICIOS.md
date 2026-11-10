@@ -59,6 +59,10 @@ Arranque: ejercicios/m02-moverse-en-la-linea/ (`./kata m02`) | Par: 31 teclas | 
 KATA MIXTA m03 — Moverse por el archivo (cubre: `NG`/`G`, conteos relativos, flash `s`, `f`/`F`; scroll y `zz` de apoyo) — [ ] pendiente
 Arranque: ejercicios/m03-moverse-por-el-archivo/ (`./kata m03`) | Par: ~31 teclas | Si te trabás: Sesiones #15, #16, #17 y #19 de GUIA.md
 
+CONCEPTO lib02 — Historial de saltos: qué deja miga, predecir `Ctrl-o`/`Ctrl-i` (cap. 3, Sesión #20) — [ ] pendiente
+Arranque: ejercicios/lib02-historial-de-saltos.md | Si te trabás: Sesión #20 de GUIA.md
+(Sin kata a propósito: con el objetivo a la vista nunca hace falta volver. La práctica con teclas llega con `gd` + `Ctrl-o` en la primera jNN, cap. 10.)
+
 # ============================================================
 # REPASOS PROGRAMADOS — jNN y libNN (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
 # ============================================================

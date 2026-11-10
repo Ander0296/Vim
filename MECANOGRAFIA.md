@@ -80,3 +80,6 @@ s18 — `f`/`t` y palabras: saltar a un carácter, repetir el salto y moverse po
 
 s19 — WORDS, destinos en la línea y saltos a una línea:
 `3W 2B E 2gE 0 ^ $ g_ 100G gg G :100 $B ^4W`
+
+s20 — historial de saltos (qué deja miga y qué no):
+`:jumps 70G 10j gg 5G :ju 240G 3G o 8G G`
