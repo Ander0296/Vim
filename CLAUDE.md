@@ -378,11 +378,17 @@ teclas.log trabajo` con la config real (limpia `NVIM_APPNAME`) y, al
 salir, compara contra el objetivo: ✅ o ❌ con el diff, y CUÁNTAS
 TECLAS usó contra el par (las cuenta del log: cada tecla especial vale
 una; no cuenta los eventos que nvim graba solo, como el `<Ignore>` que
-deja flash). Cada corrida es un intento nuevo desde cero. Al crear una
-kata, Claude da el ENUNCIADO EN EL CHAT (2-3 líneas, para que el
-usuario lo lea antes de abrir nvim y no abra el README adentro, que
-ensucia el log) más el comando. `/entrega kNN` alcanza: la ruta sale
-del número.
+deja flash). Cada corrida es un intento nuevo desde cero. `/entrega
+kNN` alcanza: la ruta sale del número.
+
+TODO EN EL CHAT (pedido del usuario el 2026-11-09: no quiere andar
+abriendo varias ventanas): cada vez que Claude da una kata para hacer
+(al crearla o cuando le toca), pone en el chat TODO lo necesario para
+no abrir ni el README ni el objetivo: el enunciado completo, el par,
+la regla única, cómo tienen que quedar las líneas que cambian (el
+objetivo entero si es corto, ~20 líneas; si no, solo esas líneas con
+su número) y el comando. Además, abrir el README dentro de nvim
+ensucia el log.
 
 `inicio.txt` y `objetivo.txt` son el ENUNCIADO (material), no la
 solución: la solución es la secuencia de teclas, y esa NUNCA se escribe

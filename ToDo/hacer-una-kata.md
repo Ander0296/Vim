@@ -6,9 +6,10 @@ tiene UNA sola regla (sin flechas ni mouse); el resto lo elegís vos.
 
 ## Antes de abrir nvim
 
-- [ ] Leí el enunciado ANTES de abrir nvim. Por qué: todo lo que hago
-  adentro (abrir el README, el explorador, scrollear) queda en el log y
-  se mezcla con la kata.
+- [ ] Leí el enunciado EN EL CHAT (ahí el profe me da todo: cambios,
+  par y cómo queda el objetivo) ANTES de abrir nvim. Por qué: todo lo
+  que hago adentro (abrir el README, el explorador, scrollear) queda en
+  el log y se mezcla con la kata.
 - [ ] Miré el par. Por qué: si mi plan gasta mucho más que eso, hay un
   camino más corto que todavía no estoy viendo.
 - [ ] Estoy en `~/Proyectos/Vim` y corro `./kata kNN` (o `./kata mNN`).
@@ -35,8 +36,8 @@ tiene UNA sola regla (sin flechas ni mouse); el resto lo elegís vos.
 - [ ] Si un comando salió mal: Esc y `u` (deshacer), en vez de parchar
   encima.
 - [ ] Antes de salir, comparo la pantalla contra el objetivo línea por
-  línea: cada `;`, cada espacio, cada línea vacía (el objetivo, abierto
-  en OTRA terminal, no dentro de nvim). Por qué: un ❌ obliga a correr
+  línea: cada `;`, cada espacio, cada línea vacía (contra el objetivo
+  que me dio el profe en el chat, no abriendo archivos en nvim). Por qué: un ❌ obliga a correr
   la kata de cero, y un cambio olvidado se ve en 10 segundos mirando.
 - [ ] Termino en modo normal (abajo a la izquierda dice NORMAL) y salgo
   con `:x` (o `:wq`). Guardar sin salir (`:w`, Ctrl-s) NO alcanza: nvim

@@ -24,8 +24,10 @@ desde cero: verla arruina la prueba.
      "Si te trabás: revisá la Sesión #Y de GUIA.md", el checklist de
      `ToDo/` si hay, y al final el prompt de entrega ya relleno. Nada de
      la solución ni esqueletos de la respuesta.
-2. Dame el enunciado en el chat (2-3 líneas) y el comando, y esperá a
-   que lo entregue.
+2. Dame TODO en el chat, para no abrir ningún archivo: el enunciado
+   completo, el par, la regla única, cómo quedan las líneas que cambian
+   (el objetivo entero si es corto) y el comando. Esperá a que lo
+   entregue.
 
 Cuando lo entregue (con `/entrega`), comparalo contra lo anterior
 (`EJERCICIOS-ARCHIVO.md`): qué mejoré, qué error repetí y POR QUÉ. En
