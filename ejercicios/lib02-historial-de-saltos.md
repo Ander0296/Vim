@@ -32,6 +32,22 @@ nvim y se anota lo que se vio.
 Si te trabás: revisá la Sesión #20 de GUIA.md
 
 ## MI RESPUESTA
+G = Si
+42G = Si
+:42  + enter = no
+15j no
+3w no
+fa no
+s (flash) si
+control d no
+
+2. Supongo que en la primera, da un salto de más que no se guardó o no se tiene conocimiento
+b. queda en la linea 80
+la linea 70 no aparece nunca porque se hizo el salto desde la linea 80, 10j no crea migas.
+
+3. Me envía a la última miga así esté en otro archivo, control i me devuelve a donde estaba
+
+La que me deja en el método es la control o, 240G no sirve porque se ha agregado una linea, el método baja una linea y ya deja de estar en la 240
 
 
 
