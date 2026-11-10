@@ -11,7 +11,7 @@ Prácticas: ver EJERCICIOS.md.
 
 - Último punto estudiado: cap. 3, de la 3.7 "Moving by Words, Only BIGGER" a la 3.9 "Jumping to Specific Lines", COMPLETAS (la 3.9 termina en "…used for line number navigation.") → la próxima tanda arranca en la 3.10 "Jump History": https://lazyvim-ambitious-devs.phillips.codes/course/chapter-3/
 - Última tanda: Sesión #19 (2026-10-30, en la sesión de Claude vim-s17)
-- PRÓXIMA SESIÓN: `/rename vim-s19` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- PRÓXIMA SESIÓN: `/rename vim-s20` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
 - Prácticas pendientes: katas mixtas m02 y m03 (`./kata m02`; una por día; m01 hecha el 2026-11-09) + repaso lib01 vencido. Katas rediseñadas el 2026-11-09 (vim-s19): una sola regla, par siempre, repaso por concepto en mixtas — el detalle vive en EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
