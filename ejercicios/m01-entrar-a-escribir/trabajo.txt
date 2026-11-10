@@ -1,13 +1,15 @@
+package banco;
 public class Caja {
 
-    double saldo;
-    private int movimientos
+    private double saldo;
+    private int movimientos;
 
     public void depositar(double monto) {
         saldo += monto;
+        movimientos++;
     }
 
     public double getSaldo() {
         return saldo;
     }
-)
+}

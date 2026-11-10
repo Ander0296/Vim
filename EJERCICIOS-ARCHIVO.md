@@ -52,3 +52,8 @@ KATA k07 — Saltar a una línea, a sus extremos y por WORDS (número + `G`, `gg
 Arranque: ejercicios/k07-lineas-y-words/ | Sesión #19 de GUIA.md
 Bien: 1er intento ✅ y sin romper ninguna regla (cortó la racha de k03-k06): `16G$B`, `7gE` contando WORDS, `12G^`, `8G0i//`, `gg$B`. Mal: `7G r;` sin `$`: cayó en el `:` solo porque `G` conservó la columna 39 de la línea 16 y la 7 es más corta; explicó `B` como "palabra anterior".
 Por qué: `NG` conserva la columna (nostartofline), no va al final; `B` va al inicio del WORD ACTUAL si el cursor no está ya en su inicio. (`7gE7gE` y `gggg` del log son which-key regrabando las teclas, no teclas de más.)
+
+KATA MIXTA m01 — Entrar a escribir (`I`/`A`, `o`/`O`, `G`, conteos; formato nuevo) — [x] completada (2026-11-09, 1er intento, 58 teclas, par 56)
+Arranque: ejercicios/m01-entrar-a-escribir/ | Sesiones #12, #13, #17 y #19 de GUIA.md
+Bien: igual a la ruta del par salvo el final (`O`, `3j`+`I`, `j`+`A`, `3j`+`o`), sin flechas ni Backspace; explicó bien `o`/`O`, la sangría copiada y los relativos. Mal: llegó a la última línea con flash (`s)`+etiqueta, 3 teclas) en vez de `G` (1).
+Por qué: la primera y la última línea del archivo tienen tecla propia (`gg`, `G`); flash conviene para algo visible en el medio. Lo reconoció al preguntarle.

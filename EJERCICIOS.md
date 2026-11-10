@@ -51,10 +51,7 @@ Arranque: ejercicios/repasos/<nombre del original>-rX (desde cero, sin mirar el 
 
 Las tres mixtas cuentan como el r1 de los conceptos de las katas viejas
 k01-k07 (todos vencidos entre el 2026-10-31 y el 2026-11-07). Una por
-día, en este orden.
-
-KATA MIXTA m01 — Entrar a escribir (cubre: `I`/`A`, `o`/`O`, `G`, conteos) — [ ] pendiente
-Arranque: ejercicios/m01-entrar-a-escribir/ (`./kata m01`) | Par: 56 teclas | Si te trabás: Sesiones #12, #13, #17 y #19 de GUIA.md
+día, en este orden (m01 hecha el 2026-11-09: ver EJERCICIOS-ARCHIVO.md).
 
 KATA MIXTA m02 — Moverse dentro de la línea (cubre: `f`/`t`, `e`, `^`/`$`, `r`, conteos) — [ ] pendiente
 Arranque: ejercicios/m02-moverse-en-la-linea/ (`./kata m02`) | Par: 31 teclas | Si te trabás: Sesiones #15, #17, #18 y #19 de GUIA.md
@@ -78,10 +75,10 @@ Etapa = el próximo repaso que le toca. Bien → siguiente etapa; mal →
 
 | Concepto | Visto en | Etapa | Próxima |
 | --- | --- | --- | --- |
-| `I` / `A` | Sesión #12 | r1 | vencido → m01 |
-| `o` / `O` | Sesión #13 | r1 | vencido → m01 |
-| `G` / `NG` / `gg` | Sesión #19 | r1 | vencido → m01 y m03 |
-| conteos + números relativos | Sesión #17 | r1 | vencido → m01, m02 y m03 |
+| `I` / `A` | Sesión #12 | r2 | 2026-11-23 (r1 bien en m01) |
+| `o` / `O` | Sesión #13 | r2 | 2026-11-23 (r1 bien en m01) |
+| `G` / `NG` / `gg` | Sesión #19 | r1 otra vez | ~2026-11-12 → m03 (MAL en m01: flash en vez de `G` para la última línea) |
+| conteos + números relativos | Sesión #17 | r2 | 2026-11-23 (r1 bien en m01; m02 y m03 lo vuelven a medir) |
 | `r` | Sesión #15 | r1 | vencido → m02 |
 | `f` / `t` / `F` / `T` (+ `;` `,`) | Sesión #18 | r1 | vencido → m02 y m03 |
 | `w` / `b` / `e` / `ge` | Sesión #18 | r1 | vencido → m02 |
