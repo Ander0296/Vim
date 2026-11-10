@@ -32,9 +32,11 @@ Después, corregime así:
    EFICIENCIA: dónde usé más teclas de las necesarias y cuál era el
    comando ("usaste `xxxx`, era `dw`"). Flechas o Backspace en modo
    normal, rachas de `jjjj`/`llll` y entradas a inserción de más se
-   marcan siempre. En una kata, cerrá mostrándome la RUTA DEL PAR tecla
-   por tecla, con qué hace cada una; si quiero, la vuelvo a correr para
-   bajar mi marca.
+   marcan siempre. En una kata, cerrá con las DIFERENCIAS contra el par:
+   en cada tramo donde me aparté, "usaste X (N teclas) → mejor Y (M
+   teclas)" y por qué gana; lo que hice igual que el par no lo repitas
+   (si le gané en algún tramo, decímelo). La ruta completa, solo si te
+   la pido. Si quiero, vuelvo a correr la kata para bajar mi marca.
 3. Si pegué un error o un mensaje de nvim, del LSP o de Maven —que va a
    estar en inglés—, traducímelo y explicámelo con calma: entender esos
    mensajes es parte del aprendizaje.

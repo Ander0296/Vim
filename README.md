@@ -217,8 +217,8 @@ arranca de cero. Una mixta se corre igual: `./kata m01`.
 el profe lee mis teclas y me pregunta por 2-3 decisiones ("¿por qué
 `fa` acá y no `e`?"). Teclear bien sin saber por qué no cuenta.
 
-Después me corrige la EFICIENCIA ("usaste `xxxx`, era `dw`") y me
-muestra la ruta del par, tecla por tecla. El **par** es la meta (como en
+Después me corrige la EFICIENCIA: solo donde me aparté del par, qué
+teclas me convenían ("usaste `xxxx`, era `dw`"). El **par** es la meta (como en
 VimGolf): no hace falta clavarlo, sirve para saber cuánto margen tengo.
 Si quiero, vuelvo a correr la kata para bajar mi marca. Flechas,
 Backspace o `jjjj` en modo normal siempre aparecen en la corrección.

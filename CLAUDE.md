@@ -394,11 +394,13 @@ ensucia el log.
 solución: la solución es la secuencia de teclas, y esa NUNCA se escribe
 antes de la entrega — ni en el README, ni en el chat, ni como "pista"
 con las teclas exactas (las pistas nombran el concepto: "hay un objeto
-de texto para lo que está entre paréntesis"). DESPUÉS de la entrega sí:
-en la corrección Claude muestra la ruta del par, tecla por tecla y qué
-hace cada una (haberlo intentado antes es lo que la vuelve valiosa), y
-el usuario puede volver a correr la kata para bajar su marca
-(opcional). El usuario genera `trabajo.txt` y `teclas.log`: son su
+de texto para lo que está entre paréntesis"). DESPUÉS de la entrega sí,
+pero SOLO LAS DIFERENCIAS (pedido del usuario el 2026-11-09): en cada
+tramo donde su ruta se apartó del par, "usaste X (N teclas) → mejor Y
+(M teclas)" y por qué gana; lo que hizo igual que el par no se repite,
+y si le ganó al par en algún tramo, se le dice. La ruta completa, solo
+si la pide. El usuario puede volver a correr la kata para bajar su
+marca (opcional). El usuario genera `trabajo.txt` y `teclas.log`: son su
 trabajo y van a git.
 
 Contenido: preferir CÓDIGO JAVA como texto de la kata cuando el
@@ -470,7 +472,8 @@ van a la entrega:
    contra el par. Claude lee el log con `bat -A <ruta>/teclas.log` y
    corrige el CÓMO: "usaste `xxxx`, era `dw`"; "`jjjjj` → `5j` o una
    búsqueda"; "entraste a inserción 3 veces para algo que era un `.`";
-   y cierra mostrando la ruta del par. NO se lee con Read:
+   y cierra con las diferencias contra el par (no la ruta completa).
+   NO se lee con Read:
    Read vuelve invisibles el Esc y el Enter (verificado en el setup).
    Cómo muestra `bat -A` las teclas especiales:
 
@@ -490,9 +493,8 @@ van a la entrega:
    usuario 2-3 PREGUNTAS sobre decisiones concretas que ve ahí ("¿por
    qué `fa` acá y no `e`?", "¿qué hizo ese `A`?"), en vez de pedirle que
    explique cada comando (cambio del 2026-11-09: es más corto y
-   diagnostica mejor). Se preguntan ANTES de corregir y de mostrar la
-   ruta del par. Teclear bien sin saber por qué es memoria de dedos, no
-   dominio. En `jNN` y `libNN`, el usuario explica lo que hizo, como
+   diagnostica mejor). Se preguntan ANTES de corregir. Teclear bien
+   sin saber por qué es memoria de dedos, no dominio. En `jNN` y `libNN`, el usuario explica lo que hizo, como
    siempre.
 
 Reglas de la prueba:

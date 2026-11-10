@@ -77,8 +77,8 @@ if diff --color=auto -u "trabajo.$ext" "objetivo.$ext"; then
     echo "✅ Salió, en $teclas teclas: llegaste al par ($par). 🎯"
   else
     echo "✅ Salió, en $teclas teclas (par: $par, te sobran $((teclas - par)))."
-    echo "   En la corrección te muestro la ruta del par. Si querés bajar tu"
-    echo "   marca antes, corré la kata otra vez."
+    echo "   En la corrección te muestro dónde se te fueron las teclas. Si"
+    echo "   querés bajar tu marca antes, corré la kata otra vez."
   fi
   echo "   Entregá en Claude con esto:"
   echo
