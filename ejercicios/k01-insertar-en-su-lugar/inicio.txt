@@ -1,9 +1,0 @@
-public class Saludo {
-    String nombre = "Ana"
-    int edad = 30
-    boolean activo = true
-
-    void saludar() {
-        System.out.println("Hola, " + nombre)
-    }
-}

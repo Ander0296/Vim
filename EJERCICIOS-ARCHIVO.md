@@ -4,6 +4,11 @@ Prácticas completadas con su corrección y repasos ya cumplidos. NO se
 lee al inicio de sesión: solo consulta puntual (comparar contra un
 repaso, o un RE-ESTUDIO). Lo vivo está en EJERCICIOS.md.
 
+NOTA 2026-11-09 (vim-s19): las katas k01-k07 de abajo son del formato
+VIEJO (con listas de teclas prohibidas). Sus carpetas se borraron al
+rediseñar las katas; siguen en el historial de git (antes del commit
+del rediseño). Sus conceptos se repasan ahora en las mixtas m01-m03.
+
 # ============================================================
 # PRÁCTICAS COMPLETADAS
 # ============================================================

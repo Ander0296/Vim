@@ -1,0 +1,10 @@
+public class Pedido {
+    privete Strng cliente = "Ana";
+    private int unidadez = 3,
+
+    public double total(double precio) {
+        Double bruto = unidades * precio;
+        System.out.printn(cliente + ": " + bruto);
+        return bruto;
+    }
+}

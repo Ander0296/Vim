@@ -1,0 +1,73 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Bibloteca {
+
+    private final List<String> titulos = new ArrayList<>();
+    private final List<Boolean> prestado = new ArrayList<>();
+
+    public void agregar(String titulo) {
+        titulos.add(titulo);
+        prestado.add(false);
+    }
+
+    public boolean existe(String titulo) {
+        return titulos.contains(titulo);
+    }
+
+    public int cantidad() {
+        return titulos.size();
+    }
+
+    public boolean estaPrestado(String titulo) {
+        int i = titulos.indexOf(titulo);
+        if (i < 0) {
+            return false;
+        }
+        return prestado.get(i);
+    }
+
+    public void prestar(String titulo) {
+        int i = titulos.indexOf(titulo);
+        if (i < 0) {
+            System.out.println("No existe: " + titulo);
+            return;
+        }
+        prestado.set(i, true)
+    }
+
+    public void devolver(String titulo) {
+        int i = titulos.indexOf(titulo);
+        if (i < 0) {
+            System.out.println("No existe: " + titulo);
+            return;
+        }
+        prestado.set(i, false);
+    }
+
+    public int disponibles() {
+        int total = 0;
+        for (int i = 0; i < titulos.size(); i++) {
+            if (prestado.get(i)) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public void listar() {
+        for (int i = 0; i < titulos.size(); i++) {
+            String estado = prestado.get(i) ? "prestado" : "disponible";
+            System.out.println(titulos.get(i) + " (" + estado + ")");
+        }
+    }
+
+    public static void main(String[] args) {
+        Biblioteca b = new Biblioteca();
+        b.agregar("El principito");
+        b.agregar("Rayela");
+        b.prestar("Rayuela");
+        b.listar();
+        System.out.println("Disponibles: " + b.disponibles());
+    }
+}

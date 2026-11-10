@@ -326,43 +326,74 @@ Registro DOBLE + archivo de arranque creado por Claude:
 
 ### Tipos de práctica de ESTE tema y formato del arranque
 
-Tres tipos, todos resueltos a mano por el usuario, cada uno con su
-propia numeración (`k01`, `k02`... · `j01`... · `lib01`...):
+Cuatro tipos, todos resueltos a mano por el usuario, cada uno con su
+propia numeración (`k01`... · `m01`... · `j01`... · `lib01`...):
 
 | Tipo | Arranque | Qué hace el usuario |
 | --- | --- | --- |
-| KATA DE EDICIÓN | `ejercicios/kNN-nombre/` | transforma un texto de partida en el texto objetivo, en nvim, con cada tecla grabada |
+| KATA DE ESTRENO | `ejercicios/kNN-nombre/` | transforma un texto de partida en el objetivo, en nvim, con cada tecla grabada; estrena lo nuevo de una tanda |
+| KATA MIXTA | `ejercicios/mNN-nombre/` | igual, pero mezcla 3-4 conceptos ya vistos: es el REPASO de las katas |
 | PRÁCTICA SOBRE JAVA | `ejercicios/jNN-nombre/` | navega, refactoriza, debuggea o testea el proyecto `java-lab/` desde nvim |
 | PREGUNTAS DE CONCEPTO | `ejercicios/libNN-nombre.md` | responde por escrito preguntas de concepto o del libro |
 
-**KATA `kNN-nombre/`** — tres archivos que crea Claude:
-- `README.md`, CORTO: enunciado en español (qué transformación hay que
-  hacer; lo citado del libro, en inglés con la traducción al lado); un
-  "Par: N teclas" OPCIONAL, como en VimGolf (una meta, no un examen);
-  cómo se corre (`./kata kNN`, desde `~/Proyectos/Vim`); "Si te trabás:
-  revisá la Sesión #Y de GUIA.md" (+ el checklist de ToDo/ si hay uno)
-  y, al final, cómo se entrega: `/entrega kNN`. Para las katas, eso
-  reemplaza al prompt largo de la regla general de prácticas.
+**KATAS (`kNN` y `mNN`) — formato rediseñado el 2026-11-09** a pedido
+del usuario: las listas de teclas prohibidas y obligatorias le hacían
+mirar las reglas en vez del texto, volvían aburridas las katas y lo
+empujaban a saltearlas (llegó a juntar 8 repasos vencidos). Las k01-k07
+del formato viejo se borraron (quedan en el historial de git).
+- ÚNICA REGLA, siempre la misma: sin flechas ni mouse. PROHIBIDO volver
+  a poner listas de teclas prohibidas o "obligatorio usar X".
+- EL TEXTO HACE EL TRABAJO DE LAS PROHIBICIONES: Claude diseña el texto
+  para que la herramienta a entrenar sea la que gana sola (ej.: el
+  error viene con su número de línea → `NG` gana sin prohibir `j`). Si
+  el usuario resuelve con otra, no es trampa: no llega al par, y la
+  corrección se lo muestra.
+- PAR SIEMPRE: las teclas de la mejor ruta que encontró Claude,
+  contando TODAS (incluido `:x` + Enter para salir). Claude lo VERIFICA
+  antes de entregar la kata: reproduce la ruta en un `nvim --clean
+  --headless` y compara contra el objetivo. Si depende del alto de la
+  terminal (flash, scroll), va con `~`.
+- CORTAS: 3 a 6 cambios, unos 2-4 minutos.
+- `kNN` ESTRENO: la primera vez que aparece un concepto (sale de una
+  tanda). El README dice "Lo nuevo de hoy: X".
+- `mNN` MIXTA: un texto Java NUEVO que mezcla 3-4 conceptos ya vistos,
+  SIN decir cuál va en cada cambio. Entrena la elección de la
+  herramienta, que es el objetivo de fondo ("editar sin pensar").
+
+Tres archivos que crea Claude:
+- `README.md`, CORTO: enunciado en español (qué cambios hay que hacer;
+  lo citado, en inglés con la traducción al lado); "Lo nuevo de hoy"
+  (solo en `kNN`); "Par: N teclas"; "Única regla: sin flechas ni
+  mouse"; cómo se corre (`./kata kNN`, desde `~/Proyectos/Vim`); "Si te
+  trabás: revisá la Sesión #Y de GUIA.md" + el checklist de ToDo/; al
+  final, cómo se entrega: `/entrega kNN`. Para las katas, eso reemplaza
+  al prompt largo de la regla general de prácticas.
 - `inicio.txt`: el texto de partida.
 - `objetivo.txt`: cómo tiene que quedar.
 
-**`./kata kNN`** — script en la raíz del repo (pedido del usuario el
-2026-10-28: cd + cp + `nvim -W` + `diff` + README + MI EXPLICACIÓN le
+**`./kata kNN` / `./kata mNN`** — script en la raíz del repo (pedido
+del usuario el 2026-10-28: cd + cp + `nvim -W` + `diff` + README le
 resultaba enredado). Copia el inicio sobre `trabajo`, abre `nvim -W
 teclas.log trabajo` con la config real (limpia `NVIM_APPNAME`) y, al
-salir, compara contra el objetivo y dice ✅ o ❌ con el diff. Cada
-corrida es un intento nuevo desde cero; un repaso se corre con `./kata
-kNN-rX`. Al crear una kata, Claude da el ENUNCIADO EN EL CHAT (2-3
-líneas, para que el usuario lo lea antes de abrir nvim y no abra el
-README adentro, que ensucia el log) más el comando. La EXPLICACIÓN va
-en el chat, y `/entrega kNN` alcanza: la ruta sale del número.
+salir, compara contra el objetivo: ✅ o ❌ con el diff, y CUÁNTAS
+TECLAS usó contra el par (las cuenta del log: cada tecla especial vale
+una; no cuenta los eventos que nvim graba solo, como el `<Ignore>` que
+deja flash). Cada corrida es un intento nuevo desde cero. Al crear una
+kata, Claude da el ENUNCIADO EN EL CHAT (2-3 líneas, para que el
+usuario lo lea antes de abrir nvim y no abra el README adentro, que
+ensucia el log) más el comando. `/entrega kNN` alcanza: la ruta sale
+del número.
 
 `inicio.txt` y `objetivo.txt` son el ENUNCIADO (material), no la
 solución: la solución es la secuencia de teclas, y esa NUNCA se escribe
 antes de la entrega — ni en el README, ni en el chat, ni como "pista"
 con las teclas exactas (las pistas nombran el concepto: "hay un objeto
-de texto para lo que está entre paréntesis"). El usuario genera
-`trabajo.txt` y `teclas.log`: son su trabajo y van a git.
+de texto para lo que está entre paréntesis"). DESPUÉS de la entrega sí:
+en la corrección Claude muestra la ruta del par, tecla por tecla y qué
+hace cada una (haberlo intentado antes es lo que la vuelve valiosa), y
+el usuario puede volver a correr la kata para bajar su marca
+(opcional). El usuario genera `trabajo.txt` y `teclas.log`: son su
+trabajo y van a git.
 
 Contenido: preferir CÓDIGO JAVA como texto de la kata cuando el
 concepto lo permite (es lo que va a editar en la vida real). Excepción
@@ -411,13 +442,11 @@ PROMPT DE ENTREGA (copiá esto y pegalo en Claude cuando termines):
 ```
 ````
 
-**REPASOS** — en `ejercicios/repasos/`, con el nombre del original +
-`-rX`: `kNN-nombre-r1/`, `jNN-nombre-r2/`, `libNN-nombre-r3.md`. Una
-kata se repasa con el MISMO `inicio`/`objetivo` (o una variante con la
-misma transformación) en carpeta nueva (se corre con `./kata
-kNN-rX`), para poder comparar sus teclas
-contra el `teclas.log` original, que Claude nunca muestra antes del
-repaso.
+**REPASOS** — una kata NO se repasa con su mismo texto: se repasa en
+una kata MIXTA `mNN` nueva, en `ejercicios/mNN-nombre/` (ver Sistema de
+repasos). Las `jNN` y `libNN` siguen como siempre: en
+`ejercicios/repasos/`, con el nombre del original + `-rX`
+(`jNN-nombre-r2/`, `libNN-nombre-r3.md`).
 
 ### Cómo se PRUEBA una práctica acá (no hay compilador)
 
@@ -431,10 +460,11 @@ van a la entrega:
    dice ✅ o ❌. Con ❌ la kata no salió todavía: se corre `./kata kNN`
    otra vez, que arranca de cero. En la entrega, Claude lo confirma
    comparando `trabajo` contra `objetivo` con Read.
-2. **EFICIENCIA** — Claude lee el log con `bat -A <ruta>/teclas.log` y
+2. **EFICIENCIA** — `./kata` ya le dice al usuario cuántas teclas usó
+   contra el par. Claude lee el log con `bat -A <ruta>/teclas.log` y
    corrige el CÓMO: "usaste `xxxx`, era `dw`"; "`jjjjj` → `5j` o una
-   búsqueda"; "entraste a inserción 3 veces para algo que era un `.`".
-   Si la kata tiene par, se compara contra el par. NO se lee con Read:
+   búsqueda"; "entraste a inserción 3 veces para algo que era un `.`";
+   y cierra mostrando la ruta del par. NO se lee con Read:
    Read vuelve invisibles el Esc y el Enter (verificado en el setup).
    Cómo muestra `bat -A` las teclas especiales:
 
@@ -450,10 +480,14 @@ van a la entrega:
 
    Una flecha o un Backspace en una kata de modo normal ya es un
    hallazgo: se marca siempre.
-3. **EXPLICACIÓN** — el usuario explica en el chat (en una kata, si no
-   la trae con el `/entrega`, Claude se la pide antes de corregir) qué hace
-   cada comando que usó y por qué lo eligió. Teclear bien sin saber
-   por qué es memoria de dedos, no dominio.
+3. **EXPLICACIÓN** — en una kata, Claude lee el log y le hace al
+   usuario 2-3 PREGUNTAS sobre decisiones concretas que ve ahí ("¿por
+   qué `fa` acá y no `e`?", "¿qué hizo ese `A`?"), en vez de pedirle que
+   explique cada comando (cambio del 2026-11-09: es más corto y
+   diagnostica mejor). Se preguntan ANTES de corregir y de mostrar la
+   ruta del par. Teclear bien sin saber por qué es memoria de dedos, no
+   dominio. En `jNN` y `libNN`, el usuario explica lo que hizo, como
+   siempre.
 
 Reglas de la prueba:
 - Las katas se corren con la config REAL de LazyVim, NUNCA con
@@ -527,22 +561,31 @@ la bandeja `tanda.txt`; local, fuera de git).
 
 ### Sistema de repasos (repetición espaciada) — REGLA PERMANENTE
 
-- Al completarse una práctica, Claude agenda repasos en la sección
-  REPASOS de EJERCICIOS.md: r1 ~3-4 días después, r2 ~2 semanas
-  después del r1, r3 ~1 mes después del r2.
-- Al arrancar cada sesión, Claude avisa qué repasos están vencidos.
-  Máximo 1 repaso por día; si hay varios, primero el más antiguo.
-- El repaso es DESDE CERO en ejercicios/repasos/ (archivo de arranque
-  nuevo, sin nada de la solución original ni pistas extra). Claude
-  NUNCA muestra ni resume la versión original antes del repaso.
-- Al corregir, Claude compara versión nueva vs. original: qué mejoró,
-  qué se repitió mal. Bien → siguiente repaso del ciclo; mal →
-  acortar el intervalo (~3 días). Mal DOS veces seguidas → RE-ESTUDIO
-  (releer la sesión de la guía — en GUIA.md o GUIA-ARCHIVO.md según
-  dónde viva esa sesión — + práctica nueva del tema).
-- GRADUACIÓN: r3 bien → la práctica se gradúa; sus conceptos van a
-  la lista "CONCEPTOS DOMINADOS" (su propia sección al final de
-  EJERCICIOS.md: una línea por concepto, sin historia).
+- Intervalos: r1 ~3-4 días después, r2 ~2 semanas después del r1, r3
+  ~1 mes después del r2. Máximo 1 repaso por día; si hay varios,
+  primero el más antiguo. Al arrancar cada sesión, Claude avisa qué
+  está vencido.
+- KATAS — el ciclo va POR CONCEPTO, no por kata (desde el 2026-11-09).
+  EJERCICIOS.md tiene la tabla CONCEPTOS EN CICLO (concepto, etapa,
+  próxima fecha). Al completarse una kata, sus conceptos entran al
+  ciclo (r1). Cuando vence un concepto, Claude arma una kata MIXTA
+  `mNN` con él y los otros vencidos o por vencer (3-4 por kata), con
+  un texto Java nuevo. Un concepto sale BIEN si el usuario lo usó por
+  su cuenta donde era la mejor herramienta (lo dice el log); MAL si
+  eligió otra más larga o no lo usó.
+- `jNN` y `libNN` — el ciclo va por práctica: el repaso es DESDE CERO en
+  ejercicios/repasos/ (archivo de arranque nuevo, sin nada de la
+  solución original ni pistas extra). Claude NUNCA muestra ni resume la
+  versión original antes del repaso.
+- Al corregir, Claude compara contra lo anterior (EJERCICIOS-ARCHIVO.md):
+  qué mejoró, qué se repitió mal. Bien → siguiente etapa del ciclo;
+  mal → acortar el intervalo (~3 días). Mal DOS veces seguidas →
+  RE-ESTUDIO (releer la sesión de la guía — en GUIA.md o
+  GUIA-ARCHIVO.md según dónde viva esa sesión — + práctica nueva del
+  tema).
+- GRADUACIÓN: r3 bien → el concepto (o la práctica `jNN`/`libNN`) se
+  gradúa y va a la lista "CONCEPTOS DOMINADOS" (su propia sección al
+  final de EJERCICIOS.md: una línea por concepto, sin historia).
 - REPASOS INTEGRADORES: con 3+ conceptos dominados, Claude puede
   proponer (máx. 1/semana) una práctica NUEVA que combine 2-3 de
   ellos. Contexto nuevo fija más que repetición idéntica.
@@ -553,8 +596,8 @@ EJERCICIOS.md se lee ENTERO al inicio de cada sesión, así que solo
 puede contener estado accionable:
 
 - VIVO (se queda): prácticas [ ] pendientes y [~] en curso, repasos
-  programados no cumplidos, y la lista CONCEPTOS DOMINADOS (una línea
-  por concepto, sin historia).
+  programados no cumplidos, la tabla CONCEPTOS EN CICLO y la lista
+  CONCEPTOS DOMINADOS (una línea por concepto, sin historia).
 - CERRADO (se va a EJERCICIOS-ARCHIVO.md): prácticas [x] completadas
   con su corrección completa, y repasos ya cumplidos. Ese archivo
   viaja por git y NO se lee al inicio: solo consulta puntual para
@@ -780,7 +823,7 @@ Es lo primero de CADA sesión. Claude:
 
    | # | Si encuentra... | La sesión de hoy es |
    | --- | --- | --- |
-   | 1 | un repaso VENCIDO en REPASOS PROGRAMADOS | **REPASO** (el más antiguo primero) |
+   | 1 | un repaso VENCIDO en REPASOS PROGRAMADOS o un concepto vencido en CONCEPTOS EN CICLO | **REPASO** (el más antiguo primero) |
    | 2 | una práctica [~] en curso que el usuario ya entregó | **ENTREGA** |
    | 3 | texto en `material/tanda.txt` (no vacío) | **TANDA** |
    | 4 | prácticas [ ] pendientes y nada de material nuevo | **PRÁCTICA** |

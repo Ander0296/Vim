@@ -1,0 +1,13 @@
+public class Caja {
+
+    double saldo;
+    private int movimientos
+
+    public void depositar(double monto) {
+        saldo += monto;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+)

@@ -38,11 +38,13 @@ Vim/
 │                    lo lee y lo deja vacío. NO va a git: copyright
 ├── ejercicios/      mis prácticas. Claude deja el ENUNCIADO + el
 │   │                prompt de entrega; la solución la hago yo
-│   ├── kNN-.../     KATAS: inicio.txt → objetivo.txt, con mis teclas
-│   │                grabadas en teclas.log
+│   ├── kNN-.../     KATAS de estreno: inicio.txt → objetivo.txt, con
+│   │                mis teclas grabadas en teclas.log
+│   ├── mNN-.../     KATAS mixtas: el repaso de las katas (mezclan
+│   │                conceptos ya vistos)
 │   ├── jNN-.../     prácticas sobre java-lab/ (desde el cap. 10)
 │   ├── libNN-...md  preguntas de concepto, se responden por escrito
-│   └── repasos/     los repasos, siempre desde cero
+│   └── repasos/     los repasos de jNN y libNN, siempre desde cero
 ├── java-lab/        (llega en el cap. 10) proyecto Java chico para
 │                    practicar LSP, debug y tests
 ├── ToDo/            checklists: qué verificar antes de dar algo por
@@ -180,9 +182,15 @@ Una KATA es un ejercicio corto de edición: un texto de partida
 de nvim, con las menos teclas posibles. nvim graba cada tecla que
 aprieto, así el profe ve no solo SI llegué, sino CÓMO llegué.
 
+Hay dos clases: la de ESTRENO (`kNN`), que estrena lo nuevo de una
+tanda, y la MIXTA (`mNN`), que es el repaso: mezcla varias cosas ya
+vistas sin decirme cuál va dónde. Las dos tienen UNA sola regla: sin
+flechas ni mouse. Nada más está prohibido; el texto está armado para
+que lo que estoy practicando sea lo más corto.
+
 Cada kata es una carpeta en `ejercicios/` (ej:
-`ejercicios/k01-borrar-palabras/`) con tres archivos que deja el profe:
-`README.md` (el enunciado y cómo correrla),
+`ejercicios/m01-entrar-a-escribir/`) con tres archivos que deja el profe:
+`README.md` (el enunciado, el par y cómo correrla),
 `inicio.txt` y `objetivo.txt`. Esos dos son el ENUNCIADO: no los toco.
 
 **1. Leo el enunciado** (el profe me lo da en el chat). Lo leo ANTES de
@@ -200,19 +208,20 @@ el objetivo y salgo con `:wq` (si guardo y no salgo, el log queda
 vacío).
 
 **3. Miro el resultado.** Al salir, `./kata` compara contra el
-objetivo. `✅ Salió` = listo. `❌ Todavía no` = me muestra qué falta
-(las líneas con `-` son mi archivo, las con `+` el objetivo) y vuelvo a
-correr `./kata k01`, que arranca de cero. Un repaso se corre igual:
-`./kata k01-r1`.
+objetivo y cuenta mis teclas contra el par. `✅ Salió` = listo.
+`❌ Todavía no` = me muestra qué falta (las líneas con `-` son mi
+archivo, las con `+` el objetivo) y vuelvo a correr `./kata k01`, que
+arranca de cero. Una mixta se corre igual: `./kata m01`.
 
-**4. `[CLAUDE]` Entrego** con `/entrega k01` y cuento en el chat qué
-comandos usé y por qué. Teclear bien sin saber por qué no cuenta.
+**4. `[CLAUDE]` Entrego** con `/entrega k01`. No explico cada comando:
+el profe lee mis teclas y me pregunta por 2-3 decisiones ("¿por qué
+`fa` acá y no `e`?"). Teclear bien sin saber por qué no cuenta.
 
-El profe mira mis teclas y me corrige la EFICIENCIA: "usaste `xxxx`,
-era `dw`". Si la kata dice **"Par: N teclas"**, esa es la meta (como en
-VimGolf): no hace falta clavarla, sirve para saber cuánto margen tengo.
-Flechas, Backspace o `jjjj` en modo normal siempre aparecen en la
-corrección.
+Después me corrige la EFICIENCIA ("usaste `xxxx`, era `dw`") y me
+muestra la ruta del par, tecla por tecla. El **par** es la meta (como en
+VimGolf): no hace falta clavarlo, sirve para saber cuánto margen tengo.
+Si quiero, vuelvo a correr la kata para bajar mi marca. Flechas,
+Backspace o `jjjj` en modo normal siempre aparecen en la corrección.
 
 Si una kata usa archivos `.java` (pasa cuando nvim tiene que saber que
 es Java, por ejemplo para objetos de texto como `af` = una función),

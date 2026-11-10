@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Corre una kata de edición con un solo comando, desde la raíz del repo:
-#   ./kata k02       una kata
-#   ./kata k01-r1    su repaso
+#   ./kata k08    una kata de ESTRENO (lo nuevo de una tanda)
+#   ./kata m01    una kata MIXTA (el repaso: mezcla conceptos ya vistos)
 # Copia el inicio sobre trabajo, abre nvim grabando cada tecla en teclas.log
-# y, al salir, compara contra el objetivo. Cada corrida es un intento nuevo
-# desde cero: pisa el trabajo y el teclas.log del intento anterior.
+# y, al salir, compara contra el objetivo y cuenta tus teclas contra el par
+# (la línea "Par: N" del README). Cada corrida es un intento nuevo desde
+# cero: pisa el trabajo y el teclas.log del intento anterior.
 
 set -euo pipefail
 shopt -s nullglob
@@ -12,17 +13,13 @@ shopt -s nullglob
 raiz="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 id="${1:-}"
 
-if [[ ! "$id" =~ ^k[0-9]+(-r[0-9]+)?$ ]]; then
-  echo "Uso: ./kata kNN      (una kata, ej: ./kata k02)"
-  echo "     ./kata kNN-rX   (un repaso, ej: ./kata k01-r1)"
+if [[ ! "$id" =~ ^[km][0-9]+$ ]]; then
+  echo "Uso: ./kata kNN   (kata de estreno, ej: ./kata k08)"
+  echo "     ./kata mNN   (kata mixta, ej: ./kata m01)"
   exit 1
 fi
 
-if [[ "$id" == *-r* ]]; then
-  carpetas=("$raiz/ejercicios/repasos/${id%-r*}-"*"-${id##*-}/")
-else
-  carpetas=("$raiz/ejercicios/$id-"*/)
-fi
+carpetas=("$raiz/ejercicios/$id-"*/)
 if (( ${#carpetas[@]} != 1 )); then
   echo "No encontré una sola carpeta para $id en ejercicios/ (encontré ${#carpetas[@]})."
   exit 1
@@ -42,17 +39,54 @@ cp "inicio.$ext" "trabajo.$ext"
 # adonde quedó la última vez que se cerró ese mismo archivo).
 env -u NVIM_APPNAME nvim -W teclas.log -c 'normal! gg0' "trabajo.$ext" || true
 
+# Cuenta las teclas del log. Cada tecla especial (Esc, Enter, Backspace,
+# flechas, un clic o la rueda del mouse) vale una. No cuentan los eventos
+# que nvim graba sin que aprietes nada: <Ignore> (lo deja flash), <Event>,
+# <Lua> y <Cmd>. Un Ctrl o Alt que nvim graba como prefijo tampoco suma
+# aparte: cuenta la tecla que modifica.
+contar_teclas() {
+  [[ -s teclas.log ]] || { echo 0; return; }
+  python3 -I - teclas.log <<'PY'
+import sys
+b = open(sys.argv[1], "rb").read()
+no_cuentan = {0x35, 0x66, 0x67, 0x68}  # 0x80 0xfd + <Ignore>/<Event>/<Lua>/<Cmd>
+n = i = 0
+while i < len(b):
+    c = b[i]
+    if c == 0x80 and i + 2 < len(b):
+        ks, kc = b[i + 1], b[i + 2]
+        i += 3
+        if ks == 0xFC or (ks == 0xFD and kc in no_cuentan):
+            continue
+        n += 1
+        continue
+    i += 4 if c >= 0xF0 else 3 if c >= 0xE0 else 2 if c >= 0xC0 else 1
+    n += 1
+print(n)
+PY
+}
+teclas="$(contar_teclas)"
+par="$(grep -oP '^Par: ~?\K[0-9]+' README.md 2>/dev/null | head -1 || true)"
+
 # La última línea es siempre un comando exacto, listo para copiar y pegar.
 echo
 if diff --color=auto -u "trabajo.$ext" "objetivo.$ext"; then
-  echo "✅ Salió: trabajo.$ext quedó idéntico al objetivo."
-  echo "   Entregá en Claude con esto, y agregá qué comandos usaste y por qué:"
+  if [[ -z "$par" ]]; then
+    echo "✅ Salió, en $teclas teclas."
+  elif (( teclas <= par )); then
+    echo "✅ Salió, en $teclas teclas: llegaste al par ($par). 🎯"
+  else
+    echo "✅ Salió, en $teclas teclas (par: $par, te sobran $((teclas - par)))."
+    echo "   En la corrección te muestro la ruta del par. Si querés bajar tu"
+    echo "   marca antes, corré la kata otra vez."
+  fi
+  echo "   Entregá en Claude con esto:"
   echo
   echo "/entrega $id"
 else
   echo
-  echo "❌ Todavía no. Arriba: las líneas con - son tu archivo, las con + el objetivo."
-  echo "   Para otro intento desde cero, copiá y pegá esto:"
+  echo "❌ Todavía no ($teclas teclas). Arriba: las líneas con - son tu archivo,"
+  echo "   las con + el objetivo. Para otro intento desde cero, copiá y pegá esto:"
   echo
   echo "cd ${raiz/#$HOME/\~} && ./kata $id"
 fi
