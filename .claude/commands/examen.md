@@ -40,6 +40,8 @@ Si no te dije de qué, elegí 2-3 conceptos de CONCEPTOS DOMINADOS en
 **Al terminar**, tabla de una línea por concepto: sólido / flojo / no está.
 Y por cada "flojo" o "no está":
 - volvé a agendar su repaso en `EJERCICIOS.md` con intervalo corto (~3 días),
+  como concepto en CONCEPTOS EN CICLO (se repasa en una kata mixta, no con
+  preguntas escritas `libNN`),
   aunque ya se hubiera graduado — un concepto que se cae en frío no está
   dominado, y CONCEPTOS DOMINADOS tiene que decir la verdad;
 - si el fallo fue mecánico (algo que se verifica mirando el trabajo), creá o

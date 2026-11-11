@@ -334,7 +334,7 @@ propia numeración (`k01`... · `m01`... · `j01`... · `lib01`...):
 | KATA DE ESTRENO | `ejercicios/kNN-nombre/` | transforma un texto de partida en el objetivo, en nvim, con cada tecla grabada; estrena lo nuevo de una tanda |
 | KATA MIXTA | `ejercicios/mNN-nombre/` | igual, pero mezcla 3-4 conceptos ya vistos: es el REPASO de las katas |
 | PRÁCTICA SOBRE JAVA | `ejercicios/jNN-nombre/` | navega, refactoriza, debuggea o testea el proyecto `java-lab/` desde nvim |
-| PREGUNTAS DE CONCEPTO | `ejercicios/libNN-nombre.md` | responde por escrito preguntas de concepto o del libro |
+| PREGUNTAS DE CONCEPTO | `ejercicios/libNN-nombre.md` | EXCEPCIONAL (ver abajo): 1-2 preguntas cortas, solo si el concepto no se puede practicar con teclas |
 
 **KATAS (`kNN` y `mNN`) — formato rediseñado el 2026-11-09** a pedido
 del usuario: las listas de teclas prohibidas y obligatorias le hacían
@@ -425,8 +425,26 @@ REGISTRO` vacía (qué hice, qué vi) y el prompt `/entrega` al final.
 propósito, ver PENDIENTES.md) y ahí se fija el formato fino de las
 `jNN`.
 
-**PREGUNTAS DE CONCEPTO `libNN-nombre.md`** — el mismo formato que los
-`lib*.md` de HeadFirst-Java:
+**LA PRÁCTICA ES CON TECLAS — rediseño del 2026-11-10** (pedido del
+usuario): prefiere los ejercicios donde HACE y se mide qué teclas usó y
+cuántas, no los de explicar por escrito qué significan las cosas; y un
+ejercicio con muchas preguntas lo satura (lib01 traía 4 bloques y 11
+partes). Consecuencias:
+- La práctica por defecto es SIEMPRE una kata (`kNN`/`mNN`) o, desde el
+  cap. 10, una `jNN`. La comprensión se mide en el log y en las 2-3
+  preguntas sobre decisiones de la corrección, no en un archivo aparte.
+- `libNN` pasa a EXCEPCIONAL: solo si el concepto no se puede practicar
+  con teclas de ninguna forma, y como MÁXIMO 2 preguntas cortas, sin
+  sub-partes (a, b, c...). Si hay dudas, no se crea.
+- Un concepto flojo en un `/examen` se repasa en una kata mixta (entra
+  a CONCEPTOS EN CICLO), no con un `libNN`.
+- lib01 y lib02 se dieron de baja ese día (quedan en el historial de
+  git); sus conceptos vuelven con teclas: registros y portapapeles en
+  el cap. 8, el historial de saltos en la primera `jNN` (cap. 10), y
+  `:x` se ve en el log de cada kata.
+
+**PREGUNTAS DE CONCEPTO `libNN-nombre.md`** (excepcional, ver arriba) —
+el mismo formato que los `lib*.md` de HeadFirst-Java:
 
 ````
 # LIBRO — <tema> (cap. N, secciones N.M-N.P, Sesión #Y)

@@ -57,3 +57,8 @@ KATA MIXTA m01 — Entrar a escribir (`I`/`A`, `o`/`O`, `G`, conteos; formato nu
 Arranque: ejercicios/m01-entrar-a-escribir/ | Sesiones #12, #13, #17 y #19 de GUIA.md
 Bien: igual a la ruta del par salvo el final (`O`, `3j`+`I`, `j`+`A`, `3j`+`o`), sin flechas ni Backspace; explicó bien `o`/`O`, la sangría copiada y los relativos. Mal: llegó a la última línea con flash (`s)`+etiqueta, 3 teclas) en vez de `G` (1).
 Por qué: la primera y la última línea del archivo tienen tecla propia (`gg`, `G`); flash conviene para algo visible en el medio. Lo reconoció al preguntarle.
+
+## Bajas del 2026-11-10 (vim-s22) — la práctica pasa a ser con teclas
+
+- lib01 (repaso de los flojos del examen del cap. 2) — DADO DE BAJA tras una 1ª vuelta en el chat: bien Normal↔Inserción, `:wq` escribe siempre; flojo otra vez el "por qué" del modo de base, registro confundido con historial del portapapeles, `:x` "sale solo si hay cambios". Vuelve con teclas en el cap. 8 (registros).
+- lib02 (historial de saltos) — DADO DE BAJA en curso (P1 lista, P2c, P3, P4 bien). Vuelve con `gd` + `Ctrl-o` en la primera jNN (cap. 10).

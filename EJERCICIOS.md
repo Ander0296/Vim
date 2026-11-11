@@ -59,19 +59,13 @@ Arranque: ejercicios/m02-moverse-en-la-linea/ (`./kata m02`) | Par: 31 teclas | 
 KATA MIXTA m03 — Moverse por el archivo (cubre: `NG`/`G`, conteos relativos, flash `s`, `f`/`F`; scroll y `zz` de apoyo) — [ ] pendiente
 Arranque: ejercicios/m03-moverse-por-el-archivo/ (`./kata m03`) | Par: ~31 teclas | Si te trabás: Sesiones #15, #16, #17 y #19 de GUIA.md
 
-CONCEPTO lib02 — Historial de saltos: qué deja miga, predecir `Ctrl-o`/`Ctrl-i` (cap. 3, Sesión #20) — [~] en curso (1ª entrega 2026-11-10)
-Arranque: ejercicios/lib02-historial-de-saltos.md | Si te trabás: Sesión #20 de GUIA.md
-Bien: P1 la lista de 8 completa (`:42` NO es salto, verificado en 0.12.5), P2c, P3 (shada + `Ctrl-i`) y P4 (la miga se corre con la línea agregada).
-Falta: P1 "qué tienen en común" sin responder; P2a sin las 4 líneas (no armó la libreta paso a paso); P2b solo 1 de 2 líneas.
-Pistas dadas en el chat (sin solución): caminar vs ir a un lugar; anotar la miga de cada comando; qué hace `Ctrl-o` sin nada más viejo.
-(Sin kata a propósito: con el objetivo a la vista nunca hace falta volver. La práctica con teclas llega con `gd` + `Ctrl-o` en la primera jNN, cap. 10.)
+(lib01 y lib02 dados de baja el 2026-11-10: la práctica va con teclas, ver CLAUDE.md "LA PRÁCTICA ES CON TECLAS". Registros y portapapeles vuelven en el cap. 8; el historial de saltos, con `gd` + `Ctrl-o` en la primera jNN del cap. 10.)
 
 # ============================================================
-# REPASOS PROGRAMADOS — jNN y libNN (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
+# REPASOS PROGRAMADOS — jNN (y libNN excepcionales) (r1 ~3 días, r2 ~2 semanas, r3 ~1 mes)
 # ============================================================
 
-REPASO — lib01 modo Normal como base, `:wq` vs `:x` y portapapeles (flojos en el examen del cap. 2, 2026-10-28) — programado: 2026-11-02 — [ ] pendiente
-Arranque: ejercicios/lib01-normal-x-portapapeles.md (ya creado) | Si te trabás: Sesiones #12-#14 de GUIA.md
+- (ninguno)
 
 # ============================================================
 # CONCEPTOS EN CICLO — katas (el repaso va por concepto, en mixtas)

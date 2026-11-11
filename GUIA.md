@@ -13,7 +13,7 @@ Prácticas: ver EJERCICIOS.md.
 - Última tanda: Sesión #20 (2026-11-09, en la sesión de Claude vim-s20)
 - PRÓXIMA SESIÓN: `/rename vim-s22` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
-- Prácticas pendientes: lib02 EN CURSO (1ª entrega en vim-s21: faltan P1 "en común", P2a y P2b; pistas en EJERCICIOS.md) + repaso lib01 vencido (hacerlo antes que las mixtas) + katas mixtas m02 y m03 (`./kata m02`; una por día; m01 hecha el 2026-11-09). Katas rediseñadas el 2026-11-09 (vim-s19): una sola regla, par siempre, repaso por concepto en mixtas — el detalle vive en EJERCICIOS.md (fuente de verdad)
+- Prácticas pendientes: katas mixtas m02 y m03 (`./kata m02`; una por día; m01 hecha el 2026-11-09). Desde el 2026-11-10 (vim-s22) la práctica es CON TECLAS: lib01 y lib02 dados de baja, `libNN` solo excepcional (máx. 2 preguntas) — detalle en CLAUDE.md y EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
 - Último examen (`/examen`): 2026-10-28 (cap. 2, en vim-s10)
 - Entorno verificado: 2026-10-27 — NVIM v0.12.5, LazyVim 16.0.1 en `nvim` (limpio, 2026-10-28) y 16.0.0 en `nvim-ia`, jdtls + java-debug-adapter + java-test (Mason), openjdk 26, Maven 3.9.16, pandoc 3.10.2, ttyper 1.6.0

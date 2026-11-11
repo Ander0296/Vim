@@ -35,8 +35,10 @@ Read: ya lo tenés cargado), respetando el presupuesto de contexto:
    tipear en mi nvim para verlo en el momento.
 4. Si la tanda trae ejercicios del material, avisame cuáles son y
    creales su archivo de arranque. Si el tema pide práctica, creala
-   con el tipo que corresponda (kata `kNN`, `jNN` sobre java-lab o
-   preguntas `libNN`, con el formato de CLAUDE.md).
+   con el tipo que corresponda, con el formato de CLAUDE.md: por
+   defecto una kata `kNN` (o una `jNN` sobre java-lab desde el cap. 10).
+   Preguntas `libNN` solo si no hay forma de practicarlo con teclas, y
+   como máximo 2 preguntas cortas.
 5. Verificá que entendí con 1-2 preguntas cortas antes de cerrar.
 
 Cuando termines de explicar, en el mismo turno:
