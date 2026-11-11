@@ -11,7 +11,7 @@ Prácticas: ver EJERCICIOS.md.
 
 - Último punto estudiado: cap. 3 COMPLETO (la última tanda fue la 3.10 "Jump History" (historial de saltos) + la 3.11 "Summary" (resumen), que termina en "…navigating the filesystem." (…navegar el sistema de archivos)) → la próxima tanda arranca en el cap. 4 desde el principio: https://lazyvim-ambitious-devs.phillips.codes/course/chapter-4/
 - Última tanda: Sesión #20 (2026-11-09, en la sesión de Claude vim-s20)
-- PRÓXIMA SESIÓN: `/rename vim-s22` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
+- PRÓXIMA SESIÓN: `/rename vim-s23` (sale SIEMPRE de esta línea, no se calcula: es otro contador que el de las tandas; Claude la actualiza al cerrar)
 - Otro PC: mudanza B hecha (vim-s10); sin `nvim-ia` hasta el cap. 10. PENDIENTE allá (desde vim-s13): antes del `git pull` de `~/.config`, apartar los `nvim/lazy-lock.json` y `nvim/lazyvim.json` locales (si no, el pull se niega); después `nvim` → `<leader>l` → `R`, y Ctrl+Shift+F5 en kitty si estaba abierta.
 - Prácticas pendientes: katas mixtas m02 y m03 (`./kata m02`; una por día; m01 hecha el 2026-11-09). Desde el 2026-11-10 (vim-s22) la práctica es CON TECLAS: lib01 y lib02 dados de baja, `libNN` solo excepcional (máx. 2 preguntas) — detalle en CLAUDE.md y EJERCICIOS.md (fuente de verdad)
 - Último triage (`/pendientes`): 2026-10-28 (vim-s11: sin bajas; ritmo ~90-130 tandas para terminar el libro)
